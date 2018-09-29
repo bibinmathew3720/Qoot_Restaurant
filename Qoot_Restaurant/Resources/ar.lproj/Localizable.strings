@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  Qoot_Restaurant
+
+  Created by Bibin Mathew on 9/29/18.
+  Copyright © 2018 Cl. All rights reserved.
+*/
+//Validations
+
+"FILLMANDATORYFIELDS" = "ملء الحقول الإلزامية";
+"PASSWORDSDOESNOTMATCHES" = "كلمات المرور غير متطابقة";
+"INVALIDPASSWORDCHARACTERS" = "استخدم 8 أحرف أو أكثر مع مزيج من الحروف والأرقام والرموز";
+"INVALIDEMAIL" = "عنوان البريد الإلكتروني غير صالح";
+
+//Common
+
+"Qoot" = "قوت";
+"OK" = "حسنا";
+"YES" = "نعم";
+"NO" = "لا";
+"NONETWORK" = "لا يوجد اتصال بالإنترنت!";
+"SAR" = "SAR";
+
+//WalkThrough
+
+"SKIP" = "تخطي";
+"GOTIT" = "استلمتها";
+"Walkthrough1_Title" = "جيعان؟";
+"Walkthrough1_SubTitle" = "استلمتها";
+"Walkthrough2_Title" = "الاكل جاي في الطريق";
+"Walkthrough2_SubTitle" = "الأكل يوصلك جاهز للتقديم والاستمتاع بالطعم";
+"Walkthrough3_Title" = "اختر وجبتك";
+"Walkthrough3_SubTitle" = "اختار الطبق الي يعجبك او استشكف اطباق جديدة عن طريق مراجعة التقيمات";
+"Walkthrough4_Title" = "البحث والعثور";
+"Walkthrough4_SubTitle" = "تصفح افضل ما تقدمه افضل المطابخ في منطقك وحتلاقي الطبق المناسب لذوقك";
+
+//Login
+
+"LOGIN" = "تسجيل الدخول";
+
+//OTP VC
+
+"CONFIRMCODEMGE" = "لقد أرسلنا رمز التأكيد عبر الرسائل القصيرة إلى";
+"ENTERCODEBELOW" = " أدخل الرمز في الأسفل";
+"DIDNTRECEIVESMS" = "لم تتلقى أي رسالة قصيرة؟";
+"RESENDOTP" = "إعادة إرسال رقم الرسالة القصيرة";
+"VERIFYOTP" = "التحقق من رمز الرسالة القصيرة";
+"INVALIDOTP" = "رقم الرسالة القصيرة غير صالح";
+
+//Dashboard
+
+"LOGINVIAFACEBOOK" = "facebook تسجيل الدخول عبر ";
+"LOGINVIAGOOGLE" = "Google تسجيل الدخول عبر";
+"LOGINVIAQOOT" = "Qoot تسجيل الدخول عبر ";
+"DONTHAVEANACCOUNT" = "ليس لديك حساب!";
+"REGISTER" = "تسجيل؟";
+
+//Register
+
+"RegisterTitle" = "تسجيل";
+"NamePlaceholder" = "اسم";
+"EmailPlaceholder" = "البريد الإلكتروني";
+"MobNoPlaceholder" = "رقم الهاتف الجوال";
+"PwdPlaceholder" = "كلمة المرور";
+"ConfirmPwdPlaceholder" = "تأكيد كلمة المرور";
+"Male" = "ذكر";
+"Female" = "أنثى";
+"SIGNUP" = "سجل";
+
+//Menu
+
+"Login" = "تسجيل الدخول";
+"MyOrders" = "طلباتي";
+"MyWallet" = "محفظتي";
+"Offers" = "العروض";
+"Support" = "الدعم";
+"Settings" = "إعدادات";
+"Logout" = "الخروج";
+"SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
+"LOGOUT" = "الخروج";
+"AREYOUSURE" = "هل أنت متأكد؟";

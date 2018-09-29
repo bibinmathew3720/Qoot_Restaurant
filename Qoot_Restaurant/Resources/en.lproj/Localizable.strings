@@ -1,0 +1,84 @@
+/* 
+  Localizable.strings
+  Qoot_Restaurant
+
+  Created by Bibin Mathew on 9/29/18.
+  Copyright © 2018 Cl. All rights reserved.
+*/
+
+//Validations
+
+"FILLMANDATORYFIELDS" = "Fill mandatory fields";
+"PASSWORDSDOESNOTMATCHES" = "Passwords does not matches";
+"INVALIDPASSWORDCHARACTERS" = "Use 8 or more characters with a mix of letters, numbers and symbols";
+"INVALIDEMAIL" = "Invalid email address";
+
+
+//Common
+
+"Qoot" = "Qoot";
+"OK" = "OK";
+"YES" = "YES";
+"NO" = "NO";
+"NONETWORK" = "No internet connection!";
+"SAR" = "SAR";
+
+//WalkThrough
+
+"SKIP" = "SKIP";
+"GOTIT" = "GOT IT";
+"Walkthrough1_Title" = "Are you hungry?";
+"Walkthrough1_SubTitle" = "Got for it";
+"Walkthrough2_Title" = "Food is on your way";
+"Walkthrough2_SubTitle" = "The food is delivered to you and\njust ready to serve and feel the\ntaste";
+"Walkthrough3_Title" = "Pick your Meal";
+"Walkthrough3_SubTitle" = "Pick the dish you want or find new\nbest tastes based on reviews and rating";
+"Walkthrough4_Title" = "Search and Find";
+"Walkthrough4_SubTitle" = "Browse among the best kitchens\naround you and find the one for\nyour taste";
+
+
+//Login
+
+"LOGIN" = "LOGIN";
+
+//OTP VC
+
+"CONFIRMCODEMGE" = "We sent a confirmation code via SMS to";
+"ENTERCODEBELOW" = "Enter the code below";
+"DIDNTRECEIVESMS" = "Didn't receive any sms?";
+"RESENDOTP" = "RESEND OTP";
+"VERIFYOTP" = "VERIFY OTP";
+"INVALIDOTP" = "Invalid OTP";
+
+//Dashboard
+
+"LOGINVIAFACEBOOK" = "Login via facebook";
+"LOGINVIAGOOGLE" = "Login via Google";
+"LOGINVIAQOOT" = "Login via Qoot";
+"DONTHAVEANACCOUNT" = "Don't have an account!";
+"REGISTER" = "Register?";
+
+//Register
+
+"RegisterTitle" = "Register";
+"NamePlaceholder" = "Name";
+"EmailPlaceholder" = "Email";
+"MobNoPlaceholder" = "Mobile Number";
+"PwdPlaceholder" = "Password";
+"ConfirmPwdPlaceholder" = "Repeat Password";
+"Male" = "Male";
+"Female" = "Female";
+"SIGNUP" = "SIGN UP";
+
+//Menu
+
+"Login" = "Login";
+"MyOrders" = "My Orders";
+"MyWallet" = "My Wallet";
+"Offers" = "Offers";
+"Support" = "Support";
+"Settings" = "Settings";
+"Logout" = "Logout";
+"SwitchToKitchen" = "Switch to Kitchen";
+"LOGOUT" = "Logout";
+"AREYOUSURE" = "Are you sure?";

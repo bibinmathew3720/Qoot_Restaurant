@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import CoreData
+import GoogleMaps
+import GooglePlaces
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +20,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setNavigationBarProperties()
+        localisationMethod()
+        initWindow()
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        GMSPlacesClient.provideAPIKey(Constant.ApiKeys.googleMapKey)
+        GMSServices.provideAPIKey(Constant.ApiKeys.googleMapKey)
         return true
+    }
+    
+    func initWindow(){
+        let secondLogin = UserDefaults.standard.bool(forKey: Constant.VariableNames.isSecondLogIn)
+        if secondLogin{
+//            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
+//            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+//            let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
+//            let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
+            var slideMenuController:ExSlideMenuController?
+            if LanguageManger.shared.currentLanguage == .en {
+                //slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+            }
+            else{
+                //slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
+            }
+            self.window?.rootViewController = slideMenuController
+        }
+        else{
+            let languageVC = LanguageVC.init(nibName: "LanguageVC", bundle: nil)
+            self.window?.rootViewController = languageVC
+        }
+    }
+    
+    func localisationMethod(){
+        //Mark: Localisation handle
+        var selectedLanguage:Languages?
+        let language = UserDefaults.standard.value(forKey: "language")
+        if let _language = language as? String{
+            
+            selectedLanguage = (_language == "en") ? .en : .ar
+        }else{
+            selectedLanguage =  .en
+        }
+        LanguageManger.shared.setLanguage(language: selectedLanguage!)
+    }
+    
+    func setNavigationBarProperties(){
+        UINavigationBar.appearance().barTintColor = Constant.Colors.CommonMeroonColor
+        UINavigationBar.appearance().tintColor = Constant.Colors.CommonMeroonColor
+        let attrs = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 20)!
+        ]
+        UINavigationBar.appearance().titleTextAttributes = attrs
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -42,5 +98,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension Notification.Name {
+    static let postNotification = Notification.Name("LoginNotification")
+    static let menuResetNotification = Notification.Name("ResetMenuNotification")
 }
 
