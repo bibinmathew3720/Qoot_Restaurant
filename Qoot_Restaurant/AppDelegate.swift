@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if secondLogin{
 //            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
 //            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
-//            let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
+            let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
 //            let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
             var slideMenuController:ExSlideMenuController?
             if LanguageManger.shared.currentLanguage == .en {

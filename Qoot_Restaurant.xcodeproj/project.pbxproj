@@ -46,6 +46,10 @@
 		D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D021932C215FE4FD0092D506 /* LanguageVC.xib */; };
 		D0219331215FE5D40092D506 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0219330215FE5D30092D506 /* User.swift */; };
 		D0219334215FE6120092D506 /* Qoot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0219332215FE6120092D506 /* Qoot.xcdatamodeld */; };
+		D021933B215FE8D00092D506 /* ManuTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0219337215FE8CF0092D506 /* ManuTVC.xib */; };
+		D021933C215FE8D00092D506 /* ManuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0219338215FE8CF0092D506 /* ManuTVC.swift */; };
+		D021933D215FE8D00092D506 /* MenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0219339215FE8CF0092D506 /* MenuVC.xib */; };
+		D021933E215FE8D00092D506 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021933A215FE8CF0092D506 /* MenuVC.swift */; };
 		D0258FC0215C8DC20081CB0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0258FBF215C8DC20081CB0E /* AppDelegate.swift */; };
 		D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC3215C8DC20081CB0E /* Main.storyboard */; };
 		D0258FC7215C8DC60081CB0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC6215C8DC60081CB0E /* Assets.xcassets */; };
@@ -99,6 +103,10 @@
 		D021932C215FE4FD0092D506 /* LanguageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageVC.xib; sourceTree = "<group>"; };
 		D0219330215FE5D30092D506 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0219333215FE6120092D506 /* Qoot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Qoot.xcdatamodel; sourceTree = "<group>"; };
+		D0219337215FE8CF0092D506 /* ManuTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManuTVC.xib; sourceTree = "<group>"; };
+		D0219338215FE8CF0092D506 /* ManuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuTVC.swift; sourceTree = "<group>"; };
+		D0219339215FE8CF0092D506 /* MenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuVC.xib; sourceTree = "<group>"; };
+		D021933A215FE8CF0092D506 /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D0258FBC215C8DC20081CB0E /* Qoot_Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qoot_Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0258FBF215C8DC20081CB0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0258FC4215C8DC20081CB0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0219335215FE8CF0092D506 /* MenuVC */,
 				D021932A215FE4FD0092D506 /* LanguageVC */,
 				D02192E3215FE1390092D506 /* WalkThroughVC */,
 				D02192E9215FE1390092D506 /* Login */,
@@ -380,6 +389,25 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		D0219335215FE8CF0092D506 /* MenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0219336215FE8CF0092D506 /* MenuTVC */,
+				D0219339215FE8CF0092D506 /* MenuVC.xib */,
+				D021933A215FE8CF0092D506 /* MenuVC.swift */,
+			);
+			path = MenuVC;
+			sourceTree = "<group>";
+		};
+		D0219336215FE8CF0092D506 /* MenuTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0219337215FE8CF0092D506 /* ManuTVC.xib */,
+				D0219338215FE8CF0092D506 /* ManuTVC.swift */,
+			);
+			path = MenuTVC;
+			sourceTree = "<group>";
+		};
 		D0258FB3215C8DC20081CB0E = {
 			isa = PBXGroup;
 			children = (
@@ -491,8 +519,10 @@
 				D02192EF215FE1390092D506 /* WalkThroughVC.xib in Resources */,
 				D0258FC7215C8DC60081CB0E /* Assets.xcassets in Resources */,
 				D02192D7215FDF940092D506 /* Roboto-Bold.ttf in Resources */,
+				D021933B215FE8D00092D506 /* ManuTVC.xib in Resources */,
 				D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */,
 				D02192D6215FDF940092D506 /* Roboto-Regular.ttf in Resources */,
+				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */,
 				D02192F0215FE1390092D506 /* LoginViewController.xib in Resources */,
 			);
@@ -580,6 +610,7 @@
 				D0219319215FE1E60092D506 /* Reachability.m in Sources */,
 				D0219331215FE5D40092D506 /* User.swift in Sources */,
 				D0219321215FE1E60092D506 /* FetchApiUrls.swift in Sources */,
+				D021933C215FE8D00092D506 /* ManuTVC.swift in Sources */,
 				D021931A215FE1E60092D506 /* UIColorExtension.swift in Sources */,
 				D021931F215FE1E60092D506 /* LanguageManger.swift in Sources */,
 				D0258FC0215C8DC20081CB0E /* AppDelegate.swift in Sources */,
@@ -594,6 +625,7 @@
 				D0219317215FE1E60092D506 /* CLNetworkModel.swift in Sources */,
 				D02192ED215FE1390092D506 /* WalkThroughCVC.swift in Sources */,
 				D0219315215FE1E60092D506 /* CLBaseService.swift in Sources */,
+				D021933E215FE8D00092D506 /* MenuVC.swift in Sources */,
 				D02192F1215FE1390092D506 /* LoginViewController.swift in Sources */,
 				D0219325215FE1E60092D506 /* CCUtility.swift in Sources */,
 				D021932D215FE4FD0092D506 /* LanguageVC.swift in Sources */,
