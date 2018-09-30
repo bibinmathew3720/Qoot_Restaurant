@@ -22,9 +22,9 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var languageSegment: UISegmentedControl!
     
     var titleArray = ["Offers".localiz(),"Support".localiz()]
-    var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
+    //var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
     var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz(),"Logout".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
+    //var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {
@@ -141,11 +141,11 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!ManuTVC
         cell.tag = indexPath.row
         if self.isLoggedIn{
-            cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
+            //cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
             cell.menuLabel.text = self.titleArrayAccount[indexPath.row]
         }
         else{
-            cell.menuIcon.image = self.imageArray[indexPath.row]
+            //cell.menuIcon.image = self.imageArray[indexPath.row]
             cell.menuLabel.text = self.titleArray[indexPath.row]
         }
         return cell
@@ -187,9 +187,15 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func setSettingsVC(){
-//        let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
-//        let navController = UINavigationController.init(rootViewController: settingsVC)
-//        self.present(navController, animated: true, completion: nil)
+
+
+
+
+
+
+
+
+
     }
     
     func settingLogoutPopup(){

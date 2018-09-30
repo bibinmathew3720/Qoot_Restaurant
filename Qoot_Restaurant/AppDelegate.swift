@@ -33,16 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initWindow(){
         let secondLogin = UserDefaults.standard.bool(forKey: Constant.VariableNames.isSecondLogIn)
         if secondLogin{
-//            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
-//            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
+            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
             let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
-//            let viewMoreVC = ViewMoreVC.init(nibName: "ViewMoreVC", bundle: nil)
+            let walkThroughVC = WalkThroughVC.init(nibName: "WalkThroughVC", bundle: nil)
             var slideMenuController:ExSlideMenuController?
             if LanguageManger.shared.currentLanguage == .en {
-                //slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: viewMoreVC)
+                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: walkThroughVC)
             }
             else{
-                //slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:viewMoreVC , rightMenuViewController: menuVC)
+                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:walkThroughVC , rightMenuViewController: menuVC)
             }
             self.window?.rootViewController = slideMenuController
         }

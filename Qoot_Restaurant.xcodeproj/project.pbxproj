@@ -54,6 +54,8 @@
 		D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC3215C8DC20081CB0E /* Main.storyboard */; };
 		D0258FC7215C8DC60081CB0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC6215C8DC60081CB0E /* Assets.xcassets */; };
 		D0258FCA215C8DC60081CB0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC8215C8DC60081CB0E /* LaunchScreen.storyboard */; };
+		D03015642160566900EFC88E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03015622160566900EFC88E /* HomeVC.swift */; };
+		D03015652160566900EFC88E /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03015632160566900EFC88E /* HomeVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +115,8 @@
 		D0258FC6215C8DC60081CB0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0258FC9215C8DC60081CB0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0258FCB215C8DC60081CB0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D03015622160566900EFC88E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		D03015632160566900EFC88E /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +233,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0301561216055FB00EFC88E /* HomeVC */,
 				D0219335215FE8CF0092D506 /* MenuVC */,
 				D021932A215FE4FD0092D506 /* LanguageVC */,
 				D02192E3215FE1390092D506 /* WalkThroughVC */,
@@ -443,6 +448,15 @@
 			path = Qoot_Restaurant;
 			sourceTree = "<group>";
 		};
+		D0301561216055FB00EFC88E /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				D03015622160566900EFC88E /* HomeVC.swift */,
+				D03015632160566900EFC88E /* HomeVC.xib */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
 		DF3F185BEC2DAD6182953F9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +529,7 @@
 			files = (
 				D0258FCA215C8DC60081CB0E /* LaunchScreen.storyboard in Resources */,
 				D02192EC215FE1390092D506 /* WalkThroughCVC.xib in Resources */,
+				D03015652160566900EFC88E /* HomeVC.xib in Resources */,
 				D02192DA215FE0430092D506 /* Localizable.strings in Resources */,
 				D02192EF215FE1390092D506 /* WalkThroughVC.xib in Resources */,
 				D0258FC7215C8DC60081CB0E /* Assets.xcassets in Resources */,
@@ -605,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0219326215FE1E60092D506 /* L012Localizer.swift in Sources */,
+				D03015642160566900EFC88E /* HomeVC.swift in Sources */,
 				D0219327215FE1E60092D506 /* L102Language.swift in Sources */,
 				D021931E215FE1E60092D506 /* ApplicationController.swift in Sources */,
 				D0219319215FE1E60092D506 /* Reachability.m in Sources */,
