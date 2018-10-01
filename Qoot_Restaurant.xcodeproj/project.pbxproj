@@ -56,6 +56,8 @@
 		D0258FCA215C8DC60081CB0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0258FC8215C8DC60081CB0E /* LaunchScreen.storyboard */; };
 		D03015642160566900EFC88E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03015622160566900EFC88E /* HomeVC.swift */; };
 		D03015652160566900EFC88E /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03015632160566900EFC88E /* HomeVC.xib */; };
+		D03015692161A36F00EFC88E /* HomeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03015672161A36F00EFC88E /* HomeCVC.swift */; };
+		D030156A2161A36F00EFC88E /* HomeCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03015682161A36F00EFC88E /* HomeCVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +119,8 @@
 		D0258FCB215C8DC60081CB0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03015622160566900EFC88E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D03015632160566900EFC88E /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		D03015672161A36F00EFC88E /* HomeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVC.swift; sourceTree = "<group>"; };
+		D03015682161A36F00EFC88E /* HomeCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCVC.xib; sourceTree = "<group>"; };
 		FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -451,10 +455,20 @@
 		D0301561216055FB00EFC88E /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				D03015662161A34400EFC88E /* HomeCell */,
 				D03015622160566900EFC88E /* HomeVC.swift */,
 				D03015632160566900EFC88E /* HomeVC.xib */,
 			);
 			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		D03015662161A34400EFC88E /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				D03015672161A36F00EFC88E /* HomeCVC.swift */,
+				D03015682161A36F00EFC88E /* HomeCVC.xib */,
+			);
+			path = HomeCell;
 			sourceTree = "<group>";
 		};
 		DF3F185BEC2DAD6182953F9E /* Frameworks */ = {
@@ -536,6 +550,7 @@
 				D02192D7215FDF940092D506 /* Roboto-Bold.ttf in Resources */,
 				D021933B215FE8D00092D506 /* ManuTVC.xib in Resources */,
 				D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */,
+				D030156A2161A36F00EFC88E /* HomeCVC.xib in Resources */,
 				D02192D6215FDF940092D506 /* Roboto-Regular.ttf in Resources */,
 				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */,
@@ -640,6 +655,7 @@
 				D0219323215FE1E60092D506 /* CartManager.swift in Sources */,
 				D0219317215FE1E60092D506 /* CLNetworkModel.swift in Sources */,
 				D02192ED215FE1390092D506 /* WalkThroughCVC.swift in Sources */,
+				D03015692161A36F00EFC88E /* HomeCVC.swift in Sources */,
 				D0219315215FE1E60092D506 /* CLBaseService.swift in Sources */,
 				D021933E215FE8D00092D506 /* MenuVC.swift in Sources */,
 				D02192F1215FE1390092D506 /* LoginViewController.swift in Sources */,
