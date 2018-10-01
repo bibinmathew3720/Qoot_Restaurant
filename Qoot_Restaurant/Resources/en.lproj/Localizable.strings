@@ -72,16 +72,15 @@
 
 //Menu
 
-"Login" = "Login";
-"MyOrders" = "My Orders";
-"MyWallet" = "My Wallet";
-"Offers" = "Offers";
-"Support" = "Support";
-"Settings" = "Settings";
-"Logout" = "Logout";
-"SwitchToKitchen" = "Switch to Kitchen";
+"AllOrders" = "All Orders";
+"MyDishes" = "My Dishes";
+"Menu" = "Menu";
+"Wallet" = "Wallet";
+"MyProfile" = "My Profile";
+
 "LOGOUT" = "Logout";
 "AREYOUSURE" = "Are you sure?";
+
 
 //Home
 

@@ -9,28 +9,20 @@
 import UIKit
 
 class MenuVC: BaseViewController {
-    var isLoggedIn:Bool = false
-    @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var logInButtonView: UIView!
-    @IBOutlet weak var switchToKitchenButton: UIButton!
-    @IBOutlet weak var loginButtonViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var statusSwitch: UISwitch!
+    @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var languageSegment: UISegmentedControl!
     
-    var titleArray = ["Offers".localiz(),"Support".localiz()]
-    //var imageArray = [#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support")]
-    var titleArrayAccount = ["MyOrders".localiz(),"MyWallet".localiz(),"Offers".localiz(),"Support".localiz(),"Settings".localiz(),"Logout".localiz()]
+    var titleArrayAccount = ["AllOrders".localiz(),"MyDishes".localiz(),"Menu".localiz(),"Wallet".localiz(),"MyProfile".localiz(),"Logout".localiz()]
     //var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialisation()
-        uiUpdations()
         localisation()
         // Do any additional setup after loading the view.
     }
@@ -43,32 +35,24 @@ class MenuVC: BaseViewController {
         else{
            languageSegment.selectedSegmentIndex = 1
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.isLoggedIn =  UserDefaults.standard.bool(forKey: Constant.VariableNames.isLoogedIn)
-        uiUpdations()
-    }
-    
-    func uiUpdations(){
-        if isLoggedIn{
-            logInButtonView.isHidden = true
-            loginButtonViewHeightConstraint.constant = 0
-            profileViewHeightConstraint.constant = 150
-            profileView.isHidden = false
-        }
-        else{
-            logInButtonView.isHidden = false
-            loginButtonViewHeightConstraint.constant = 40
-            profileViewHeightConstraint.constant = 0
-            profileView.isHidden = true
-        }
-        self.menuTableView.reloadData()
+        updateStatusLabel()
     }
     
     func localisation(){
-        self.logInButton.setTitle("Login".localiz(), for: UIControlState.normal)
-        self.switchToKitchenButton.setTitle("SwitchToKitchen".localiz(), for: UIControlState.normal)
+        
+    }
+    
+    func updateStatusLabel(){
+        if self.statusSwitch.isOn{
+            self.statusLabel.text = "Online".localiz()
+        }
+        else{
+            self.statusLabel.text = "Offline".localiz()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,11 +84,63 @@ class MenuVC: BaseViewController {
         appDelegate.initWindow()
     }
     
-    @IBAction func loginButtonAction(_ sender: UIButton) {
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let dashBoardVC = storyBoard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
-        let dashBoardNavCntlr = UINavigationController.init(rootViewController: dashBoardVC)
-        self.present(dashBoardNavCntlr, animated: true, completion: nil)
+    @IBAction func statusSwitchAction(_ sender: UISwitch) {
+        updateStatusLabel()
+        settingStatusSwitchPopup(withSwitch: sender)
+    }
+    
+    func settingStatusSwitchPopup(withSwitch:UISwitch){
+        let alertController = UIAlertController(title: "AreYouSure".localiz(), message: "ChangeKitchenOpenStatus".localiz(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
+            self.callingUpdateOnlineStatusApi()
+        }
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            self.statusSwitch.isOn = !self.statusSwitch.isOn
+            self.updateStatusLabel()
+        }
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true) {
+        }
+    }
+    
+    //MARK: Update Online Status Api
+    
+    func  callingUpdateOnlineStatusApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingUpdateOnlineStatusApi(with: getOnlineStatusRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? UpdateOnlineStatusResponseModel{
+                self.updateStatusLabel()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getOnlineStatusRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString + "&"
+        }
+        var status = 0
+        if statusSwitch.isOn{
+            status = 1
+        }
+        let statusString:String = "Status=\(status)"
+        dataString = dataString + statusString
+        return dataString
     }
     
     
@@ -127,49 +163,29 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rowCount :Int = 0
-        if self.isLoggedIn {
-            rowCount = titleArrayAccount.count
-        }
-        else{
-            rowCount = titleArray.count
-        }
-        return rowCount
+        return titleArrayAccount.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!ManuTVC
         cell.tag = indexPath.row
-        if self.isLoggedIn{
-            //cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
-            cell.menuLabel.text = self.titleArrayAccount[indexPath.row]
-        }
-        else{
-            //cell.menuIcon.image = self.imageArray[indexPath.row]
-            cell.menuLabel.text = self.titleArray[indexPath.row]
-        }
+        //cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
+        cell.menuLabel.text = self.titleArrayAccount[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isLoggedIn{
-            if indexPath.row == 0{
-               setOrderListVC()
-            }
-            else if indexPath.row == 2 {
-                setOffersVC()
-            }
-            else if (indexPath.row == 4){
-                setSettingsVC()
-            }
-            else if (indexPath.row == 5){
-                settingLogoutPopup()
-            }
+        if indexPath.row == 0{
+            setOrderListVC()
         }
-        else{
-            if indexPath.row == 0 {
-                setOffersVC()
-            }
+        else if indexPath.row == 2 {
+            setOffersVC()
+        }
+        else if (indexPath.row == 4){
+            setSettingsVC()
+        }
+        else if (indexPath.row == 5){
+            settingLogoutPopup()
         }
     }
     
@@ -188,14 +204,6 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     
     func setSettingsVC(){
 
-
-
-
-
-
-
-
-
     }
     
     func settingLogoutPopup(){
@@ -204,7 +212,6 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
             UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
             User.deleteUser()
-            self.uiUpdations()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
             

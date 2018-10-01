@@ -69,14 +69,11 @@
 
 //Menu
 
-"Login" = "تسجيل الدخول";
-"MyOrders" = "طلباتي";
-"MyWallet" = "محفظتي";
-"Offers" = "العروض";
-"Support" = "الدعم";
-"Settings" = "إعدادات";
-"Logout" = "الخروج";
-"SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
+"AllOrders" = "جميع الطلبات";
+"MyDishes" = "أطباقي";
+"Menu" = "قائمة الطعام";
+"Wallet" = "محفظة";
+"MyProfile" = "ملفي";
 "LOGOUT" = "الخروج";
 "AREYOUSURE" = "هل أنت متأكد؟";
 
