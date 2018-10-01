@@ -16,8 +16,8 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var languageSegment: UISegmentedControl!
     
-    var titleArrayAccount = ["AllOrders".localiz(),"MyDishes".localiz(),"Menu".localiz(),"Wallet".localiz(),"MyProfile".localiz(),"Logout".localiz()]
-    //var imageArrayAccount =  [#imageLiteral(resourceName: "myOrders"),#imageLiteral(resourceName: "myWallet"),#imageLiteral(resourceName: "offers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logout")]
+    var titleArrayAccount = ["AllOrders".localiz(),"MyDishes".localiz(),"Menu".localiz(),"Wallet".localiz(),"MyProfile".localiz(),"LOGOUT".localiz()]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "wallet")]
     
     
     override func viewDidLoad() {
@@ -169,7 +169,7 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!ManuTVC
         cell.tag = indexPath.row
-        //cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
+        cell.menuIcon.image = self.imageArrayAccount[indexPath.row]
         cell.menuLabel.text = self.titleArrayAccount[indexPath.row]
         return cell
     }
