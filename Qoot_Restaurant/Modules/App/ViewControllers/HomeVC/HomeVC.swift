@@ -85,6 +85,7 @@ class HomeVC: BaseViewController {
             if let model = model as? DashboardResponseModel{
                self.dashBoardResponse = model
                self.homeCollectionView.reloadData()
+               self.callingViewOnlineStatusApi()
             }
             
         }) { (ErrorType) in
@@ -147,6 +148,46 @@ class HomeVC: BaseViewController {
         dataString = dataString + statusString
         return dataString
     }
+    
+    //MARK: View Online Status Api
+    
+    func  callingViewOnlineStatusApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingViewlineStatusApi(with: getViewOnlineStatusRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? UpdateOnlineStatusResponseModel{
+                if model.onlineStatus == 1 {
+                   self.statusSwitch.isOn = true
+                }
+                else{
+                    self.statusSwitch.isOn = false
+                }
+                self.updateStatusLabel()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getViewOnlineStatusRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString
+        }
+        return dataString
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

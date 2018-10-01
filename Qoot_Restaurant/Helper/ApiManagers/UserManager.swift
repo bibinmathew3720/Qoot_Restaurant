@@ -112,6 +112,35 @@ class UserManager: CLBaseService {
         return statusReponseModel
     }
     
+    //MARK : View Online Status Api
+    
+    func callingViewlineStatusApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForViewOnlineStatus(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getUpdateOnlineStatusResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForViewOnlineStatus(with body:String)->CLNetworkModel{
+        let dashboardRequestModel = CLNetworkModel.init(url: BASE_URL+VIEW_ONLINESTATUS_URL, requestMethod_: "POST")
+        dashboardRequestModel.requestBody = body
+        return dashboardRequestModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
