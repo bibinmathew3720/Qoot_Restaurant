@@ -16,6 +16,7 @@ let BASE_URL = LOCAL
 //Customer
 let LOGIN_URL = "Ios/Kitchen/LoginAction"
 let DASHBOARD_URL = "Ios/Kitchen/ViewDashBoard"
+let UPDATE_ONLINESTATUS_URL = "Ios/Kitchen/UpdateKitchenStatus"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let SENDOTP_URL = "Ios/Customer/SendOtp"

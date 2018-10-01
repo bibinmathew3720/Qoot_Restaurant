@@ -78,6 +78,40 @@ class UserManager: CLBaseService {
         return dashboardReponseModel
     }
     
+    //MARK : Update Online Status Api
+    
+    func callingUpdateOnlineStatusApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForOnlineStatus(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getUpdateOnlineStatusResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForOnlineStatus(with body:String)->CLNetworkModel{
+        let dashboardRequestModel = CLNetworkModel.init(url: BASE_URL+UPDATE_ONLINESTATUS_URL, requestMethod_: "POST")
+        dashboardRequestModel.requestBody = body
+        return dashboardRequestModel
+    }
+    
+    func getUpdateOnlineStatusResponseModel(dict:[String : Any?]) -> Any? {
+        let statusReponseModel = UpdateOnlineStatusResponseModel.init(dict:dict)
+        return statusReponseModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -632,6 +666,17 @@ class DashboardResponseModel : NSObject{
         }
         if let value = dict["VisitorsOnline"] as? Int{
             visitorsOnline = value
+        }
+    }
+}
+
+class UpdateOnlineStatusResponseModel : NSObject{
+    var onlineStatus:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Status"] as? String{
+            if let status = Int(value){
+                onlineStatus = status
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ class HomeVC: BaseViewController {
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
         setUpCollectionView()
         addCartIconOnly()
+        updateStatusLabel()
     }
     
     func localization(){
@@ -47,19 +48,30 @@ class HomeVC: BaseViewController {
     }
     
     @IBAction func statusSwitchAction(_ sender: UISwitch) {
+        updateStatusLabel()
         settingStatusSwitchPopup(withSwitch: sender)
     }
     func settingStatusSwitchPopup(withSwitch:UISwitch){
         let alertController = UIAlertController(title: "AreYouSure".localiz(), message: "ChangeKitchenOpenStatus".localiz(), preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
-          
+            self.callingUpdateOnlineStatusApi()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
-            
+            self.statusSwitch.isOn = !self.statusSwitch.isOn
+            self.updateStatusLabel()
         }
         alertController.addAction(noAction)
         alertController.addAction(yesAction)
         self.present(alertController, animated: true) {
+        }
+    }
+    
+    func updateStatusLabel(){
+        if self.statusSwitch.isOn{
+            self.statusLabel.text = "Online".localiz()
+        }
+        else{
+            self.statusLabel.text = "Offline".localiz()
         }
     }
     
@@ -94,6 +106,45 @@ class HomeVC: BaseViewController {
             let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
             dataString = dataString + kitchenIdString
         }
+        return dataString
+    }
+    
+    //MARK: Update Online Status Api
+    
+    func  callingUpdateOnlineStatusApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingUpdateOnlineStatusApi(with: getOnlineStatusRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? UpdateOnlineStatusResponseModel{
+                self.updateStatusLabel()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getOnlineStatusRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString + "&"
+        }
+        var status = 0
+        if statusSwitch.isOn{
+           status = 1
+        }
+        let statusString:String = "Status=\(status)"
+        dataString = dataString + statusString
         return dataString
     }
     override func didReceiveMemoryWarning() {
