@@ -16,24 +16,24 @@ class User: NSManagedObject {
             updateUserDB(user: user, userData: userData)
         } else {
          let user = CoreDataHandler.sharedInstance.newEntityForName(entityName: "User") as? User
-//            user?.refreshToken = userData.refreshToken
-//            user?.sessionToken = userData.sessionToken
             updateUserDB(user:user!, userData: userData)
         }
         
     }
     
     class func updateUserDB(user:User,userData:QootLogInResponseModel) {
-//        user.userName = userData.userName
-          user.email = userData.userEmail
-//        user.userPhone = String(userData.userMobile)
-//        user.userAddress1 = userData.userAddress1
-//        user.userAddress2 = userData.userAddress2
-//        user.catId = Int64(userData.catId)
+        user.mroofNumber = Int64(userData.mroofNumber)
+        user.customerPhoto = userData.customerPhoto
+        user.mobNumber = userData.userMobile
+        user.kitchenCity = userData.kitchenCity
+        user.kitchenMapLocation = userData.kitchenMapLocation
+        user.customerName = userData.userName
+        user.email = userData.userEmail
+        user.deliveryFee = userData.deliveryFee
+        user.kitchenName = userData.kitchenName
+        user.kitchenAddress = userData.kitchenAddress
+        user.kitchenLocation = userData.kitchenLocation
         user.userId = Int16(userData.userId)
-//        user.languageId = Int64(userData.languageId)
-//        user.locId = Int64(userData.locId)
-//        user.dob = userData.userDOB
         CoreDataHandler.sharedInstance.saveContext()
     }
     

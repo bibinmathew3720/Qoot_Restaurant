@@ -515,387 +515,6 @@ class UserManager: CLBaseService {
         return kitchenCustomerRatingReponseModel
     }
     
-    //MARK : Log Out Api
-    
-    func callingLogOutApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForLogOut(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getLogOutResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForLogOut(with body:String)->CLNetworkModel{
-        let logOutRequestModel = CLNetworkModel.init(url: BASE_URL+LOGOUT_URL, requestMethod_: "POST")
-        logOutRequestModel.requestBody = body
-        return logOutRequestModel
-    }
-    
-    func getLogOutResponseModel(dict:[String : Any?]) -> Any? {
-        let logOutReponseModel = QootLogInResponseModel.init(dict:dict)
-        return logOutReponseModel
-    }
-    //MARK : Edit Profile Api
-    
-    func callingEditProfileApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForEditProfile(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getEditProfileResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForEditProfile(with body:String)->CLNetworkModel{
-        let editProfileRequestModel = CLNetworkModel.init(url: BASE_URL+EDIT_PROFILE_URL, requestMethod_: "POST")
-        editProfileRequestModel.requestBody = body
-        return editProfileRequestModel
-    }
-    
-    func getEditProfileResponseModel(dict:[String : Any?]) -> Any? {
-        let editProfileRequestModel = QootLogInResponseModel.init(dict:dict)
-        return editProfileRequestModel
-    }
-    
-    func getProductResponseModel(dict:[String : Any?]) -> Any? {
-        let productResponseModel = FetchProductTypeResponseModel.init(dict:dict)
-        return productResponseModel
-    }
-    
-    //MARK: ForgotPassword Api
-    
-    func callingForgotPaswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForForgotPassword(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getForgotPasswordResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForForgotPassword(with body:String)->CLNetworkModel{
-        let forgotPasswordRequestModel = CLNetworkModel.init(url: BASE_URL+FORGOT_PASS_URL, requestMethod_: "POST")
-        forgotPasswordRequestModel.requestBody = body
-        return forgotPasswordRequestModel
-    }
-    
-    func getForgotPasswordResponseModel(dict:[String : Any?]) -> Any? {
-        let forgotPasswordRequestModel = FetchForgotPasswordResponseModel.init(dict:dict)
-        return forgotPasswordRequestModel
-    }
-    
-    //MARK: ChangePassword Api
-    
-    func callingChangePasswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForChangePassword(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getchangetPasswordResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForChangePassword(with body:String)->CLNetworkModel{
-        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PASS_URL, requestMethod_: "POST")
-        changePasswordRequestModel.requestBody = body
-        return changePasswordRequestModel
-    }
-    
-    func getchangetPasswordResponseModel(dict:[String : Any?]) -> Any? {
-        let changePasswordRequestModel = FetchForgotPasswordResponseModel.init(dict:dict)
-        return changePasswordRequestModel
-    }
-    
-    //MARK: Get Notifications Api
-    
-    func callingGetNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotifications(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotifications(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+GET_NOTIFICATIONS, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchGetNotificationsResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    
-    //MARK: Get Notifications History Api
-    
-    func callingGetNotificationHistoryApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotificationsHistory(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsHistoryResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotificationsHistory(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+GET_NOTIFICATIONS_HISTORY, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsHistoryResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchNotificationsHistoryResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    //MARK: Get Notifications Remove Api
-    
-    func callingNotificationRemoveApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetNotificationsRemove(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getNotificationsRemoveResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForGetNotificationsRemove(with body:String)->CLNetworkModel{
-        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+REMOVE_NOTIFICATIONS, requestMethod_: "POST")
-        getNotificationsRequestModel.requestBody = body
-        return getNotificationsRequestModel
-    }
-    
-    func getNotificationsRemoveResponseModel(dict:[String : Any?]) -> Any? {
-        let getNotificationsRequestModel = FetchNotificationsHistoryResponseModel.init(dict:dict)
-        return getNotificationsRequestModel
-    }
-    
-    //MARK: Change Notifications Api
-    
-    func callingChangeNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForChangeNotifications(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.changeNotificationsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForChangeNotifications(with body:String)->CLNetworkModel{
-        let changeNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_NOTIFICATIONS, requestMethod_: "POST")
-        changeNotificationsRequestModel.requestBody = body
-        return changeNotificationsRequestModel
-    }
-    
-    func changeNotificationsResponseModel(dict:[String : Any?]) -> Any? {
-        let changeNotificationsRequestModel = FetchChangeNotificationsResponseModel.init(dict:dict)
-        return changeNotificationsRequestModel
-    }
-    
-    //MARK: Feedback Api
-    
-    func callingFeedbackApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForFeedback(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.feedbackResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForFeedback(with body:String)->CLNetworkModel{
-        let feedbackRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_FEEDBACK_URL, requestMethod_: "POST")
-        feedbackRequestModel.requestBody = body
-        return feedbackRequestModel
-    }
-    
-    func feedbackResponseModel(dict:[String : Any?]) -> Any? {
-        let feedbackResponseModel = FetchFeedbackResponseModel.init(dict:dict)
-        return feedbackResponseModel
-    }
-    
-    
-    //MARK: Get All Types
-    
-    func callingGetAllTypesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForAllTypes(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getProductResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForAllTypes(with body:String)->CLNetworkModel{
-        let categoriesRequestModel = CLNetworkModel.init(url: BASE_URL+GET_CAT_TYPES, requestMethod_: "POST")
-        categoriesRequestModel.requestBody = body
-        return categoriesRequestModel
-    }
-    //MARK: Contact Us Api
-    
-    func callingContactUsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForContactUs(with: body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.changeContactUsResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForContactUs(with body:String)->CLNetworkModel{
-        let contactUsRequestModel = CLNetworkModel.init(url: BASE_URL+CONTACT_US_URL, requestMethod_: "POST")
-        contactUsRequestModel.requestBody = body
-        return contactUsRequestModel
-    }
-    
-    func changeContactUsResponseModel(dict:[String : Any?]) -> Any? {
-        let contactUsReponseModel = FetchContactUsResponseModel.init(dict:dict)
-        return contactUsReponseModel
-    }
 }
 
 
@@ -979,13 +598,39 @@ class FetchLogIn: NSObject {
 
 
 class QootLogInResponseModel : NSObject{
-    var statusMessage:String = ""
-    var userId:Int = 0
-    var userName:String = ""
-    var userEmail:String = ""
-    var gender:String = ""
+    var mroofNumber:Int = 0
+    var customerPhoto:String = ""
     var userMobile:String = ""
+    var kitchenCity:String = ""
+    var kitchenMapLocation = ""
+    var userName:String = ""
+    var userId:Int = 0
+    var userEmail:String = ""
+    var deliveryFee:Float = 0.0
+    var kitchenName:String = ""
+    var kitchenAddress:String = ""
+    var kitchenLocation:String = ""
+    var statusMessage:String = ""
+    
+    
     init(dict:[String:Any?]) {
+        if let value = dict["maroof_number"] as? String{
+            if let mrfNumber = Int(value){
+                mroofNumber = mrfNumber
+            }
+        }
+        if let value = dict["customer_photo"] as? String{
+            customerPhoto = value
+        }
+        if let value = dict["kitchen_city"] as? String{
+            kitchenCity = value
+        }
+        if let value = dict["kitchen_map_location"] as? String{
+            kitchenMapLocation = value
+        }
+        if let value = dict["customer_name"] as? String{
+            userName = value
+        }
         if let value = dict["message"] as? String{
             statusMessage = value
         }
@@ -994,17 +639,25 @@ class QootLogInResponseModel : NSObject{
                 userId = userID
             }
         }
-        if let value = dict["customer_name"] as? String{
-            userName = value
-        }
         if let value = dict["email_id"] as? String{
             userEmail = value
         }
-        if let value = dict["customer_gender"] as? String{
-            gender = value
+        if let value = dict["kitchen_delivery_fee"] as? String{
+            if let delFee = Float(value){
+                deliveryFee = delFee
+            }
+        }
+        if let value = dict["kitchen_name"] as? String{
+            kitchenName = value
+        }
+        if let value = dict["kitchen_address"] as? String{
+            kitchenAddress = value
+        }
+        if let value = dict["kitchen_location"] as? String{
+            kitchenLocation = value
         }
         if let value = dict["mobile_number"] as? String{
-            gender = value
+            userMobile = value
         }
         
 }

@@ -36,7 +36,6 @@
 		D0219321215FE1E60092D506 /* FetchApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0219308215FE1E50092D506 /* FetchApiUrls.swift */; };
 		D0219322215FE1E60092D506 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0219309215FE1E50092D506 /* UserManager.swift */; };
 		D0219323215FE1E60092D506 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021930A215FE1E50092D506 /* CartManager.swift */; };
-		D0219324215FE1E60092D506 /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021930B215FE1E50092D506 /* ProductManager.swift */; };
 		D0219325215FE1E60092D506 /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021930D215FE1E60092D506 /* CCUtility.swift */; };
 		D0219326215FE1E60092D506 /* L012Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021930F215FE1E60092D506 /* L012Localizer.swift */; };
 		D0219327215FE1E60092D506 /* L102Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0219310215FE1E60092D506 /* L102Language.swift */; };
@@ -97,7 +96,6 @@
 		D0219308215FE1E50092D506 /* FetchApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchApiUrls.swift; sourceTree = "<group>"; };
 		D0219309215FE1E50092D506 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D021930A215FE1E50092D506 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
-		D021930B215FE1E50092D506 /* ProductManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
 		D021930D215FE1E60092D506 /* CCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUtility.swift; sourceTree = "<group>"; };
 		D021930F215FE1E60092D506 /* L012Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L012Localizer.swift; sourceTree = "<group>"; };
 		D0219310215FE1E60092D506 /* L102Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L102Language.swift; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 				D0219308215FE1E50092D506 /* FetchApiUrls.swift */,
 				D0219309215FE1E50092D506 /* UserManager.swift */,
 				D021930A215FE1E50092D506 /* CartManager.swift */,
-				D021930B215FE1E50092D506 /* ProductManager.swift */,
 			);
 			path = ApiManagers;
 			sourceTree = "<group>";
@@ -665,7 +662,6 @@
 				D02192D0215FDCD20092D506 /* OTPVC.swift in Sources */,
 				D02192CF215FDCD20092D506 /* BaseViewController.swift in Sources */,
 				D021931B215FE1E60092D506 /* StringExtensions.swift in Sources */,
-				D0219324215FE1E60092D506 /* ProductManager.swift in Sources */,
 				D02192EE215FE1390092D506 /* WalkThroughVC.swift in Sources */,
 				D021931D215FE1E60092D506 /* UIImageViewExtensions.swift in Sources */,
 				D0219322215FE1E60092D506 /* UserManager.swift in Sources */,
