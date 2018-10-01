@@ -10,6 +10,74 @@ import UIKit
 
 class UserManager: CLBaseService {
     
+    //MARK : Log In Api
+    
+    func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForLogIn(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getLogInResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForLogIn(with body:String)->CLNetworkModel{
+        let loginRequestModel = CLNetworkModel.init(url: BASE_URL+LOGIN_URL, requestMethod_: "POST")
+        loginRequestModel.requestBody = body
+        return loginRequestModel
+    }
+    
+    func getLogInResponseModel(dict:[String : Any?]) -> Any? {
+        let logInReponseModel = QootLogInResponseModel.init(dict:dict)
+        return logInReponseModel
+    }
+    
+    //MARK : Dashboard Api
+    
+    func callingDashboardApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForDashboard(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getDashboardResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForDashboard(with body:String)->CLNetworkModel{
+        let dashboardRequestModel = CLNetworkModel.init(url: BASE_URL+DASHBOARD_URL, requestMethod_: "POST")
+        dashboardRequestModel.requestBody = body
+        return dashboardRequestModel
+    }
+    
+    func getDashboardResponseModel(dict:[String : Any?]) -> Any? {
+        let dashboardReponseModel = DashboardResponseModel.init(dict:dict)
+        return dashboardReponseModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -248,41 +316,6 @@ class UserManager: CLBaseService {
         return kitchensResponseModel
     }
     
-  
-    //MARK : Log In Api
-    
-    func callingLogInApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForLogIn(with:body), success: {
-            (resultData) in
-            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
-            if error == nil {
-                if let jdict = jsonDict{
-                    print(jsonDict)
-                    success(self.getLogInResponseModel(dict: jdict) as Any)
-                }else{
-                    failure(ErrorType.dataError)
-                }
-            }else{
-                failure(ErrorType.dataError)
-            }
-            
-        }, failiure: {(error)-> () in failure(error)
-            
-        })
-        
-    }
-    
-    func networkModelForLogIn(with body:String)->CLNetworkModel{
-        let loginRequestModel = CLNetworkModel.init(url: BASE_URL+LOGIN_URL, requestMethod_: "POST")
-        loginRequestModel.requestBody = body
-        return loginRequestModel
-    }
-    
-    func getLogInResponseModel(dict:[String : Any?]) -> Any? {
-        let logInReponseModel = QootLogInResponseModel.init(dict:dict)
-        return logInReponseModel
-    }
-    
     //MARK : Get Offer Api
     
     func callingOfferDishesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -517,86 +550,6 @@ class UserManager: CLBaseService {
     
 }
 
-
-
-class FetchRegister: NSObject {
-    var username = ""
-    var emailid: String = ""
-    var password:String = ""
-    var mobile:String = ""
-    var dob:String = ""
-    var address1:String = ""
-    var address2:String = ""
-    var languageId:NSNumber = 0
-    var platform:NSNumber = 1
-    var categories = [NSNumber]()
-    var locationId:NSNumber = 0
-    
-    func getRequestBody()->String{
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        dict.updateValue(emailid as AnyObject, forKey: "u_email")
-        dict.updateValue(password as AnyObject, forKey: "u_password")
-        dict.updateValue(mobile as AnyObject, forKey: "u_mobile")
-        dict.updateValue(dob as AnyObject, forKey: "u_dob")
-        dict.updateValue(address1 as AnyObject, forKey: "u_address1")
-        dict.updateValue(address2 as AnyObject, forKey: "u_address2")
-        if let deviceTok = ApplicationController.deviceToken{
-            dict.updateValue(deviceTok as AnyObject, forKey: "device_token")
-        } else {
-            dict.updateValue("fgdgdgd5667575" as AnyObject, forKey: "device_token")
-        }
-        dict.updateValue(languageId, forKey: "language_id")
-        dict.updateValue(platform, forKey: "u_platform")
-        dict.updateValue(categories as AnyObject, forKey: "category_id")
-        dict.updateValue(locationId, forKey: "location_id")
-        return CCUtility.getJSONfrom(dictionary: dict)
-    }
-}
-
-class QootRegisterResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        if let value = dict["errorMsg"] as? String{
-            errorMessage = value
-        }
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["session_token"] as? String{
-           
-        }
-        if let value = dict["refresh_token"] as? String{
-            
-        }
-        
-    }
-}
-
-class FetchLogIn: NSObject {
-    var emailid: String = ""
-    var password:String = ""
-    var platform:NSNumber = 1
-    
-    func getRequestBody()->String{
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        dict.updateValue(emailid as AnyObject, forKey: "u_email")
-        dict.updateValue(password as AnyObject, forKey: "u_password")
-        if let deviceTok = ApplicationController.deviceToken{
-           dict.updateValue(deviceTok as AnyObject, forKey: "device_token")
-        } else {
-            dict.updateValue("fgdgdgd5667575" as AnyObject, forKey: "device_token")
-        }
-        dict.updateValue(platform, forKey: "u_platform")
-        return CCUtility.getJSONfrom(dictionary: dict)
-    }
-}
-
-
 class QootLogInResponseModel : NSObject{
     var mroofNumber:Int = 0
     var customerPhoto:String = ""
@@ -604,14 +557,13 @@ class QootLogInResponseModel : NSObject{
     var kitchenCity:String = ""
     var kitchenMapLocation = ""
     var userName:String = ""
-    var userId:Int = 0
+    var kitchenId:Int = 0
     var userEmail:String = ""
     var deliveryFee:Float = 0.0
     var kitchenName:String = ""
     var kitchenAddress:String = ""
     var kitchenLocation:String = ""
     var statusMessage:String = ""
-    
     
     init(dict:[String:Any?]) {
         if let value = dict["maroof_number"] as? String{
@@ -636,7 +588,7 @@ class QootLogInResponseModel : NSObject{
         }
         if let value = dict["customer_id"] as? String{
             if let userID = Int(value){
-                userId = userID
+                kitchenId = userID
             }
         }
         if let value = dict["email_id"] as? String{
@@ -659,8 +611,53 @@ class QootLogInResponseModel : NSObject{
         if let value = dict["mobile_number"] as? String{
             userMobile = value
         }
-        
+    }
 }
+
+class DashboardResponseModel : NSObject{
+    var todayEarn:Float = 0.0
+    var qootBalance:Float = 0.0
+    var totalVisitors:Int = 0
+    var visitorsOnline:Int = 0
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["TodayEarn"] as? Int{
+                todayEarn = Float(value)
+        }
+        if let value = dict["QootBalance"] as? Int{
+                qootBalance = Float(value)
+        }
+        if let value = dict["TotalVisitors"] as? Int{
+           totalVisitors = value
+        }
+        if let value = dict["VisitorsOnline"] as? Int{
+            visitorsOnline = value
+        }
+    }
+}
+
+class QootRegisterResponseModel : NSObject{
+    var statusMessage:String = ""
+    var errorMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["statusMessage"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["errorMsg"] as? String{
+            errorMessage = value
+        }
+        if let value = dict["statusCode"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["session_token"] as? String{
+            
+        }
+        if let value = dict["refresh_token"] as? String{
+            
+        }
+        
+    }
 }
 
 class SendOTPResponseModel : NSObject{
@@ -914,222 +911,6 @@ class ViewCuisines : NSObject{
             if let sub_catID = Int(value){
                 subCatId = sub_catID
             }
-        }
-    }
-}
-
-class FetchForgotPasswordResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-    }
-}
-
-class FetchGetNotificationsResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var notificationStatus:String = ""
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["notification_status"] as? String{
-            notificationStatus = value
-        }
-    }
-}
-
-class FetchNotificationsHistoryResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var total:Int = 0
-    var data = [FetchNotificationData]()
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["total"] as? Int{
-            total = value
-        }
-        if let value = dict["data"] as? NSArray{
-            for item in value{
-                data.append(FetchNotificationData.init(dict: item as! [String : Any?]))
-            }
-        }
-    }
-}
-
-class FetchNotificationData : NSObject{
-    var id:Int = 0
-    var user_id:Int = 0
-    var type_id:Int =  0
-    var type:String = ""
-    var msg_content:String = ""
-    var status:String = ""
-    var created_date:String = ""
-    var updated_date:String = ""
-    var img_url:String = ""
-
-    init(dict:[String:Any?]) {
-        if let value = dict["id"] as? Int{
-            id = value
-        }
-
-        if let value = dict["user_id"] as? Int{
-            user_id = value
-        }
-        if let value = dict["type_id"] as? Int{
-            type_id = value
-        }
-        if let value = dict["type"] as? String{
-            type = value
-        }
-        if let value = dict["msg_content"] as? String{
-            msg_content = value
-        }
-        if let value = dict["status"] as? String{
-            status = value
-        }
-        if let value = dict["created_at"] as? String{
-            created_date = value
-        }
-        if let value = dict["updated_at"] as? String{
-            updated_date = value
-        }
-        if let value = dict["img_url"] as? String{
-            img_url = value
-        }
-    }
-}
-
-class FetchChangeNotificationsResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-    }
-}
-
-class FetchContactUsResponseModel: NSObject {
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-    }
-}
-
-class FetchContactUsRequestModel: NSObject {
-    var email: String = ""
-    var name:String = ""
-    var message:String = ""
-    func getRequestBody()->String{
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        dict.updateValue(email as AnyObject, forKey: "u_email")
-        dict.updateValue(name as AnyObject, forKey: "u_name")
-        dict.updateValue(message as AnyObject, forKey: "u_message")
-//        if let user = User.getUser() {
-//            dict.updateValue(String(user.userId) as AnyObject , forKey: "user_id")
-//        }
-        let languageString = L102Language.currentAppleLanguage()
-        var languageId:NSNumber = 1
-        if (languageString == "ar"){
-            languageId = 2
-        }
-        dict.updateValue(languageId.stringValue as AnyObject, forKey: "language_id")
-        return CCUtility.getJSONfrom(dictionary: dict)
-    }
-}
-class FetchProductTypeResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    var productType = [FetchProductType]()
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
-        }
-        if let value = dict["data"] as? NSArray{
-            for item in value{
-                productType.append(FetchProductType.init(dict: item as! [String : Any?]))
-            }
-        }
-        
-        
-    }
-}
-
-class FetchProductType :NSObject {
-    var type_id:Int = 0
-    var typeName:String = ""
-    var type_pic:String = ""
-    var created_date:String = ""
-    var last_updated_date:String = ""
-    init(dict:[String:Any?]) {
-        if let value = dict["type_id"] as? Int{
-            type_id = value
-        }
-        if let value = dict["typeName"] as? String{
-            typeName = value
-        }
-        if let value = dict["type_pic"] as? String{
-            type_pic = value
-        }
-        if let value = dict["created_date"] as? String{
-            created_date = value
-        }
-        if let value = dict["last_updated_date"] as? String{
-            last_updated_date = value
-        }
-    }
-}
-
-class FetchFeedbackResponseModel : NSObject{
-    var statusMessage:String = ""
-    var errorMessage:String = ""
-    var statusCode:Int = 0
-    init(dict:[String:Any?]) {
-        if let value = dict["statusMessage"] as? String{
-            statusMessage = value
-        }
-        
-        if let value = dict["statusCode"] as? Int{
-            statusCode = value
         }
     }
 }

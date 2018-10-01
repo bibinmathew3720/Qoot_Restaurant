@@ -12,11 +12,13 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusSwitch: UISwitch!
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    var dashBoardResponse:DashboardResponseModel?
     let homeDataArray = ["TotalVisitors".localiz(),"VisitorsOnline".localiz(),"EarnedToday".localiz(),"QootBalance".localiz(),"TodaysMenu".localiz(),"TodaysOrder".localiz(),"OrderCalendar".localiz(),"AddNewDish".localiz()]
     override func initView() {
         super.initView()
         initialisation()
         localization()
+        callingDashboardApi()
     }
     
     func initialisation(){
@@ -57,6 +59,40 @@ class HomeVC: BaseViewController {
         alertController.addAction(yesAction)
         self.present(alertController, animated: true) {
         }
+    }
+    
+    //MARK: Dashboard Api
+    
+    func  callingDashboardApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingDashboardApi(with: getDashBoardRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? DashboardResponseModel{
+               self.dashBoardResponse = model
+               self.homeCollectionView.reloadData()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getDashBoardRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString
+        }
+        return dataString
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

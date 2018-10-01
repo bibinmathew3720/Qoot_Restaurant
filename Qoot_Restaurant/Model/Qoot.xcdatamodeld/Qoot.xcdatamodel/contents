@@ -8,13 +8,13 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kitchenAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kitchenCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kitchenId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="kitchenLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kitchenMapLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kitchenName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mroofNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="User" positionX="-63" positionY="-18" width="128" height="255"/>
