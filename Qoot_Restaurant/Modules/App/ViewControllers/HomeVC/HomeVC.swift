@@ -12,6 +12,7 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusSwitch: UISwitch!
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    let homeDataArray = ["TotalVisitors".localiz(),"VisitorsOnline".localiz(),"EarnedToday".localiz(),"QootBalance".localiz(),"TodaysMenu".localiz(),"TodaysOrder".localiz(),"OrderCalendar".localiz(),"AddNewDish".localiz()]
     override func initView() {
         super.initView()
         initialisation()
@@ -25,7 +26,7 @@ class HomeVC: BaseViewController {
     }
     
     func localization(){
-      self.title = "Qoot".localiz()
+      self.title = "KitchenHome".localiz()
     }
     
     func setUpCollectionView(){
@@ -41,14 +42,27 @@ class HomeVC: BaseViewController {
         }
     }
     
-    
-
+    @IBAction func statusSwitchAction(_ sender: UISwitch) {
+        settingStatusSwitchPopup(withSwitch: sender)
+    }
+    func settingStatusSwitchPopup(withSwitch:UISwitch){
+        let alertController = UIAlertController(title: "AreYouSure".localiz(), message: "ChangeKitchenOpenStatus".localiz(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
+          
+        }
+        let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
+            
+        }
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true) {
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -71,11 +85,12 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
-        return 10
+        return homeDataArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:HomeCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCVC
+        cell.subHeadingLabel.text = homeDataArray[indexPath.row]
         return cell
     }
     

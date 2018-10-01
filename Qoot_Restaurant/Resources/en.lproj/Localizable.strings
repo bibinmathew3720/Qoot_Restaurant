@@ -82,3 +82,19 @@
 "SwitchToKitchen" = "Switch to Kitchen";
 "LOGOUT" = "Logout";
 "AREYOUSURE" = "Are you sure?";
+
+//Home
+
+"Online" = "Online";
+"Offline" = "Offline";
+"AreYouSure" = "Are you sure?";
+"ChangeKitchenOpenStatus" = "Change kitchen open status?";
+"KitchenHome" = "Kitchen Home";
+"TotalVisitors" = "Total Visitors";
+"VisitorsOnline" = "Visitors Online";
+"EarnedToday" = "Earned Today";
+"QootBalance" = "Qoot Balance";
+"TodaysMenu" = "Today's Menu";
+"TodaysOrder" = "Today's Order";
+"OrderCalendar" = "Order Calendar";
+"AddNewDish" = "Add New Dish";

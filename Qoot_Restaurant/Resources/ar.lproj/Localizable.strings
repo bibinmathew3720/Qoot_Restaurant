@@ -79,3 +79,19 @@
 "SwitchToKitchen" = "قم بالتبديل إلى المطبخ";
 "LOGOUT" = "الخروج";
 "AREYOUSURE" = "هل أنت متأكد؟";
+
+//Home
+
+"Online" = "متصل بالإنترنت";
+"Offline" = "غير متصل بالإنترنت";
+"AreYouSure" = "هل أنت متأكد؟";
+"ChangeKitchenOpenStatus" = "تغيير حالة فتح المطبخ";
+"KitchenHome" = "الصفحة الرئيسية للمطبخ";
+"TotalVisitors" = "مجموع الزوار";
+"VisitorsOnline" = "زوار متواجدين حاليا";
+"EarnedToday" = "تم اكتسابها اليوم";
+"QootBalance" = "رصيد حساب قوت";
+"TodaysMenu" = "قائمة طعام اليوم";
+"TodaysOrder" = "طلبات اليوم";
+"OrderCalendar" = "تقويم الطلبات";
+"AddNewDish" = "أضف طبق جديد";
