@@ -17,5 +17,27 @@ class HomeCVC: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setDashBoardDetails(dashBoardDetails:DashboardResponseModel){
+        self.headingLabel.isHidden = false
+        if self.tag == 0{
+            headingLabel.textColor = Constant.Colors.CommonPinkColor
+            headingLabel.text = "\(dashBoardDetails.totalVisitors)"
+        }
+        else if self.tag == 1 {
+             headingLabel.textColor = Constant.Colors.CommonPinkColor
+             headingLabel.text = "\(dashBoardDetails.visitorsOnline)"
+        }
+        else if self.tag == 2 {
+            headingLabel.text = "SAR".localiz() + " " + String (format: "%0.1f", dashBoardDetails.todayEarn)
+        }
+        else if self.tag == 3 {
+            headingLabel.text = "SAR".localiz() + " " + String (format: "%0.1f", dashBoardDetails.qootBalance)
+        }
+        else{
+            self.headingLabel.isHidden = true
+        }
+        
+    }
 
 }

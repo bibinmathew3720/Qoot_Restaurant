@@ -14,6 +14,7 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     var dashBoardResponse:DashboardResponseModel?
     let homeDataArray = ["TotalVisitors".localiz(),"VisitorsOnline".localiz(),"EarnedToday".localiz(),"QootBalance".localiz(),"TodaysMenu".localiz(),"TodaysOrder".localiz(),"OrderCalendar".localiz(),"AddNewDish".localiz()]
+    let homeImagesArray = ["totalVisitors","totalVisitors","earnedToday","qootBalance","todaysMenu","todaysOrder","orderCalendar","addNewDish"]
     override func initView() {
         super.initView()
         initialisation()
@@ -25,6 +26,7 @@ class HomeVC: BaseViewController {
         addingLeftBarButton()
         self.leftButton?.setImage(UIImage(named: "hamburger"), for: UIControlState.normal)
         setUpCollectionView()
+        addCartIconOnly()
     }
     
     func localization(){
@@ -127,6 +129,11 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate,UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:HomeCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCVC
         cell.subHeadingLabel.text = homeDataArray[indexPath.row]
+        cell.iconImageView.image = UIImage.init(named: homeImagesArray[indexPath.row])
+        cell.tag = indexPath.row
+        if let dashBoardRsponse = self.dashBoardResponse{
+            cell.setDashBoardDetails(dashBoardDetails:dashBoardRsponse)
+        }
         return cell
     }
     

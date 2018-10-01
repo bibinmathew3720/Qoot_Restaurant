@@ -44,8 +44,8 @@ class BaseViewController: UIViewController {
     }
     
     func addCartIconOnly()->UIBarButtonItem{
-        let cartButtonView = UIButton(frame: CGRect.init(x: 0, y: 0, width: 25, height: 25))
-        cartButtonView.setImage(UIImage.init(named: Constant.ImageNames.cartIcon), for: .normal)
+        let cartButtonView = UIButton(frame: CGRect.init(x: 0, y: 0, width: 30, height: 30))
+        cartButtonView.setImage(UIImage.init(named: Constant.ImageNames.alarmIcon), for: .normal)
         cartButtonView.addTarget(self, action:  #selector(cartButtonAction), for: .touchUpInside)
         cartButtonView.contentMode = .scaleAspectFit
         
@@ -55,8 +55,8 @@ class BaseViewController: UIViewController {
         cartLabel?.font = UIFont.init(name: Constant.Font.Regular, size: 12)
         cartLabel?.layer.cornerRadius = 10
         cartLabel?.clipsToBounds = true
-        cartLabel?.text = "1"
-        cartButtonView.addSubview(cartLabel!)
+        cartLabel?.text = ""
+        //cartButtonView.addSubview(cartLabel!)
         let rightBarButton = UIBarButtonItem(customView: cartButtonView)
         self.navigationItem.rightBarButtonItems  = [rightBarButton]
         return rightBarButton
