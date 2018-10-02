@@ -22,4 +22,8 @@ class CategoryTVC: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setCategoryDetails(catDetails:Categories,index:IndexPath){
+        categoryLabel.text = catDetails.subCategories[index.row].subCatName + " (\(catDetails.categoryName))"
+    }
+    
 }

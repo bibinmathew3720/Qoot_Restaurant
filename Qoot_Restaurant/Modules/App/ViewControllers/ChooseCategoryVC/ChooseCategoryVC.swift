@@ -10,10 +10,12 @@ import UIKit
 
 class ChooseCategoryVC: BaseViewController {
     @IBOutlet weak var categoryTableView: UITableView!
+    var catResponseModel:QootCategoriesResponseModel?
     override func initView() {
         super.initView()
         initialisation()
         localisation()
+        callingGetCategoriesApi()
     }
     
     func initialisation(){
@@ -31,6 +33,31 @@ class ChooseCategoryVC: BaseViewController {
         self.title = "ChooseACategory".localiz()
     }
     
+    //MARK: View Online Status Api
+    
+    func  callingGetCategoriesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetCategoriesApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? QootCategoriesResponseModel{
+                self.catResponseModel = model
+                self.categoryTableView.reloadData()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -46,15 +73,24 @@ class ChooseCategoryVC: BaseViewController {
 
 extension ChooseCategoryVC : UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let catResponse = self.catResponseModel{
+            return catResponse.categories.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let catResponse = self.catResponseModel{
+            return catResponse.categories[section].subCategories.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTVC
+        if let categoryResponse = self.catResponseModel{
+            cell.setCategoryDetails(catDetails:categoryResponse.categories[indexPath.section],index:indexPath)
+        }
         return cell
     }
     

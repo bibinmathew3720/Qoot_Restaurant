@@ -141,6 +141,40 @@ class UserManager: CLBaseService {
         return dashboardRequestModel
     }
     
+    //MARK : Get Categories Api
+    
+    func callingGetCategoriesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetCategories(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getCategoriesResponseModel(categoryArray: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetCategories(with body:String)->CLNetworkModel{
+        let getCategoriesRequestModel = CLNetworkModel.init(url: BASE_URL+GET_CATEGORIES_URL, requestMethod_: "POST")
+        getCategoriesRequestModel.requestBody = body
+        return getCategoriesRequestModel
+    }
+    
+    func getCategoriesResponseModel(categoryArray:NSArray) -> Any? {
+        let categoryReponseModel = QootCategoriesResponseModel.init(arr:categoryArray)
+        return categoryReponseModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -706,6 +740,63 @@ class UpdateOnlineStatusResponseModel : NSObject{
             if let status = Int(value){
                 onlineStatus = status
             }
+        }
+    }
+}
+
+class QootCategoriesResponseModel : NSObject{
+    var categories = [Categories]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                categories.append(Categories.init(dict: it ))
+            }
+        }
+    }
+}
+
+class Categories : NSObject{
+    var categoryId:Int = 0
+    var categoryName:String = ""
+    var subCategories = [SubCategory]()
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                categoryId = catID
+            }
+        }
+        if let value = dict["category_name"] as? String{
+                categoryName = value
+        }
+        if let subCatArray = dict["sub_category"] as? NSArray {
+            for subCat in subCatArray {
+                subCategories.append(SubCategory.init(dict: subCat as! [String : Any?]))
+            }
+        }
+    }
+}
+
+class SubCategory : NSObject{
+    var categoryId:Int = 0
+    var categoryName:String = ""
+    var subCatIId:Int = 0
+    var subCatName:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                categoryId = catID
+            }
+        }
+        if let value = dict["category_name"] as? String{
+            categoryName = value
+        }
+        if let value = dict["sub_category_id"] as? String{
+            if let subID = Int(value){
+                subCatIId = subID
+            }
+        }
+        if let value = dict["sub_category_name"] as? String{
+            subCatName = value
         }
     }
 }

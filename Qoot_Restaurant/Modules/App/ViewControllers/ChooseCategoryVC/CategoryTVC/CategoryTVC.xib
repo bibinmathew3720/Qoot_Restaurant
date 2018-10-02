@@ -30,7 +30,19 @@
                         <color key="textColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owa-Uf-DwU">
+                        <rect key="frame" x="0.0" y="42.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="vVq-L7-0M4"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="owa-Uf-DwU" secondAttribute="bottom" id="1tJ-bL-joa"/>
+                    <constraint firstItem="owa-Uf-DwU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lk2-Sv-wpX"/>
+                    <constraint firstAttribute="trailing" secondItem="owa-Uf-DwU" secondAttribute="trailing" id="tRr-8T-46j"/>
+                </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="U4E-jw-mk6" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="5" id="7C6-Mf-HuG"/>
