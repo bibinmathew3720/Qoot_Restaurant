@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8BFD19648A4A1AB8A13CD388 /* Pods_Qoot_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */; };
+		D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FB32163059000C0138D /* AddNewDishVC.swift */; };
+		D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0184FB42163059000C0138D /* AddNewDishVC.xib */; };
 		D02192CF215FDCD20092D506 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CA215FDCD10092D506 /* BaseViewController.swift */; };
 		D02192D0215FDCD20092D506 /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CC215FDCD10092D506 /* OTPVC.swift */; };
 		D02192D1215FDCD20092D506 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CD215FDCD10092D506 /* RegisterVC.swift */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		976F4DF30AE2138772928101 /* Pods-Qoot_Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		D0184FB32163059000C0138D /* AddNewDishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDishVC.swift; sourceTree = "<group>"; };
+		D0184FB42163059000C0138D /* AddNewDishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewDishVC.xib; sourceTree = "<group>"; };
 		D02192CA215FDCD10092D506 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D02192CC215FDCD10092D506 /* OTPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
 		D02192CD215FDCD10092D506 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 				FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0184FB22163044500C0138D /* AddNewDish */ = {
+			isa = PBXGroup;
+			children = (
+				D0184FB32163059000C0138D /* AddNewDishVC.swift */,
+				D0184FB42163059000C0138D /* AddNewDishVC.xib */,
+			);
+			path = AddNewDish;
 			sourceTree = "<group>";
 		};
 		D02192C4215FDCA40092D506 /* Library */ = {
@@ -235,6 +248,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0184FB22163044500C0138D /* AddNewDish */,
 				D0301561216055FB00EFC88E /* HomeVC */,
 				D0219335215FE8CF0092D506 /* MenuVC */,
 				D021932A215FE4FD0092D506 /* LanguageVC */,
@@ -549,6 +563,7 @@
 				D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */,
 				D030156A2161A36F00EFC88E /* HomeCVC.xib in Resources */,
 				D02192D6215FDF940092D506 /* Roboto-Regular.ttf in Resources */,
+				D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */,
 				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */,
 				D02192F0215FE1390092D506 /* LoginViewController.xib in Resources */,
@@ -632,6 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0219326215FE1E60092D506 /* L012Localizer.swift in Sources */,
+				D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */,
 				D03015642160566900EFC88E /* HomeVC.swift in Sources */,
 				D0219327215FE1E60092D506 /* L102Language.swift in Sources */,
 				D021931E215FE1E60092D506 /* ApplicationController.swift in Sources */,

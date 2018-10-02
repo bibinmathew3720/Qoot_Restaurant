@@ -92,3 +92,12 @@
 "TodaysOrder" = "طلبات اليوم";
 "OrderCalendar" = "تقويم الطلبات";
 "AddNewDish" = "أضف طبق جديد";
+
+//Add New Dish Page
+
+"AddNewDish" = "أضف طبق جديد";
+"EnterDishNamePlaceholder" = "أدخل اسم الصحن";
+"WriteDescriptionPlaceholder" = "أضف بعض الوصف";
+"ChoosePreparationTime" = "إختر وقت الإعداد";
+"AddCategories" = "أضافة أصناف";
+"ADDNEWDISH" = "أضف طبق جديد";

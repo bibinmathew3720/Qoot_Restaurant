@@ -96,3 +96,12 @@
 "TodaysOrder" = "Today's Order";
 "OrderCalendar" = "Order Calendar";
 "AddNewDish" = "Add New Dish";
+
+//Add New Dish Page
+
+"AddNewDish" = "Add new Dish";
+"EnterDishNamePlaceholder" = "Enter the Dish Name";
+"WriteDescriptionPlaceholder" = "Write some description";
+"ChoosePreparationTime" = "Choose Preparation Time";
+"AddCategories" = "ADD CATEGORIES";
+"ADDNEWDISH" = "ADD NEW DISH";
