@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+protocol CategoryVCDelegate {
+    func categoryVCDelegateAction(with selSubCat:SubCategory) -> ()
+}
 class ChooseCategoryVC: BaseViewController {
     @IBOutlet weak var categoryTableView: UITableView!
     var catResponseModel:QootCategoriesResponseModel?
+    var delegate:CategoryVCDelegate?
     override func initView() {
         super.initView()
         initialisation()
@@ -99,6 +102,12 @@ extension ChooseCategoryVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let _delegate = delegate else {
+            return
+        }
+        if let categoryResponse = self.catResponseModel{
+            _delegate.categoryVCDelegateAction(with: categoryResponse.categories[indexPath.section].subCategories[indexPath.row])
+        }
+        self.navigationController?.popViewController(animated: true)
     }
 }

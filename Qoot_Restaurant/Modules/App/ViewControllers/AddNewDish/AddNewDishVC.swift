@@ -44,6 +44,7 @@ class AddNewDishVC: BaseViewController {
     
     @IBAction func addCategoriesButtonAction(_ sender: UIButton) {
         let chooseCategoryVC = ChooseCategoryVC.init(nibName: "ChooseCategoryVC", bundle: nil)
+        chooseCategoryVC.delegate = self
         self.navigationController?.pushViewController(chooseCategoryVC, animated: true)
     }
     @IBAction func addNewDishButtonAction(_ sender: UIButton) {
@@ -60,4 +61,12 @@ class AddNewDishVC: BaseViewController {
     }
     */
 
+}
+
+extension AddNewDishVC:CategoryVCDelegate{
+    func categoryVCDelegateAction(with selSubCat: SubCategory) {
+        print(selSubCat)
+    }
+    
+    
 }
