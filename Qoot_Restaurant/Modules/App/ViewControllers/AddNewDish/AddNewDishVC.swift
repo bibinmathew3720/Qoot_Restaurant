@@ -42,7 +42,14 @@ class AddNewDishVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func addCategoriesButtonAction(_ sender: UIButton) {
+        let chooseCategoryVC = ChooseCategoryVC.init(nibName: "ChooseCategoryVC", bundle: nil)
+        self.navigationController?.pushViewController(chooseCategoryVC, animated: true)
+    }
+    @IBAction func addNewDishButtonAction(_ sender: UIButton) {
+       
+    }
+    
     /*
     // MARK: - Navigation
 

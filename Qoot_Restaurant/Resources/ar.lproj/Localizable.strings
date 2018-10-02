@@ -101,3 +101,7 @@
 "ChoosePreparationTime" = "إختر وقت الإعداد";
 "AddCategories" = "أضافة أصناف";
 "ADDNEWDISH" = "أضف طبق جديد";
+
+//Choose Category Page
+
+"ChooseACategory" = "اختر الصنف";

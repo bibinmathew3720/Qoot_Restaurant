@@ -224,6 +224,9 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="addCategoriesButtonAction:" destination="-1" eventType="touchUpInside" id="hhT-VM-COv"/>
+                                    </connections>
                                 </button>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EdE-dz-eop">
                                     <rect key="frame" x="10" y="555" width="364" height="23"/>
@@ -246,6 +249,9 @@
                                     <state key="normal" title="ADD NEW DISH">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="addNewDishButtonAction:" destination="-1" eventType="touchUpInside" id="xka-XT-3Kd"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
