@@ -17,7 +17,7 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var languageSegment: UISegmentedControl!
     
     var titleArrayAccount = ["AllOrders".localiz(),"MyDishes".localiz(),"Menu".localiz(),"Wallet".localiz(),"MyProfile".localiz(),"LOGOUT".localiz()]
-    var imageArrayAccount =  [#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "wallet")]
+    var imageArrayAccount =  [#imageLiteral(resourceName: "allOrders"),#imageLiteral(resourceName: "myDishes"),#imageLiteral(resourceName: "menu"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "myProfile"),#imageLiteral(resourceName: "logout")]
     
     
     override func viewDidLoad() {
