@@ -36,7 +36,7 @@ class ChooseCategoryVC: BaseViewController {
         self.title = "ChooseACategory".localiz()
     }
     
-    //MARK: View Online Status Api
+    //MARK: Get Categories Api
     
     func  callingGetCategoriesApi(){
         MBProgressHUD.showAdded(to: self.view, animated: true)

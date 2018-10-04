@@ -23,6 +23,7 @@ class AddNewDishVC: BaseViewController {
         super.initView()
         initialisation()
         localisation()
+        callingGetPreparationTimesApi()
     }
     
     func initialisation(){
@@ -55,6 +56,30 @@ class AddNewDishVC: BaseViewController {
     }
     @IBAction func addNewDishButtonAction(_ sender: UIButton) {
        
+    }
+    
+    //MARK: Get Preparation Times Api
+    
+    func  callingGetPreparationTimesApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetPreparationTimesApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? PreparationTimesResponseModel{
+               
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
     }
     
     /*

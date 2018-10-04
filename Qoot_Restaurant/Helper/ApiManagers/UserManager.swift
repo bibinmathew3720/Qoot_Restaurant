@@ -175,6 +175,40 @@ class UserManager: CLBaseService {
         return categoryReponseModel
     }
     
+    //MARK : Get Preparation Times Api
+    
+    func callingGetPreparationTimesApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetPreparationTimes(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getPreparationTimesResponseModel(prepTimesArray: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetPreparationTimes(with body:String)->CLNetworkModel{
+        let preparationTimesRequestModel = CLNetworkModel.init(url: BASE_URL+GET_PREPARATIONTIMES_URL, requestMethod_: "POST")
+        preparationTimesRequestModel.requestBody = body
+        return preparationTimesRequestModel
+    }
+    
+    func getPreparationTimesResponseModel(prepTimesArray:NSArray) -> Any? {
+        let prepTimeReponseModel = PreparationTimesResponseModel.init(arr:prepTimesArray)
+        return prepTimeReponseModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -797,6 +831,26 @@ class SubCategory : NSObject{
         }
         if let value = dict["sub_category_name"] as? String{
             subCatName = value
+        }
+    }
+}
+
+class PreparationTimesResponseModel : NSObject{
+    var prepTimes = [PreparationTime]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                prepTimes.append(PreparationTime.init(dict: it ))
+            }
+        }
+    }
+}
+
+class PreparationTime : NSObject{
+    var time:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["time"] as? String{
+            time = value
         }
     }
 }

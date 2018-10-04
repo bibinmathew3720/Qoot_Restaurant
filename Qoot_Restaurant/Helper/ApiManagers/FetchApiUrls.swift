@@ -19,6 +19,7 @@ let DASHBOARD_URL = "Ios/Kitchen/ViewDashBoard"
 let UPDATE_ONLINESTATUS_URL = "Ios/Kitchen/UpdateKitchenStatus"
 let VIEW_ONLINESTATUS_URL = "Ios/Kitchen/ViewKitchenStatus"
 let GET_CATEGORIES_URL = "Ios/Kitchen/FoodCategories"
+let GET_PREPARATIONTIMES_URL = "Ios/Kitchen/ViewPreparationTimes"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let SENDOTP_URL = "Ios/Customer/SendOtp"
