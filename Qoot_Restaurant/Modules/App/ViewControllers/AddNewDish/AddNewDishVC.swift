@@ -9,6 +9,8 @@
 import UIKit
 
 class AddNewDishVC: BaseViewController {
+    @IBOutlet var timeSlotToolBar: UIToolbar!
+    @IBOutlet var timeSlotsPickerView: UIPickerView!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var dishNameTF: UITextField!
     @IBOutlet weak var dishDesTextView: UITextView!
@@ -18,7 +20,8 @@ class AddNewDishVC: BaseViewController {
     @IBOutlet weak var categoriesCV: UICollectionView!
     @IBOutlet weak var addNewDishButton: UIButton!
     var subCatArray = [SubCategory]()
-    
+    var preparationTimeResponse:PreparationTimesResponseModel?
+    var selPrepTime:PreparationTime?
     override func initView() {
         super.initView()
         initialisation()
@@ -29,6 +32,8 @@ class AddNewDishVC: BaseViewController {
     func initialisation(){
        addingLeftBarButton()
        registerNib()
+        self.preparationTimeTF.inputAccessoryView = self.timeSlotToolBar
+        self.preparationTimeTF.inputView = self.timeSlotsPickerView
     }
     
     func localisation(){
@@ -54,8 +59,21 @@ class AddNewDishVC: BaseViewController {
         chooseCategoryVC.delegate = self
         self.navigationController?.pushViewController(chooseCategoryVC, animated: true)
     }
+    
     @IBAction func addNewDishButtonAction(_ sender: UIButton) {
        
+    }
+    
+    @IBAction func toolBarDoneButtonAction(_ sender: UIBarButtonItem) {
+        self.selPrepTime = self.preparationTimeResponse?.prepTimes[self.timeSlotsPickerView.selectedRow(inComponent: 0)]
+        if let prepTime = self.selPrepTime{
+            self.preparationTimeTF.text = prepTime.time
+        }
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func toolBarCancelButtonAction(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
     }
     
     //MARK: Get Preparation Times Api
@@ -66,7 +84,8 @@ class AddNewDishVC: BaseViewController {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? PreparationTimesResponseModel{
-               
+               self.preparationTimeResponse = model
+                self.timeSlotsPickerView.reloadAllComponents()
             }
             
         }) { (ErrorType) in
@@ -145,6 +164,32 @@ extension AddNewDishVC: UICollectionViewDataSource,UICollectionViewDelegate,UICo
     func closeKeywordSelection(tag: Int) {
         subCatArray.remove(at: tag)
         self.categoriesCV.reloadData()
+    }
+}
+
+extension AddNewDishVC:UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if let prepTimeRepsonse = self.preparationTimeResponse{
+            return prepTimeRepsonse.prepTimes.count
+        }
+       return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        if let prepTimeRepsonse = self.preparationTimeResponse{
+            return prepTimeRepsonse.prepTimes[row].time
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
     }
 }
 
