@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8BFD19648A4A1AB8A13CD388 /* Pods_Qoot_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */; };
+		D0045FF52165A6840006F12E /* CLKeyWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */; };
+		D0045FF62165A6840006F12E /* CLKeyWordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */; };
 		D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FB32163059000C0138D /* AddNewDishVC.swift */; };
 		D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0184FB42163059000C0138D /* AddNewDishVC.xib */; };
 		D0184FBA21631E6800C0138D /* ChooseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FB821631E6800C0138D /* ChooseCategoryVC.swift */; };
@@ -68,6 +70,8 @@
 /* Begin PBXFileReference section */
 		028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		976F4DF30AE2138772928101 /* Pods-Qoot_Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLKeyWordCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLKeyWordCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0184FB32163059000C0138D /* AddNewDishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDishVC.swift; sourceTree = "<group>"; };
 		D0184FB42163059000C0138D /* AddNewDishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewDishVC.xib; sourceTree = "<group>"; };
 		D0184FB821631E6800C0138D /* ChooseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryVC.swift; sourceTree = "<group>"; };
@@ -155,9 +159,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D0045FF22165A6840006F12E /* KeywordCell */ = {
+			isa = PBXGroup;
+			children = (
+				D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */,
+				D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */,
+			);
+			path = KeywordCell;
+			sourceTree = "<group>";
+		};
 		D0184FB22163044500C0138D /* AddNewDish */ = {
 			isa = PBXGroup;
 			children = (
+				D0045FF22165A6840006F12E /* KeywordCell */,
 				D0184FB32163059000C0138D /* AddNewDishVC.swift */,
 				D0184FB42163059000C0138D /* AddNewDishVC.xib */,
 			);
@@ -581,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0184FC021631FFA00C0138D /* CategoryTVC.xib in Resources */,
+				D0045FF62165A6840006F12E /* CLKeyWordCollectionViewCell.xib in Resources */,
 				D0258FCA215C8DC60081CB0E /* LaunchScreen.storyboard in Resources */,
 				D02192EC215FE1390092D506 /* WalkThroughCVC.xib in Resources */,
 				D03015652160566900EFC88E /* HomeVC.xib in Resources */,
@@ -692,6 +707,7 @@
 				D02192D2215FDCD20092D506 /* DashboardVC.swift in Sources */,
 				D0219318215FE1E60092D506 /* CLNetworkUtility.swift in Sources */,
 				D0219334215FE6120092D506 /* Qoot.xcdatamodeld in Sources */,
+				D0045FF52165A6840006F12E /* CLKeyWordCollectionViewCell.swift in Sources */,
 				D0219328215FE1E60092D506 /* Constants.swift in Sources */,
 				D0184FBF21631FFA00C0138D /* CategoryTVC.swift in Sources */,
 				D02192D1215FDCD20092D506 /* RegisterVC.swift in Sources */,

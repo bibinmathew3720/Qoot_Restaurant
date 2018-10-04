@@ -17,6 +17,7 @@ class AddNewDishVC: BaseViewController {
     @IBOutlet weak var addCategoriesButton: UIButton!
     @IBOutlet weak var categoriesCV: UICollectionView!
     @IBOutlet weak var addNewDishButton: UIButton!
+    var subCatArray = [SubCategory]()
     
     override func initView() {
         super.initView()
@@ -26,6 +27,7 @@ class AddNewDishVC: BaseViewController {
     
     func initialisation(){
        addingLeftBarButton()
+       registerNib()
     }
     
     func localisation(){
@@ -35,6 +37,10 @@ class AddNewDishVC: BaseViewController {
        preparationTimeLabel.text = "ChoosePreparationTime".localiz()
        addCategoriesButton.setTitle("AddCategories".localiz(), for: UIControlState.normal)
        addNewDishButton.setTitle("ADDNEWDISH".localiz(), for: UIControlState.normal)
+    }
+    
+    func registerNib() -> () {
+        categoriesCV.register(UINib.init(nibName: "CLKeyWordCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CLKeyWordCollectionViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,8 +71,55 @@ class AddNewDishVC: BaseViewController {
 
 extension AddNewDishVC:CategoryVCDelegate{
     func categoryVCDelegateAction(with selSubCat: SubCategory) {
+        subCatArray.append(selSubCat)
+        subCatArray = subCatArray.removingDuplicates(byKey: { $0.subCatIId})
+        categoriesCV.reloadData()
         print(selSubCat)
     }
-    
-    
 }
+
+extension AddNewDishVC: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, CLKeyWordCollectionViewCellDelegate{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return subCatArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLKeyWordCollectionViewCell", for: indexPath) as! CLKeyWordCollectionViewCell
+        cell.delegate = self
+        cell.tag = indexPath.row
+        cell.setModelstr(self.subCatArray[indexPath.row].subCatName)
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let myString = self.subCatArray[indexPath.row].subCatName
+        var size: CGSize = myString.size(withAttributes: [NSAttributedStringKey.font: UIFont.init(name: Constant.Font.Regular, size: 14) ?? UIFont.systemFont(ofSize: 14)])
+        size.width = size.width + 30
+        size.height = 30
+        return size
+    }
+    
+    func closeKeywordSelection(tag: Int) {
+        subCatArray.remove(at: tag)
+        self.categoriesCV.reloadData()
+    }
+}
+
