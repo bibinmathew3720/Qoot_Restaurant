@@ -13,7 +13,9 @@ class AddNewDishVC: BaseViewController {
     @IBOutlet var timeSlotsPickerView: UIPickerView!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var dishNameTF: UITextField!
+    @IBOutlet weak var dishNameArabic: UITextField!
     @IBOutlet weak var dishDesTextView: UITextView!
+    @IBOutlet weak var dishDesArabicTV: UITextView!
     @IBOutlet weak var preparationTimeLabel: UILabel!
     @IBOutlet weak var preparationTimeTF: UITextField!
     @IBOutlet weak var addCategoriesButton: UIButton!
@@ -61,6 +63,9 @@ class AddNewDishVC: BaseViewController {
     }
     
     @IBAction func addNewDishButtonAction(_ sender: UIButton) {
+        if isValidDishDetails(){
+            
+        }
        
     }
     
@@ -76,6 +81,58 @@ class AddNewDishVC: BaseViewController {
         self.view.endEditing(true)
     }
     
+    
+    func isValidDishDetails()->Bool{
+        var isValid = true
+        var messageString = ""
+        if subCatArray.count == 0 {
+            messageString = "ADDFOODCATEGORY".localiz()
+            isValid = false
+        }
+        else{
+            if let selTime = self.selPrepTime{
+                if let dishNameText = self.dishNameTF.text{
+                    if dishNameText.count == 0{
+                        messageString = "FILLMANDATORYFIELDS".localiz()
+                        isValid = false
+                    }
+                }
+                else{
+                    if let disNameArabic = self.dishNameArabic.text {
+                        if disNameArabic.count == 0 {
+                            messageString = "FILLMANDATORYFIELDS".localiz()
+                            isValid = false
+                        }
+                    }
+                    else{
+                        if let disNameDes = self.dishDesTextView.text {
+                            if disNameDes.count == 0 {
+                                messageString = "FILLMANDATORYFIELDS".localiz()
+                                isValid = false
+                            }
+                        }
+                        else {
+                            if let dishDesArabic = self.dishDesArabicTV.text {
+                                if dishDesArabic.count == 0 {
+                                    messageString = "FILLMANDATORYFIELDS".localiz()
+                                    isValid = false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                messageString = "FILLMANDATORYFIELDS".localiz()
+                isValid = false
+            }
+        }
+        if !isValid{
+           CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return isValid
+    }
+    
     //MARK: Get Preparation Times Api
     
     func  callingGetPreparationTimesApi(){
@@ -84,7 +141,7 @@ class AddNewDishVC: BaseViewController {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? PreparationTimesResponseModel{
-               self.preparationTimeResponse = model
+                self.preparationTimeResponse = model
                 self.timeSlotsPickerView.reloadAllComponents()
             }
             
