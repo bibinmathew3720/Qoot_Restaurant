@@ -243,6 +243,41 @@ class UserManager: CLBaseService {
         return addNewDishReponseModel
     }
     
+    //MARK : Get Notifications Api
+    
+    func callingGetNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetNotifications(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getNotificationsResponseModel(notificationsArray: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetNotifications(with body:String)->CLNetworkModel{
+        let getNotificationsRequestModel = CLNetworkModel.init(url: BASE_URL+GET_NOTIFICATIONS_URL, requestMethod_: "POST")
+        getNotificationsRequestModel.requestBody = body
+        return getNotificationsRequestModel
+    }
+    
+    func getNotificationsResponseModel(notificationsArray:NSArray) -> Any? {
+        let notificationsReponseModel = NotifiationsResponseModel.init(arr:notificationsArray)
+        return notificationsReponseModel
+    }
+
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -1288,6 +1323,59 @@ class Dishes : NSObject{
         
     }
 }
+
+class NotifiationsResponseModel : NSObject{
+    var notifications = [Notifications]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                notifications.append(Notifications.init(dict: it ))
+            }
+        }
+    }
+}
+
+class Notifications : NSObject{
+    var notificationId:Int = 0
+    var notificationTitle:String = ""
+    var notificationMessage:String = ""
+    var notificationDate:String = ""
+    var notificationSourceId:Int = 0
+    var notificationType:String = ""
+    var notificationStatus:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["notification_id"] as? String{
+            if let notID = Int(value){
+                notificationId = notID
+            }
+        }
+        if let value = dict["notification_title"] as? String{
+            notificationTitle = value
+        }
+        if let value = dict["notification_message"] as? String{
+            notificationMessage = value
+        }
+        if let value = dict["notification_date"] as? String{
+            notificationDate = value
+        }
+        if let value = dict["notification_sourse_id"] as? String{
+            if let notSourceID = Int(value){
+                notificationSourceId = notSourceID
+            }
+        }
+        if let value = dict["notification_type"] as? String{
+            notificationType = value
+        }
+        if let value = dict["notification_status"] as? String{
+            if let notStatus = Int(value){
+                notificationStatus = notStatus
+            }
+        }
+        
+    }
+}
+
+
     class KitchenCustomerRatingsResponseModel : NSObject{
         var customerRating = [KitchenCustomerRating]()
         init(arr:(NSArray)) {

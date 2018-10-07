@@ -106,3 +106,8 @@
 //Choose Category Page
 
 "ChooseACategory" = "اختر الصنف";
+
+//Notifications Page
+
+"Notifications" = "Notifications";
+"RefNo" = "ref no:";

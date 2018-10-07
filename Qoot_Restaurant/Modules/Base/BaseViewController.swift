@@ -83,9 +83,9 @@ class BaseViewController: UIViewController {
     }
     
     @objc func cartButtonAction(){
-//        let cartVC = CartVC.init(nibName: "CartVC", bundle: nil)
-//        let cartNavCntlr = UINavigationController.init(rootViewController: cartVC)
-//        self.present(cartNavCntlr, animated: true, completion: nil)
+        let notVC = NotificationVC(nibName: "NotificationVC", bundle: nil)
+        let notificationNavCntlr = UINavigationController.init(rootViewController: notVC)
+        self.present(notificationNavCntlr, animated: true, completion: nil)
     }
     
     

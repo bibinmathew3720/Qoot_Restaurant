@@ -16,6 +16,10 @@
 		D0184FBB21631E6800C0138D /* ChooseCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0184FB921631E6800C0138D /* ChooseCategoryVC.xib */; };
 		D0184FBF21631FFA00C0138D /* CategoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FBD21631FFA00C0138D /* CategoryTVC.swift */; };
 		D0184FC021631FFA00C0138D /* CategoryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0184FBE21631FFA00C0138D /* CategoryTVC.xib */; };
+		D01F8FB9216A63CD009CA56E /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F8FB7216A63CD009CA56E /* NotificationVC.swift */; };
+		D01F8FBA216A63CD009CA56E /* NotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01F8FB8216A63CD009CA56E /* NotificationVC.xib */; };
+		D01F8FBE216A6B51009CA56E /* NotificationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F8FBC216A6B51009CA56E /* NotificationsTVC.swift */; };
+		D01F8FBF216A6B51009CA56E /* NotificationsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01F8FBD216A6B51009CA56E /* NotificationsTVC.xib */; };
 		D02192CF215FDCD20092D506 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CA215FDCD10092D506 /* BaseViewController.swift */; };
 		D02192D0215FDCD20092D506 /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CC215FDCD10092D506 /* OTPVC.swift */; };
 		D02192D1215FDCD20092D506 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02192CD215FDCD10092D506 /* RegisterVC.swift */; };
@@ -78,6 +82,10 @@
 		D0184FB921631E6800C0138D /* ChooseCategoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseCategoryVC.xib; sourceTree = "<group>"; };
 		D0184FBD21631FFA00C0138D /* CategoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTVC.swift; sourceTree = "<group>"; };
 		D0184FBE21631FFA00C0138D /* CategoryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTVC.xib; sourceTree = "<group>"; };
+		D01F8FB7216A63CD009CA56E /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		D01F8FB8216A63CD009CA56E /* NotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationVC.xib; sourceTree = "<group>"; };
+		D01F8FBC216A6B51009CA56E /* NotificationsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTVC.swift; sourceTree = "<group>"; };
+		D01F8FBD216A6B51009CA56E /* NotificationsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTVC.xib; sourceTree = "<group>"; };
 		D02192CA215FDCD10092D506 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D02192CC215FDCD10092D506 /* OTPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
 		D02192CD215FDCD10092D506 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -197,6 +205,25 @@
 			path = CategoryTVC;
 			sourceTree = "<group>";
 		};
+		D01F8FB6216A63A0009CA56E /* NotificationVC */ = {
+			isa = PBXGroup;
+			children = (
+				D01F8FBB216A6B37009CA56E /* NotificationTVC */,
+				D01F8FB7216A63CD009CA56E /* NotificationVC.swift */,
+				D01F8FB8216A63CD009CA56E /* NotificationVC.xib */,
+			);
+			path = NotificationVC;
+			sourceTree = "<group>";
+		};
+		D01F8FBB216A6B37009CA56E /* NotificationTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D01F8FBC216A6B51009CA56E /* NotificationsTVC.swift */,
+				D01F8FBD216A6B51009CA56E /* NotificationsTVC.xib */,
+			);
+			path = NotificationTVC;
+			sourceTree = "<group>";
+		};
 		D02192C4215FDCA40092D506 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +316,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D01F8FB6216A63A0009CA56E /* NotificationVC */,
 				D0184FB721631E4000C0138D /* ChooseCategoryVC */,
 				D0184FB22163044500C0138D /* AddNewDish */,
 				D0301561216055FB00EFC88E /* HomeVC */,
@@ -610,7 +638,9 @@
 				D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */,
 				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0184FBB21631E6800C0138D /* ChooseCategoryVC.xib in Resources */,
+				D01F8FBF216A6B51009CA56E /* NotificationsTVC.xib in Resources */,
 				D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */,
+				D01F8FBA216A63CD009CA56E /* NotificationVC.xib in Resources */,
 				D02192F0215FE1390092D506 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,6 +737,7 @@
 				D02192D2215FDCD20092D506 /* DashboardVC.swift in Sources */,
 				D0219318215FE1E60092D506 /* CLNetworkUtility.swift in Sources */,
 				D0219334215FE6120092D506 /* Qoot.xcdatamodeld in Sources */,
+				D01F8FBE216A6B51009CA56E /* NotificationsTVC.swift in Sources */,
 				D0045FF52165A6840006F12E /* CLKeyWordCollectionViewCell.swift in Sources */,
 				D0219328215FE1E60092D506 /* Constants.swift in Sources */,
 				D0184FBF21631FFA00C0138D /* CategoryTVC.swift in Sources */,
@@ -722,6 +753,7 @@
 				D0184FBA21631E6800C0138D /* ChooseCategoryVC.swift in Sources */,
 				D0219325215FE1E60092D506 /* CCUtility.swift in Sources */,
 				D021932D215FE4FD0092D506 /* LanguageVC.swift in Sources */,
+				D01F8FB9216A63CD009CA56E /* NotificationVC.swift in Sources */,
 				D021931C215FE1E60092D506 /* UIViewExtensions.swift in Sources */,
 				D02192D0215FDCD20092D506 /* OTPVC.swift in Sources */,
 				D02192CF215FDCD20092D506 /* BaseViewController.swift in Sources */,
