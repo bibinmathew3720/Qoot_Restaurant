@@ -46,12 +46,16 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gw-Gx-X3W">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="684"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVy-AM-lss">
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVy-AM-lss">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
                                     <color key="backgroundColor" red="0.63529411759999999" green="0.1019607843" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="150" id="IXL-0B-nxC"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="tvy-yX-We1" appends="YES" id="lUO-rV-AF4"/>
+                                    </connections>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXL-4d-OWL">
                                     <rect key="frame" x="0.0" y="150" width="374" height="67"/>
@@ -359,6 +363,11 @@
         <tapGestureRecognizer id="gnX-L8-ThB">
             <connections>
                 <action selector="tapGestureAction:" destination="-1" id="ec5-cz-Jci"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="tvy-yX-We1">
+            <connections>
+                <action selector="dishImageGestureAction:" destination="-1" id="j7I-QT-VLI"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

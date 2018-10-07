@@ -24,6 +24,7 @@ class AddNewDishVC: BaseViewController {
     var subCatArray = [SubCategory]()
     var preparationTimeResponse:PreparationTimesResponseModel?
     var selPrepTime:PreparationTime?
+    var pikdImage:UIImage?
     override func initView() {
         super.initView()
         initialisation()
@@ -101,6 +102,20 @@ class AddNewDishVC: BaseViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func dishImageGestureAction(_ sender: Any) {
+        addingImagePickerController(sourceType: .photoLibrary)
+    }
+    
+    func addingImagePickerController(sourceType:UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType;
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    
+    
     func isValidDishDetails()->Bool{
         var isValid = true
         var messageString = ""
@@ -129,10 +144,18 @@ class AddNewDishVC: BaseViewController {
                                 messageString = "FILLMANDATORYFIELDS".localiz()
                                 isValid = false
                             }
+                            else if (disNameDes == "WriteDescriptionPlaceholder".localiz()){
+                                messageString = "FILLMANDATORYFIELDS".localiz()
+                                isValid = false
+                            }
                         }
                         else {
                             if let dishDesArabic = self.dishDesArabicTV.text {
                                 if dishDesArabic.count == 0 {
+                                    messageString = "FILLMANDATORYFIELDS".localiz()
+                                    isValid = false
+                                }
+                                else if (dishDesArabic == "أدخل اسم الصحن"){
                                     messageString = "FILLMANDATORYFIELDS".localiz()
                                     isValid = false
                                 }
@@ -161,6 +184,10 @@ class AddNewDishVC: BaseViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? PreparationTimesResponseModel{
                 self.preparationTimeResponse = model
+                self.selPrepTime = self.preparationTimeResponse?.prepTimes.first
+                if let prepTime = self.selPrepTime{
+                    self.preparationTimeTF.text = prepTime.time
+                }
                 self.timeSlotsPickerView.reloadAllComponents()
             }
             
@@ -185,7 +212,9 @@ class AddNewDishVC: BaseViewController {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddNewDishResponse{
-                
+                if model.status == "true"{
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
             
         }) { (ErrorType) in
@@ -208,23 +237,23 @@ class AddNewDishVC: BaseViewController {
             dataString = dataString + kitchenIdString + "&"
         }
         if let dishName = self.dishNameTF.text{
-            let dishNameString:String = "DishName=\(dishName)"
+            let dishNameString:String = "DishName=\(dishName.urlEncode())"
             dataString = dataString + dishNameString + "&"
         }
         if let dishNameArabic = self.dishNameArabic.text{
-            let dishNameArabic:String = "DishNameAr=\(dishNameArabic)"
+            let dishNameArabic:String = "DishNameAr=\(dishNameArabic.urlEncode())"
             dataString = dataString + dishNameArabic + "&"
         }
         if let dishDescription = self.dishDesTextView.text{
-            let dishDescription:String = "DishDescription=\(dishDescription)"
+            let dishDescription:String = "DishDescription=\(dishDescription.urlEncode())"
             dataString = dataString + dishDescription + "&"
         }
         if let dishDescriptionArabic = self.dishDesArabicTV.text{
-            let dishDescriptionAra:String = "DishDescriptionAr=\(dishDescriptionArabic)"
+            let dishDescriptionAra:String = "DishDescriptionAr=\(dishDescriptionArabic.urlEncode())"
             dataString = dataString + dishDescriptionAra + "&"
         }
         if let prepTime = self.selPrepTime{
-            let prepTimeString:String = "PreparationTime=\(prepTime.time)"
+            let prepTimeString:String = "PreparationTime=\(prepTime.time.urlEncode())"
             dataString = dataString + prepTimeString
         }
         return dataString
@@ -338,11 +367,13 @@ extension AddNewDishVC:UITextFieldDelegate,UITextViewDelegate{
             let placeText = "WriteDescriptionPlaceholder".localiz()
             if textView.text == placeText {
                 textView.text = ""
+                textView.textColor = Constant.Colors.CommonBlackColor
             }
         }
         else if textView == dishDesArabicTV{
             if textView.text == "أضف بعض الوصف"{
                 textView.text = ""
+                textView.textColor = Constant.Colors.CommonBlackColor
             }
         }
     }
@@ -358,6 +389,25 @@ extension AddNewDishVC:UITextFieldDelegate,UITextViewDelegate{
                 settingDishDescriptionTextViewForArabic()
             }
         }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate Methods
+
+extension AddNewDishVC:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        
+        dismiss(animated: true, completion: nil)
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let referenceURL = info["UIImagePickerControllerReferenceURL"] as? URL
+            dishImageView.image = pickedImage
+            pikdImage = pickedImage
+
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

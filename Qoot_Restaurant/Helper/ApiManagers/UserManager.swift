@@ -233,7 +233,7 @@ class UserManager: CLBaseService {
     }
     
     func networkModelForAddNewDish(with body:String)->CLNetworkModel{
-        let addNewDishRequestModel = CLNetworkModel.init(url: BASE_URL+GET_PREPARATIONTIMES_URL, requestMethod_: "POST")
+        let addNewDishRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_NEW_DISH_URL, requestMethod_: "POST")
         addNewDishRequestModel.requestBody = body
         return addNewDishRequestModel
     }
@@ -890,22 +890,10 @@ class PreparationTime : NSObject{
 }
 
 class AddNewDishResponse : NSObject{
-    var categoryId:Int = 0
-    var categoryName:String = ""
-    var subCategories = [SubCategory]()
+    var status:String = ""
     init(dict:[String:Any?]) {
-        if let value = dict["category_id"] as? String{
-            if let catID = Int(value){
-                categoryId = catID
-            }
-        }
-        if let value = dict["category_name"] as? String{
-            categoryName = value
-        }
-        if let subCatArray = dict["sub_category"] as? NSArray {
-            for subCat in subCatArray {
-                subCategories.append(SubCategory.init(dict: subCat as! [String : Any?]))
-            }
+        if let value = dict["Status"] as? String{
+           status = value
         }
     }
 }
