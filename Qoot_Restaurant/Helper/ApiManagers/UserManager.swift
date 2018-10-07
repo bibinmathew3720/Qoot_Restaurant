@@ -209,6 +209,40 @@ class UserManager: CLBaseService {
         return prepTimeReponseModel
     }
     
+    //MARK : Add New Dish Api
+    
+    func callingAddNewDishApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForAddNewDish(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.addNewDishResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForAddNewDish(with body:String)->CLNetworkModel{
+        let addNewDishRequestModel = CLNetworkModel.init(url: BASE_URL+GET_PREPARATIONTIMES_URL, requestMethod_: "POST")
+        addNewDishRequestModel.requestBody = body
+        return addNewDishRequestModel
+    }
+    
+    func addNewDishResponseModel(dict:[String : Any?]) -> Any? {
+        let addNewDishReponseModel = AddNewDishResponse.init(dict:dict)
+        return addNewDishReponseModel
+    }
+    
     //MARK : Sign Up Api
     
     func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -854,6 +888,28 @@ class PreparationTime : NSObject{
         }
     }
 }
+
+class AddNewDishResponse : NSObject{
+    var categoryId:Int = 0
+    var categoryName:String = ""
+    var subCategories = [SubCategory]()
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            if let catID = Int(value){
+                categoryId = catID
+            }
+        }
+        if let value = dict["category_name"] as? String{
+            categoryName = value
+        }
+        if let subCatArray = dict["sub_category"] as? NSArray {
+            for subCat in subCatArray {
+                subCategories.append(SubCategory.init(dict: subCat as! [String : Any?]))
+            }
+        }
+    }
+}
+
 
 class QootRegisterResponseModel : NSObject{
     var statusMessage:String = ""

@@ -63,7 +63,10 @@
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="Hiq-l6-vdV"/>
+                                            </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-zS-C8G">
                                             <rect key="frame" x="3" y="66" width="368" height="1"/>
@@ -94,7 +97,10 @@
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="vyw-l7-oRS"/>
+                                            </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2f-c0-QfT">
                                             <rect key="frame" x="3" y="66" width="368" height="1"/>
@@ -126,6 +132,9 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="ezY-gc-meY"/>
+                                            </connections>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfl-4r-sev">
                                             <rect key="frame" x="3" y="103" width="368" height="1"/>
@@ -157,6 +166,9 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="R0b-FY-Gpo"/>
+                                            </connections>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0X-2F-8ic">
                                             <rect key="frame" x="3" y="103" width="368" height="1"/>
@@ -303,6 +315,7 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="BjD-tu-KhV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GQ8-Br-yG3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BjD-tu-KhV" secondAttribute="bottom" id="Nlt-Js-Zz2"/>
@@ -310,6 +323,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BjD-tu-KhV" secondAttribute="trailing" id="pZb-P5-2Ld"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="gnX-L8-ThB" appends="YES" id="LqH-Yi-4Qk"/>
+            </connections>
             <point key="canvasLocation" x="52.5" y="115.5"/>
         </view>
         <pickerView contentMode="scaleToFill" id="Kqt-yg-XLf">
@@ -340,6 +356,11 @@
             </items>
             <point key="canvasLocation" x="455" y="183"/>
         </toolbar>
+        <tapGestureRecognizer id="gnX-L8-ThB">
+            <connections>
+                <action selector="tapGestureAction:" destination="-1" id="ec5-cz-Jci"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="downArrowBlack" width="10" height="10"/>

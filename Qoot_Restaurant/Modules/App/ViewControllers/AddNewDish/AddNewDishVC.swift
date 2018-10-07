@@ -41,10 +41,26 @@ class AddNewDishVC: BaseViewController {
     func localisation(){
        self.title = "AddNewDish".localiz()
        dishNameTF.placeholder = "EnterDishNamePlaceholder".localiz()
-       dishDesTextView.toolbarPlaceholder = "WriteDescriptionPlaceholder".localiz()
+       settingDisDescriptionTextView()
        preparationTimeLabel.text = "ChoosePreparationTime".localiz()
        addCategoriesButton.setTitle("AddCategories".localiz(), for: UIControlState.normal)
        addNewDishButton.setTitle("ADDNEWDISH".localiz(), for: UIControlState.normal)
+        if LanguageManger.shared.currentLanguage == .en {
+            dishNameArabic.placeholder = "أدخل اسم الصحن";
+            dishNameArabic.textAlignment = NSTextAlignment.right
+            settingDishDescriptionTextViewForArabic()
+        }
+    }
+    
+    func settingDisDescriptionTextView(){
+        dishDesTextView.text = "WriteDescriptionPlaceholder".localiz()
+        dishDesTextView.textColor = Constant.Colors.CommonGreyColor
+    }
+    
+    func settingDishDescriptionTextViewForArabic(){
+        dishDesArabicTV.text = "أضف بعض الوصف"
+        dishDesArabicTV.textAlignment = NSTextAlignment.right
+        dishDesArabicTV.textColor = Constant.Colors.CommonGreyColor
     }
     
     func registerNib() -> () {
@@ -64,7 +80,7 @@ class AddNewDishVC: BaseViewController {
     
     @IBAction func addNewDishButtonAction(_ sender: UIButton) {
         if isValidDishDetails(){
-            
+            callingAddNewDishApi()
         }
        
     }
@@ -81,6 +97,9 @@ class AddNewDishVC: BaseViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
     
     func isValidDishDetails()->Bool{
         var isValid = true
@@ -156,6 +175,59 @@ class AddNewDishVC: BaseViewController {
             
             print(ErrorType)
         }
+    }
+    
+    //MARK: Add New Dish Api
+    
+    func  callingAddNewDishApi(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingAddNewDishApi(with: addNewDishRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? AddNewDishResponse{
+                
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func addNewDishRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString + "&"
+        }
+        if let dishName = self.dishNameTF.text{
+            let dishNameString:String = "DishName=\(dishName)"
+            dataString = dataString + dishNameString + "&"
+        }
+        if let dishNameArabic = self.dishNameArabic.text{
+            let dishNameArabic:String = "DishNameAr=\(dishNameArabic)"
+            dataString = dataString + dishNameArabic + "&"
+        }
+        if let dishDescription = self.dishDesTextView.text{
+            let dishDescription:String = "DishDescription=\(dishDescription)"
+            dataString = dataString + dishDescription + "&"
+        }
+        if let dishDescriptionArabic = self.dishDesArabicTV.text{
+            let dishDescriptionAra:String = "DishDescriptionAr=\(dishDescriptionArabic)"
+            dataString = dataString + dishDescriptionAra + "&"
+        }
+        if let prepTime = self.selPrepTime{
+            let prepTimeString:String = "PreparationTime=\(prepTime.time)"
+            dataString = dataString + prepTimeString
+        }
+        return dataString
     }
     
     /*
@@ -247,6 +319,45 @@ extension AddNewDishVC:UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+    }
+}
+
+extension AddNewDishVC:UITextFieldDelegate,UITextViewDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == dishNameTF{
+            dishNameArabic.becomeFirstResponder()
+        }
+        else if (textField == dishNameArabic){
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == dishDesTextView{
+            let placeText = "WriteDescriptionPlaceholder".localiz()
+            if textView.text == placeText {
+                textView.text = ""
+            }
+        }
+        else if textView == dishDesArabicTV{
+            if textView.text == "أضف بعض الوصف"{
+                textView.text = ""
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == dishDesTextView{
+            if textView.text == ""{
+                settingDisDescriptionTextView()
+            }
+        }
+        else if textView == dishDesArabicTV{
+            if textView.text == ""{
+                settingDishDescriptionTextViewForArabic()
+            }
+        }
     }
 }
 
