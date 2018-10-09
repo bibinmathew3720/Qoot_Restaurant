@@ -12,6 +12,7 @@ target 'Qoot_Restaurant' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+  pod 'FSCalendar'
   # Pods for Qoot_Restaurant
 
 end

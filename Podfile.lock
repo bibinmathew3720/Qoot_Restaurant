@@ -1,4 +1,5 @@
 PODS:
+  - FSCalendar (2.7.9)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -18,6 +19,7 @@ PODS:
   - SlideMenuControllerSwift (4.0.0)
 
 DEPENDENCIES:
+  - FSCalendar
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
@@ -29,6 +31,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FSCalendar
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
@@ -39,6 +42,7 @@ SPEC REPOS:
     - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
@@ -48,6 +52,6 @@ SPEC CHECKSUMS:
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
 
-PODFILE CHECKSUM: bc878526079b6bbdb374e5aef56cc55bccf423ab
+PODFILE CHECKSUM: 995be84b9cd226aa672eb06484d03c83f572b2e7
 
 COCOAPODS: 1.5.3
