@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CLScheduleViewController" customModule="_thWand" customModuleProvider="target">
+            <connections>
+                <outlet property="cLTableView" destination="G4j-fH-33X" id="J66-P6-zpF"/>
+                <outlet property="scheduleButton" destination="3nf-EV-eWG" id="rU3-TB-BpW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G4j-fH-33X">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="frJ-Wq-TMw"/>
+                        <outlet property="delegate" destination="-1" id="AG2-c3-diM"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-Ef-MSc">
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nf-EV-eWG">
+                            <rect key="frame" x="50" y="10" width="275" height="50"/>
+                            <color key="backgroundColor" red="0.16862745100000001" green="0.15686274510000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="71c-sy-dQg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="17"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="25"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="setSchedule:" destination="-1" eventType="touchUpInside" id="bG3-EG-ncO"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="i3u-S6-dM9"/>
+                        <constraint firstAttribute="trailing" secondItem="3nf-EV-eWG" secondAttribute="trailing" constant="50" id="kOf-Al-ohn"/>
+                        <constraint firstItem="3nf-EV-eWG" firstAttribute="leading" secondItem="fBT-Ef-MSc" secondAttribute="leading" constant="50" id="uF6-RK-9mG"/>
+                        <constraint firstItem="3nf-EV-eWG" firstAttribute="centerY" secondItem="fBT-Ef-MSc" secondAttribute="centerY" id="uhF-Sx-tjq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fBT-Ef-MSc" secondAttribute="trailing" id="2tG-hM-JF1"/>
+                <constraint firstItem="fBT-Ef-MSc" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="7Xz-62-cEI"/>
+                <constraint firstItem="fBT-Ef-MSc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LZm-z1-Ec9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G4j-fH-33X" secondAttribute="trailing" id="MKM-PH-36f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="G4j-fH-33X" secondAttribute="bottom" id="YHo-MS-x7N"/>
+                <constraint firstItem="G4j-fH-33X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ahg-mK-6qR"/>
+                <constraint firstItem="G4j-fH-33X" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="x8N-Hl-3oE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

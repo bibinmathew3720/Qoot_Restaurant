@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		8BFD19648A4A1AB8A13CD388 /* Pods_Qoot_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */; };
+		D00254CD216D8B5200BD619B /* CLScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254BA216D8B5200BD619B /* CLScheduleViewController.xib */; };
+		D00254CE216D8B5200BD619B /* CLScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254BB216D8B5200BD619B /* CLScheduleViewController.swift */; };
+		D00254CF216D8B5200BD619B /* CLTimeSlotsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254BD216D8B5200BD619B /* CLTimeSlotsModel.swift */; };
+		D00254D0216D8B5200BD619B /* CLCalanderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C0216D8B5200BD619B /* CLCalanderTableViewCell.swift */; };
+		D00254D1216D8B5200BD619B /* CLCalanderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254C1216D8B5200BD619B /* CLCalanderTableViewCell.xib */; };
+		D00254D2216D8B5200BD619B /* CLTimeScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C3216D8B5200BD619B /* CLTimeScheduleTableViewCell.swift */; };
+		D00254D3216D8B5200BD619B /* CLTimeScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254C4216D8B5200BD619B /* CLTimeScheduleTableViewCell.xib */; };
+		D00254D4216D8B5200BD619B /* CLTimeSlotCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254C6216D8B5200BD619B /* CLTimeSlotCollectionCell.xib */; };
+		D00254D5216D8B5200BD619B /* CLTimeSlotCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C7216D8B5200BD619B /* CLTimeSlotCollectionCell.swift */; };
+		D00254D6216D8B5200BD619B /* CLWeekCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C9216D8B5200BD619B /* CLWeekCollectionCell.swift */; };
+		D00254D7216D8B5200BD619B /* CLWeekCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254CA216D8B5200BD619B /* CLWeekCollectionCell.xib */; };
 		D0045FF52165A6840006F12E /* CLKeyWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */; };
 		D0045FF62165A6840006F12E /* CLKeyWordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */; };
 		D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FB32163059000C0138D /* AddNewDishVC.swift */; };
@@ -74,6 +85,17 @@
 /* Begin PBXFileReference section */
 		028B3948EC78D4D67B9B5401 /* Pods_Qoot_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qoot_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		976F4DF30AE2138772928101 /* Pods-Qoot_Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		D00254BA216D8B5200BD619B /* CLScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLScheduleViewController.xib; sourceTree = "<group>"; };
+		D00254BB216D8B5200BD619B /* CLScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLScheduleViewController.swift; sourceTree = "<group>"; };
+		D00254BD216D8B5200BD619B /* CLTimeSlotsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTimeSlotsModel.swift; sourceTree = "<group>"; };
+		D00254C0216D8B5200BD619B /* CLCalanderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLCalanderTableViewCell.swift; sourceTree = "<group>"; };
+		D00254C1216D8B5200BD619B /* CLCalanderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLCalanderTableViewCell.xib; sourceTree = "<group>"; };
+		D00254C3216D8B5200BD619B /* CLTimeScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTimeScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		D00254C4216D8B5200BD619B /* CLTimeScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLTimeScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		D00254C6216D8B5200BD619B /* CLTimeSlotCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLTimeSlotCollectionCell.xib; sourceTree = "<group>"; };
+		D00254C7216D8B5200BD619B /* CLTimeSlotCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTimeSlotCollectionCell.swift; sourceTree = "<group>"; };
+		D00254C9216D8B5200BD619B /* CLWeekCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLWeekCollectionCell.swift; sourceTree = "<group>"; };
+		D00254CA216D8B5200BD619B /* CLWeekCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLWeekCollectionCell.xib; sourceTree = "<group>"; };
 		D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLKeyWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLKeyWordCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0184FB32163059000C0138D /* AddNewDishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDishVC.swift; sourceTree = "<group>"; };
@@ -165,6 +187,80 @@
 				FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D00254B8216D8B5200BD619B /* SetSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				D00254B9216D8B5200BD619B /* Controller */,
+				D00254BC216D8B5200BD619B /* Model */,
+				D00254BE216D8B5200BD619B /* View */,
+			);
+			path = SetSchedule;
+			sourceTree = "<group>";
+		};
+		D00254B9216D8B5200BD619B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D00254BA216D8B5200BD619B /* CLScheduleViewController.xib */,
+				D00254BB216D8B5200BD619B /* CLScheduleViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D00254BC216D8B5200BD619B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D00254BD216D8B5200BD619B /* CLTimeSlotsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D00254BE216D8B5200BD619B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D00254BF216D8B5200BD619B /* Calandar */,
+				D00254C2216D8B5200BD619B /* TimeSlots */,
+				D00254C5216D8B5200BD619B /* TimeSlotCell */,
+				D00254C8216D8B5200BD619B /* WeekCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D00254BF216D8B5200BD619B /* Calandar */ = {
+			isa = PBXGroup;
+			children = (
+				D00254C0216D8B5200BD619B /* CLCalanderTableViewCell.swift */,
+				D00254C1216D8B5200BD619B /* CLCalanderTableViewCell.xib */,
+			);
+			path = Calandar;
+			sourceTree = "<group>";
+		};
+		D00254C2216D8B5200BD619B /* TimeSlots */ = {
+			isa = PBXGroup;
+			children = (
+				D00254C3216D8B5200BD619B /* CLTimeScheduleTableViewCell.swift */,
+				D00254C4216D8B5200BD619B /* CLTimeScheduleTableViewCell.xib */,
+			);
+			path = TimeSlots;
+			sourceTree = "<group>";
+		};
+		D00254C5216D8B5200BD619B /* TimeSlotCell */ = {
+			isa = PBXGroup;
+			children = (
+				D00254C6216D8B5200BD619B /* CLTimeSlotCollectionCell.xib */,
+				D00254C7216D8B5200BD619B /* CLTimeSlotCollectionCell.swift */,
+			);
+			path = TimeSlotCell;
+			sourceTree = "<group>";
+		};
+		D00254C8216D8B5200BD619B /* WeekCell */ = {
+			isa = PBXGroup;
+			children = (
+				D00254C9216D8B5200BD619B /* CLWeekCollectionCell.swift */,
+				D00254CA216D8B5200BD619B /* CLWeekCollectionCell.xib */,
+			);
+			path = WeekCell;
 			sourceTree = "<group>";
 		};
 		D0045FF22165A6840006F12E /* KeywordCell */ = {
@@ -316,6 +412,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D00254B8216D8B5200BD619B /* SetSchedule */,
 				D01F8FB6216A63A0009CA56E /* NotificationVC */,
 				D0184FB721631E4000C0138D /* ChooseCategoryVC */,
 				D0184FB22163044500C0138D /* AddNewDish */,
@@ -626,6 +723,7 @@
 				D0045FF62165A6840006F12E /* CLKeyWordCollectionViewCell.xib in Resources */,
 				D0258FCA215C8DC60081CB0E /* LaunchScreen.storyboard in Resources */,
 				D02192EC215FE1390092D506 /* WalkThroughCVC.xib in Resources */,
+				D00254CD216D8B5200BD619B /* CLScheduleViewController.xib in Resources */,
 				D03015652160566900EFC88E /* HomeVC.xib in Resources */,
 				D02192DA215FE0430092D506 /* Localizable.strings in Resources */,
 				D02192EF215FE1390092D506 /* WalkThroughVC.xib in Resources */,
@@ -635,7 +733,11 @@
 				D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */,
 				D030156A2161A36F00EFC88E /* HomeCVC.xib in Resources */,
 				D02192D6215FDF940092D506 /* Roboto-Regular.ttf in Resources */,
+				D00254D7216D8B5200BD619B /* CLWeekCollectionCell.xib in Resources */,
+				D00254D1216D8B5200BD619B /* CLCalanderTableViewCell.xib in Resources */,
 				D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */,
+				D00254D3216D8B5200BD619B /* CLTimeScheduleTableViewCell.xib in Resources */,
+				D00254D4216D8B5200BD619B /* CLTimeSlotCollectionCell.xib in Resources */,
 				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0184FBB21631E6800C0138D /* ChooseCategoryVC.xib in Resources */,
 				D01F8FBF216A6B51009CA56E /* NotificationsTVC.xib in Resources */,
@@ -724,11 +826,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0219326215FE1E60092D506 /* L012Localizer.swift in Sources */,
+				D00254D6216D8B5200BD619B /* CLWeekCollectionCell.swift in Sources */,
 				D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */,
+				D00254CF216D8B5200BD619B /* CLTimeSlotsModel.swift in Sources */,
 				D03015642160566900EFC88E /* HomeVC.swift in Sources */,
 				D0219327215FE1E60092D506 /* L102Language.swift in Sources */,
+				D00254D5216D8B5200BD619B /* CLTimeSlotCollectionCell.swift in Sources */,
 				D021931E215FE1E60092D506 /* ApplicationController.swift in Sources */,
 				D0219319215FE1E60092D506 /* Reachability.m in Sources */,
+				D00254CE216D8B5200BD619B /* CLScheduleViewController.swift in Sources */,
 				D0219331215FE5D40092D506 /* User.swift in Sources */,
 				D0219321215FE1E60092D506 /* FetchApiUrls.swift in Sources */,
 				D021933C215FE8D00092D506 /* ManuTVC.swift in Sources */,
@@ -753,12 +859,14 @@
 				D021933E215FE8D00092D506 /* MenuVC.swift in Sources */,
 				D02192F1215FE1390092D506 /* LoginViewController.swift in Sources */,
 				D0184FBA21631E6800C0138D /* ChooseCategoryVC.swift in Sources */,
+				D00254D0216D8B5200BD619B /* CLCalanderTableViewCell.swift in Sources */,
 				D0219325215FE1E60092D506 /* CCUtility.swift in Sources */,
 				D021932D215FE4FD0092D506 /* LanguageVC.swift in Sources */,
 				D01F8FB9216A63CD009CA56E /* NotificationVC.swift in Sources */,
 				D021931C215FE1E60092D506 /* UIViewExtensions.swift in Sources */,
 				D02192D0215FDCD20092D506 /* OTPVC.swift in Sources */,
 				D02192CF215FDCD20092D506 /* BaseViewController.swift in Sources */,
+				D00254D2216D8B5200BD619B /* CLTimeScheduleTableViewCell.swift in Sources */,
 				D021931B215FE1E60092D506 /* StringExtensions.swift in Sources */,
 				D02192EE215FE1390092D506 /* WalkThroughVC.swift in Sources */,
 				D021931D215FE1E60092D506 /* UIImageViewExtensions.swift in Sources */,
@@ -928,7 +1036,10 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "CL.Qoot-Restaurant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Qoot_Restaurant/Helper/BridgingHeader/Qoot-Bridging-Header.h";
@@ -946,7 +1057,10 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "CL.Qoot-Restaurant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Qoot_Restaurant/Helper/BridgingHeader/Qoot-Bridging-Header.h";

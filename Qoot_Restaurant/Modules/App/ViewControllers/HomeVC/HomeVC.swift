@@ -240,7 +240,11 @@ extension HomeVC:UICollectionViewDataSource,UICollectionViewDelegate,UICollectio
     // MARK: Collection Cell Delegates
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 7 {
+        if indexPath.row == 6 {
+            let scheduleVC = CLScheduleViewController.init(nibName: "CLScheduleViewController", bundle: nil)
+            self.navigationController?.pushViewController(scheduleVC, animated: true)
+        }
+        else if indexPath.row == 7 {
             let addNewDishVC = AddNewDishVC.init(nibName: "AddNewDishVC", bundle: nil)
             self.navigationController?.pushViewController(addNewDishVC, animated: true)
         }
