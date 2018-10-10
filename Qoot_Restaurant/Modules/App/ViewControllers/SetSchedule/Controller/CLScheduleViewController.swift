@@ -12,8 +12,6 @@ import UserNotifications
 class CLScheduleViewController: BaseViewController {
     
     @IBOutlet weak var cLTableView: UITableView!
-    @IBOutlet var weekCollectionView: UICollectionView!
-    @IBOutlet var scheduleButton: UIButton!
     var selectedIndex:Int = 0
     var selectedTimeIndex:Int = -1
     var WeekSelectedIndex:Int = 0
