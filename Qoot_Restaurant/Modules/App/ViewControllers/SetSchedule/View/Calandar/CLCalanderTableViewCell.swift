@@ -39,6 +39,7 @@ class CLCalanderTableViewCell: UITableViewCell {
         self.addSubview(calendar)
         self.calendar = calendar
         self.calendar.scope = .month
+        calendar.allowsMultipleSelection = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -72,8 +73,17 @@ extension CLCalanderTableViewCell:FSCalendarDataSource, FSCalendarDelegate {
         }
     }
     
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(date)
+        cell.subtitleLabel.textColor = UIColor.yellow
+    }
+    
+    
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
+    
+   
     
 }

@@ -36,7 +36,6 @@ class CLScheduleViewController: BaseViewController {
     func registerNib() -> () {
         
         cLTableView.register(UINib.init(nibName: "CLCalanderTableViewCell", bundle: nil), forCellReuseIdentifier: "CLCalanderTableViewCell")
-        cLTableView.register(UINib.init(nibName: "CLTimeScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "CLTimeScheduleTableViewCell")
     }
     
     @IBAction func setSchedule(_ sender: Any) {
@@ -55,7 +54,7 @@ extension CLScheduleViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,16 +62,6 @@ extension CLScheduleViewController:UITableViewDataSource,UITableViewDelegate{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CLCalanderTableViewCell") as! CLCalanderTableViewCell
             cell.delegate = self
             return cell
-        }else if indexPath.row == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CLTimeScheduleTableViewCell") as! CLTimeScheduleTableViewCell
-            guard let _model = cLTimeSlotsModel else{
-                return cell
-            }
-            cell.cLTimeSlotsModel = _model
-            cell.delegate = self
-            cell.timeSlotCollectionView.reloadData()
-            return cell
-            
         }else{
             let cell = UITableViewCell()
             cell.textLabel?.text = "hello"
@@ -88,11 +77,6 @@ extension CLScheduleViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        if indexPath.row == 0{
         return 300
-       }else if indexPath.row == 1{
-        guard let _model = cLTimeSlotsModel else{
-          return 0
-        }
-        return CGFloat(((_model.cLTimeSlotModel.count/2)+1) * 60)
        }else{
         return 50.0
         }
@@ -105,11 +89,3 @@ extension CLScheduleViewController:CLCalanderTableViewCellDelegate{
     }
 }
 
-extension CLScheduleViewController:CLTimeScheduleTableViewCellDelegate{
-    func getSelectedSlot(_ selectedIndex: Int) {
-        guard let _model = cLTimeSlotsModel else{
-            return
-        }
-        requestModel.bookingTime = _model.cLTimeSlotModel[selectedIndex].startTime
-    }
-}
