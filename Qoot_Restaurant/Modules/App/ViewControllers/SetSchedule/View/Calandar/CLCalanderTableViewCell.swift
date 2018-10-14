@@ -16,6 +16,10 @@ class CLCalanderTableViewCell: UITableViewCell {
     weak var calendar: FSCalendar!
     var delegate:CLCalanderTableViewCellDelegate?
     var selectedDate:String = ""
+    var orderItems:[OrderItem]?
+    
+    
+    
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
        // formatter.dateFormat = dateFormat.yyyy_MM_dd
@@ -48,6 +52,11 @@ class CLCalanderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setOrderResponse(orderResponse:GetOrdersResponse){
+        self.orderItems = orderResponse.orderItems
+        calendar.reloadData()
+    }
+    
 }
 
 
@@ -75,6 +84,15 @@ extension CLCalanderTableViewCell:FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(date)
+        if let OrderItems = orderItems {
+            for item in OrderItems {
+                let ordeDdate  = CCUtility.convertToDateToFormat(inputDate: item.orderDate, inputDateFormat: "yyyy-MM-dd", outputDateFormat: "yyyy-MM-dd")
+                let calendarDate = CCUtility.stringFromDate(date: date)
+                if ordeDdate == calendarDate {
+                    cell.backgroundColor = UIColor.red
+                }
+            }
+        }
         cell.subtitleLabel.textColor = UIColor.yellow
     }
     

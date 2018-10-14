@@ -243,6 +243,40 @@ class UserManager: CLBaseService {
         return addNewDishReponseModel
     }
     
+    //MARK : Get Orders Api
+    
+    func callingGetOrdersApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetOrders(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveArrayResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getOrdersResponseModel(ordersArray: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetOrders(with body:String)->CLNetworkModel{
+        let getOrdersRequestModel = CLNetworkModel.init(url: BASE_URL+GET_ORDERS_URL, requestMethod_: "POST")
+        getOrdersRequestModel.requestBody = body
+        return getOrdersRequestModel
+    }
+    
+    func getOrdersResponseModel(ordersArray:NSArray) -> Any? {
+        let getOrdersReponseModel = GetOrdersResponse.init(arr:ordersArray)
+        return getOrdersReponseModel
+    }
+    
     //MARK : Get Notifications Api
     
     func callingGetNotificationsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -929,6 +963,52 @@ class AddNewDishResponse : NSObject{
     init(dict:[String:Any?]) {
         if let value = dict["Status"] as? String{
            status = value
+        }
+    }
+}
+
+class GetOrdersResponse : NSObject{
+    var orderItems = [OrderItem]()
+    init(arr:(NSArray)) {
+        for item in arr{
+            if let it = item as? [String : Any?]{
+                orderItems.append(OrderItem.init(dict: it ))
+            }
+        }
+    }
+}
+
+class OrderItem : NSObject{
+    var comment:String = ""
+    var deliveryDate:String = ""
+    var orderDate:String = ""
+    var orderId:Int = 0
+    var totalAmount:Float = 0
+    var dishes = [Dishes]()
+    init(dict:[String:Any?]) {
+        if let value = dict["Comment"] as? String{
+            comment = value
+        }
+        if let value = dict["DeliveryDate"] as? String{
+            deliveryDate = value
+        }
+        if let value = dict["OrderDate"] as? String{
+            orderDate = value
+        }
+        if let value = dict["OrderId"] as? String{
+            if let orderID = Int(value) {
+                orderId = orderID
+            }
+        }
+        if let value = dict["TotalAmount"] as? Int{
+            totalAmount = Float(value)
+        }
+        if let value = dict["Dishes"] as? NSArray{
+            for item in value {
+                if let dh = item as? [String:Any]{
+                    dishes.append(Dishes.init(dict: dh))
+                }
+            }
         }
     }
 }

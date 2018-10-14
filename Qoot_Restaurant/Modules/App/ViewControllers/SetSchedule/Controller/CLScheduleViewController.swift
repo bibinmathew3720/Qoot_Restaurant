@@ -20,9 +20,12 @@ class CLScheduleViewController: BaseViewController {
     var days:[String] = [String]()
     var selectedDate = ""
     
+    var orderResponse:GetOrdersResponse?
+    
     override func initView() {
         super.initView()
         initialisation()
+        getOrders()
     }
     
     func initialisation(){
@@ -30,6 +33,43 @@ class CLScheduleViewController: BaseViewController {
         addingLeftBarButton()
         registerNib()
         //selectedDate = CLUtility.convertDateToString(fromDate: Date(), toFormat: dateFormat.yyyy_MM_dd)
+    }
+    
+    func getOrders(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        UserManager().callingGetOrdersApi(with: getOrdersRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? GetOrdersResponse{
+                self.orderResponse = model
+                self.cLTableView.reloadData()
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getOrdersRequestBody()->String{
+        var dataString:String = ""
+        if let user = User.getUser(){
+            let kitchenIdString:String = "KitchenId=\(user.kitchenId)"
+            dataString = dataString + kitchenIdString + "&"
+        }
+        else{
+            let kitchenIdString:String = "KitchenId=39"
+            dataString = dataString + kitchenIdString + "&"
+        }
+        dataString = dataString + "Status=Past"
+        return dataString
     }
     
     
@@ -61,6 +101,9 @@ extension CLScheduleViewController:UITableViewDataSource,UITableViewDelegate{
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CLCalanderTableViewCell") as! CLCalanderTableViewCell
             cell.delegate = self
+            if let orderResponse = self.orderResponse {
+                cell.setOrderResponse(orderResponse: orderResponse)
+            }
             return cell
         }else{
             let cell = UITableViewCell()
