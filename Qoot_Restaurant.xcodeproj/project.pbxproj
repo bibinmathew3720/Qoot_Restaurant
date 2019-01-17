@@ -1017,17 +1017,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GSQA4SDXLX;
+				DEVELOPMENT_TEAM = 39VYSNCGF3;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qootrestaurant.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qootkitchen.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7121a41b-5ecc-4de0-b92d-f058ea99649a";
-				PROVISIONING_PROFILE_SPECIFIER = dev_qootRestaurant;
+				PROVISIONING_PROFILE = "68902566-aa14-4372-948e-2b5090b99bb3";
+				PROVISIONING_PROFILE_SPECIFIER = dev_qoot_kitchen_new;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Qoot_Restaurant/Helper/BridgingHeader/Qoot-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1041,17 +1041,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GSQA4SDXLX;
+				DEVELOPMENT_TEAM = 39VYSNCGF3;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qootrestaurant.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qootkitchen.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00e72e1c-6223-40fb-b5db-5b437d74dc66";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_Qoot_Restaurant;
+				PROVISIONING_PROFILE = "a62d0437-3345-4446-8777-4009a58ebb26";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc_qoot_kitchen_new;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Qoot_Restaurant/Helper/BridgingHeader/Qoot-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
