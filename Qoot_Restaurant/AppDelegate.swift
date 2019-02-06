@@ -33,18 +33,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initWindow(){
         let secondLogin = UserDefaults.standard.bool(forKey: Constant.VariableNames.isSecondLogIn)
         if secondLogin{
-            let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
-            let homeNavVC = UINavigationController.init(rootViewController: homeVC)
-            let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
-            let walkThroughVC = WalkThroughVC.init(nibName: "WalkThroughVC", bundle: nil)
-            var slideMenuController:ExSlideMenuController?
-            if LanguageManger.shared.currentLanguage == .en {
-                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:menuVC , rightMenuViewController: walkThroughVC)
+            if let user = User.getUser(){
+                let homeVC = HomeVC.init(nibName: "HomeVC", bundle: nil)
+                let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+                let menuVC = MenuVC.init(nibName: "MenuVC", bundle: nil)
+                var slideMenuController:ExSlideMenuController?
+                if LanguageManger.shared.currentLanguage == .en {
+                    slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController: menuVC)
+                }
+                else{
+                    slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, rightMenuViewController: menuVC)
+                }
+                self.window?.rootViewController = slideMenuController
             }
             else{
-                slideMenuController = ExSlideMenuController(mainViewController: homeNavVC, leftMenuViewController:walkThroughVC , rightMenuViewController: menuVC)
+                let storyBaord = UIStoryboard(name: "Main", bundle: nil)
+                let dashboardVC = storyBaord.instantiateViewController(withIdentifier: "DashboardVC")
+                let dashBoardNavCntr = UINavigationController.init(rootViewController: dashboardVC)
+                self.window?.rootViewController = dashBoardNavCntr
             }
-            self.window?.rootViewController = slideMenuController
         }
         else{
             let languageVC = LanguageVC.init(nibName: "LanguageVC", bundle: nil)

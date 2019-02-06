@@ -791,7 +791,7 @@ class QootLogInResponseModel : NSObject{
     var kitchenCity:String = ""
     var kitchenMapLocation = ""
     var userName:String = ""
-    var kitchenId:Int = 0
+    var kitchenId:CLongLong = 0
     var userEmail:String = ""
     var deliveryFee:Float = 0.0
     var kitchenName:String = ""
@@ -821,7 +821,7 @@ class QootLogInResponseModel : NSObject{
             statusMessage = value
         }
         if let value = dict["customer_id"] as? String{
-            if let userID = Int(value){
+            if let userID = CLongLong(value){
                 kitchenId = userID
             }
         }

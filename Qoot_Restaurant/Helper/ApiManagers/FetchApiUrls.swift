@@ -11,7 +11,7 @@ import UIKit
 let LOCAL  = "https://qoot.online/ksa/test/"
 let PRODUCTION  = "https://qoot.online/ksa/"
 
-let BASE_URL = LOCAL
+let BASE_URL = PRODUCTION
 
 //Customer
 let LOGIN_URL = "Ios/Kitchen/LoginAction"

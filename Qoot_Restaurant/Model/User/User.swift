@@ -33,7 +33,7 @@ class User: NSManagedObject {
         user.kitchenName = userData.kitchenName
         user.kitchenAddress = userData.kitchenAddress
         user.kitchenLocation = userData.kitchenLocation
-        user.kitchenId = Int16(userData.kitchenId)
+        user.kitchenId = userData.kitchenId
         CoreDataHandler.sharedInstance.saveContext()
     }
     

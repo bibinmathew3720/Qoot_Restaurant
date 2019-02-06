@@ -18,7 +18,7 @@ class DashboardVC: BaseViewController {
         initialisation()
         localisation()
         addRegisterLabel()
-        addingLeftBarButton()
+        //addingLeftBarButton()
     }
     
     func initialisation(){

@@ -1016,6 +1016,7 @@
 			baseConfigurationReference = 976F4DF30AE2138772928101 /* Pods-Qoot_Restaurant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 39VYSNCGF3;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
