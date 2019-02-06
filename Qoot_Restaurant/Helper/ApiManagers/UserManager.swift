@@ -414,6 +414,71 @@ class UserManager: CLBaseService {
         return checkOTPReponseModel
     }
     
+    //MARK : Check OTP Api For Forgot
+    
+    func callingCheckOTPApiForForgot(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForCheckOTPForForgot(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.checkOTPResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForCheckOTPForForgot(with body:String)->CLNetworkModel{
+        let checkOTPRequestModel = CLNetworkModel.init(url: BASE_URL+CHECK_OTP_URL_FORGOT, requestMethod_: "POST")
+        checkOTPRequestModel.requestBody = body
+        return checkOTPRequestModel
+    }
+    
+    //MARK: ChangePassword Api For Forgot
+    
+    func callingChangePasswordApiForForgot(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForChangePasswordForForgotPassword(with: body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getchangetPasswordResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForChangePasswordForForgotPassword(with body:String)->CLNetworkModel{
+        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PWD_URL_FORGOT, requestMethod_: "POST")
+        changePasswordRequestModel.requestBody = body
+        return changePasswordRequestModel
+    }
+    
+    func getchangetPasswordResponseModel(dict:[String : Any?]) -> Any? {
+        let changePasswordRequestModel = ChangePasswordResponseModel.init(dict:dict)
+        return changePasswordRequestModel
+    }
+    
+    
     //MARK : City Name Api
     
     func callingCityNameApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -1054,12 +1119,35 @@ class SendOTPResponseModel : NSObject{
 class CheckOTPResponseModel : NSObject{
     var statusMessage:String = ""
     var status:Int = 0
+    var customerId:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["message"] as? String{
+        if let value = dict["Message"] as? String{
             statusMessage = value
         }
         if let value = dict["Status"] as? Int{
             status = value
+        }
+        if let value = dict["Customer"] as? Int{
+            customerId = value
+        }
+        if let value = dict["Customer"] as? String{
+            if let custId = Int(value){
+                customerId = custId
+            }
+        }
+    }
+}
+
+class ChangePasswordResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["Message"] as? String{
+            statusMessage = value
+        }
+        
+        if let value = dict["Status"] as? Int{
+            statusCode = value
         }
     }
 }

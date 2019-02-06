@@ -5,12 +5,21 @@
   Created by Bibin Mathew on 9/29/18.
   Copyright © 2018 Cl. All rights reserved.
 */
+
 //Validations
 
 "FILLMANDATORYFIELDS" = "ملء الحقول الإلزامية";
 "PASSWORDSDOESNOTMATCHES" = "كلمات المرور غير متطابقة";
 "INVALIDPASSWORDCHARACTERS" = "استخدم 8 أحرف أو أكثر مع مزيج من الحروف والأرقام والرموز";
 "INVALIDEMAIL" = "عنوان البريد الإلكتروني غير صالح";
+"THEREISNOITEMSTOCHECKOUT" = "لا توجد عناصر للخروج";
+"CITYNAMEANDHOMEADDRESSEMPTY" = "لا يمكن أن يكون اسم المدينة وعنوان المنزل فارغين";
+"PLEASECHOOSEADELIVERYADDRESS" = "يرجى اختيار عنوان التوصيل.";
+"PLEASECHOOSEADELIVERYDATEANDTIME" = "يرجى اختيار تاريخ ووقت التوصيل.";
+"SPECIFYPAYMENTMETHOD" = "حدد طريقة الدفع";
+"PASSWORDATLEASTSIXDIGITS" = "يجب أن تحتوي كلمة المرور على الأقل 6 أحرف";
+"NEWPASSWORDDOESNTMATCHES" = "كلمة المرور الجديدة غير مطابقة";
+"ENTERVALIDMOBILENO" = "Enter a valid mobile no.";
 
 //Common
 
@@ -38,6 +47,16 @@
 
 "LOGIN" = "تسجيل الدخول";
 
+//Forgot
+
+"ForgotPassword" = "نسيت كلمة المرور";
+"Next" = "Next";
+"RecoverAccount" = "Recover account";
+"VerifyDevice" = "Verify Device";
+"WeHaveSentOtpTo" = "We have sent an OTP to your mobile. Enter the OTP to verify your number";
+"EnterOTPHere" = "Enter OTP here";
+"ResendingOTP" = "جارٍ إعادة إرسال رقم الرسالة القصيرة";
+
 //OTP VC
 
 "CONFIRMCODEMGE" = "لقد أرسلنا رمز التأكيد عبر الرسائل القصيرة إلى";
@@ -46,6 +65,14 @@
 "RESENDOTP" = "إعادة إرسال رقم الرسالة القصيرة";
 "VERIFYOTP" = "التحقق من رمز الرسالة القصيرة";
 "INVALIDOTP" = "رقم الرسالة القصيرة غير صالح";
+
+//Settings
+
+"CHANGEPASSWORD" = "تغيير كلمة السر";
+"NewPassword" = "كلمة مرور جديدة";
+"ConfirmNewPassword" = "تأكيد كلمة المرور الجديدة";
+"UpdatePassword" = "حدّث كلمة المرور";
+"PasswordChanged" = "تم تغيير كلمة المرور";
 
 //Dashboard
 

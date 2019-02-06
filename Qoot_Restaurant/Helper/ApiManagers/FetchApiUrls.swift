@@ -23,10 +23,14 @@ let GET_PREPARATIONTIMES_URL = "Ios/Kitchen/ViewPreparationTimes"
 let ADD_NEW_DISH_URL = "Ios/Kitchen/AddDish"
 let GET_NOTIFICATIONS_URL = "Android/Kitchen/ViewNotifications"
 let GET_ORDERS_URL = "Ios/Kitchen/ViewOrders"
+let CHECK_OTP_URL = "Ios/Customer/CheckOtp"
+let CHECK_OTP_URL_FORGOT = "Ios/Customer/CheckOtp1"
+let SENDOTP_URL = "Ios/Customer/SendOtp"
+let CHANGE_PWD_URL_FORGOT = "Ios/Customer/ChangePassword1"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
-let SENDOTP_URL = "Ios/Customer/SendOtp"
-let CHECK_OTP_URL = "Ios/Customer/CheckOtp"
+
+
 let GETCITYNAMES_URL = "Ios/Customer/ViewCityNames"
 let VIEWMEALTYPE_URL = "Ios/Customer/ViewMealType"
 let ViewCuisines_URL = "Ios/Customer/ViewCuisines"

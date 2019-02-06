@@ -12,7 +12,14 @@
 "PASSWORDSDOESNOTMATCHES" = "Passwords does not matches";
 "INVALIDPASSWORDCHARACTERS" = "Use 8 or more characters with a mix of letters, numbers and symbols";
 "INVALIDEMAIL" = "Invalid email address";
-"ADDFOODCATEGORY" = "Add Food category";
+"THEREISNOITEMSTOCHECKOUT" = "There are no items to checkout";
+"CITYNAMEANDHOMEADDRESSEMPTY" = "City Name and home address can not be empty";
+"PLEASECHOOSEADELIVERYADDRESS" = "Please choose a delivery address.";
+"PLEASECHOOSEADELIVERYDATEANDTIME" = "Please choose a delivery date and time.";
+"SPECIFYPAYMENTMETHOD" = "Specify the payment method";
+"PASSWORDATLEASTSIXDIGITS" = "Password should be atleast 6 digits";
+"NEWPASSWORDDOESNTMATCHES" = "New Password does not matches";
+"ENTERVALIDMOBILENO" = "Enter a valid mobile no.";
 
 
 //Common
@@ -50,6 +57,24 @@
 "RESENDOTP" = "RESEND OTP";
 "VERIFYOTP" = "VERIFY OTP";
 "INVALIDOTP" = "Invalid OTP";
+
+//Forgot
+
+"ForgotPassword" = "Forgot password";
+"Next" = "NEXT";
+"RecoverAccount" = "Recover account";
+"VerifyDevice" = "Verify Device";
+"WeHaveSentOtpTo" = "We have sent an OTP to your mobile. Enter the OTP to verify your number";
+"EnterOTPHere" = "Enter OTP here";
+"ResendingOTP" = "Resending SMS Code...";
+
+//Settings
+
+"CHANGEPASSWORD" = "CHANGE PASSWORD";
+"NewPassword" = "New Password";
+"ConfirmNewPassword" = "Confirm New Password";
+"UpdatePassword" = "UPDATE PASSWORD";
+"PasswordChanged" = "Password Changed";
 
 //Dashboard
 
