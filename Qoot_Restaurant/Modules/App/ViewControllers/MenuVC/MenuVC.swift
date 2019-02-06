@@ -12,6 +12,7 @@ class MenuVC: BaseViewController {
     @IBOutlet weak var statusSwitch: UISwitch!
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var languageSegment: UISegmentedControl!
@@ -52,7 +53,12 @@ class MenuVC: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        if let user = User.getUser(){
+            nameLabel.text = user.kitchenName
+            if let photo = user.customerPhoto{
+                profileImageView.loadImageUsingCache(withUrl: photo)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

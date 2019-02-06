@@ -20,6 +20,7 @@
                 <outlet property="languageSegment" destination="CXZ-Qr-twP" id="MKy-nY-f5Z"/>
                 <outlet property="menuTableView" destination="OlT-Wp-dRY" id="j5w-bn-Gt5"/>
                 <outlet property="nameLabel" destination="VMb-Mz-Unx" id="5Z6-LD-vey"/>
+                <outlet property="profileImageView" destination="P9A-cJ-Xb7" id="yGI-QC-SX0"/>
                 <outlet property="statusLabel" destination="dcN-dm-42J" id="jCQ-Ql-Nkr"/>
                 <outlet property="statusSwitch" destination="O9R-ha-JQ7" id="nFx-nH-6DW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
