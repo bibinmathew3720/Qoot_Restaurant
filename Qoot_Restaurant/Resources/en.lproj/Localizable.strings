@@ -71,10 +71,13 @@
 //Settings
 
 "CHANGEPASSWORD" = "CHANGE PASSWORD";
+"ChangePassword" = "Change Password";
+"OldPassword" = "Old Password";
 "NewPassword" = "New Password";
 "ConfirmNewPassword" = "Confirm New Password";
 "UpdatePassword" = "UPDATE PASSWORD";
 "PasswordChanged" = "Password Changed";
+"UpdateProfilePicture" = "UPDATE PROFILE PICTURE";
 
 //Dashboard
 

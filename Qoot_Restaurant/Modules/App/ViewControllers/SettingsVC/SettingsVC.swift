@@ -12,8 +12,6 @@ import Alamofire
 
 
 class SettingsVC: BaseViewController {
-    
-    @IBOutlet weak var changeProfileTitle: UILabel!
     @IBOutlet weak var changePassword: UILabel!
     @IBOutlet weak var oldPwdtF: UITextField!
     @IBOutlet weak var newPwdTF: UITextField!
@@ -38,8 +36,7 @@ class SettingsVC: BaseViewController {
     }
     
     func localization(){
-        self.title = "Settings".localiz()
-        changeProfileTitle.text = "ChangeProfilePicture".localiz()
+        self.title = "MyProfile".localiz()
         changePassword.text = "ChangePassword".localiz()
         oldPwdtF.placeholder = "OldPassword".localiz()
         newPwdTF.placeholder = "NewPassword".localiz()
@@ -236,7 +233,7 @@ extension SettingsVC:UIImagePickerControllerDelegate,UINavigationControllerDeleg
                         if let result = response.result.value{
                             if let responseObject = result as? Dictionary<String, Any> {
                                 let profileImagemodel = UploadProfileImageResponse.init(dict: responseObject)
-                               // User.updateProfileImage(updateProfileImageResponse: profileImagemodel)
+                                User.updateProfileImage(updateProfileImageResponse: profileImagemodel)
                             }
                         }
                        

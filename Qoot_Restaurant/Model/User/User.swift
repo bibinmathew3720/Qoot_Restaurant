@@ -45,6 +45,14 @@ class User: NSManagedObject {
         return nil
     }
     
+    class func updateProfileImage(updateProfileImageResponse:UploadProfileImageResponse) {
+        if let user = User.getUser() {
+            user.customerPhoto = updateProfileImageResponse.customer_photo
+            CoreDataHandler.sharedInstance.saveContext()
+        }
+        
+    }
+    
     class func deleteUser() {
         CoreDataHandler.sharedInstance.deleteAllData(name: "User")
         CoreDataHandler.sharedInstance.saveContext()

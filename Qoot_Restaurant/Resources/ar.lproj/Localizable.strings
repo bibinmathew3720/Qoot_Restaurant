@@ -69,10 +69,13 @@
 //Settings
 
 "CHANGEPASSWORD" = "تغيير كلمة السر";
+"ChangePassword" = "تغيير كلمة السر";
 "NewPassword" = "كلمة مرور جديدة";
+"OldPassword" = "كلمة المرور القديمة";
 "ConfirmNewPassword" = "تأكيد كلمة المرور الجديدة";
 "UpdatePassword" = "حدّث كلمة المرور";
 "PasswordChanged" = "تم تغيير كلمة المرور";
+"UpdateProfilePicture" = "حدّث صورة الملف الشخصي";
 
 //Dashboard
 
