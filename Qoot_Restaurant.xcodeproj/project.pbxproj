@@ -17,6 +17,8 @@
 		D00254D5216D8B5200BD619B /* CLTimeSlotCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C7216D8B5200BD619B /* CLTimeSlotCollectionCell.swift */; };
 		D00254D6216D8B5200BD619B /* CLWeekCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00254C9216D8B5200BD619B /* CLWeekCollectionCell.swift */; };
 		D00254D7216D8B5200BD619B /* CLWeekCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00254CA216D8B5200BD619B /* CLWeekCollectionCell.xib */; };
+		D0027B9522107F2D0044325E /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027B9322107F2D0044325E /* SettingsVC.xib */; };
+		D0027B9622107F2D0044325E /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0027B9422107F2D0044325E /* SettingsVC.swift */; };
 		D0045FF52165A6840006F12E /* CLKeyWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */; };
 		D0045FF62165A6840006F12E /* CLKeyWordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */; };
 		D0184FB52163059000C0138D /* AddNewDishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0184FB32163059000C0138D /* AddNewDishVC.swift */; };
@@ -98,6 +100,8 @@
 		D00254C7216D8B5200BD619B /* CLTimeSlotCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTimeSlotCollectionCell.swift; sourceTree = "<group>"; };
 		D00254C9216D8B5200BD619B /* CLWeekCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLWeekCollectionCell.swift; sourceTree = "<group>"; };
 		D00254CA216D8B5200BD619B /* CLWeekCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLWeekCollectionCell.xib; sourceTree = "<group>"; };
+		D0027B9322107F2D0044325E /* SettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
+		D0027B9422107F2D0044325E /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D0045FF32165A6840006F12E /* CLKeyWordCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLKeyWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0045FF42165A6840006F12E /* CLKeyWordCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLKeyWordCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0184FB32163059000C0138D /* AddNewDishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDishVC.swift; sourceTree = "<group>"; };
@@ -261,6 +265,15 @@
 			path = WeekCell;
 			sourceTree = "<group>";
 		};
+		D0027B9222107F2D0044325E /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0027B9322107F2D0044325E /* SettingsVC.xib */,
+				D0027B9422107F2D0044325E /* SettingsVC.swift */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
 		D0045FF22165A6840006F12E /* KeywordCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +426,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0027B9222107F2D0044325E /* SettingsVC */,
 				D00254B8216D8B5200BD619B /* SetSchedule */,
 				D01F8FB6216A63A0009CA56E /* NotificationVC */,
 				D0184FB721631E4000C0138D /* ChooseCategoryVC */,
@@ -772,6 +786,7 @@
 				D01F8FBF216A6B51009CA56E /* NotificationsTVC.xib in Resources */,
 				D0F262C3220B3EC300A86BAC /* ForgotPasswordOTPVC.xib in Resources */,
 				D0258FC5215C8DC20081CB0E /* Main.storyboard in Resources */,
+				D0027B9522107F2D0044325E /* SettingsVC.xib in Resources */,
 				D01F8FBA216A63CD009CA56E /* NotificationVC.xib in Resources */,
 				D02192F0215FE1390092D506 /* LoginViewController.xib in Resources */,
 			);
@@ -808,12 +823,14 @@
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -827,7 +844,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -836,7 +860,14 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -864,6 +895,7 @@
 				D0219327215FE1E60092D506 /* L102Language.swift in Sources */,
 				D00254D5216D8B5200BD619B /* CLTimeSlotCollectionCell.swift in Sources */,
 				D021931E215FE1E60092D506 /* ApplicationController.swift in Sources */,
+				D0027B9622107F2D0044325E /* SettingsVC.swift in Sources */,
 				D0219319215FE1E60092D506 /* Reachability.m in Sources */,
 				D00254CE216D8B5200BD619B /* CLScheduleViewController.swift in Sources */,
 				D0219331215FE5D40092D506 /* User.swift in Sources */,
@@ -1069,10 +1101,7 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qootkitchen.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1093,10 +1122,7 @@
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Qoot_Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qootkitchen.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

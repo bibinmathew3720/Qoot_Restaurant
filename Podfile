@@ -13,6 +13,10 @@ target 'Qoot_Restaurant' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'FSCalendar'
+  pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
   # Pods for Qoot_Restaurant
 
 end

@@ -209,7 +209,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func setSettingsVC(){
-
+        let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
+        let navController = UINavigationController.init(rootViewController: settingsVC)
+        self.present(navController, animated: true, completion: nil)
     }
     
     func settingLogoutPopup(){

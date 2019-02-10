@@ -1,4 +1,17 @@
 PODS:
+  - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FBSDKCoreKit (4.39.1):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.39.1):
+    - FBSDKCoreKit
   - FSCalendar (2.7.9)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -10,7 +23,20 @@ PODS:
     - GooglePlaces (= 2.7.0)
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GrowingTextView (0.5.6)
+  - GTMSessionFetcher/Core (1.2.1)
   - IQKeyboardManagerSwift (6.0.4)
   - MBProgressHUD (1.1.0)
   - SDWebImage (4.4.1):
@@ -19,10 +45,14 @@ PODS:
   - SlideMenuControllerSwift (4.0.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireImage
+  - FBSDKLoginKit
   - FSCalendar
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - GoogleSignIn
   - GrowingTextView (~> 0.5)
   - IQKeyboardManagerSwift
   - MBProgressHUD
@@ -31,27 +61,43 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - Bolts
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - FSCalendar
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
+    - GoogleSignIn
+    - GoogleToolboxForMac
     - GrowingTextView
+    - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - MBProgressHUD
     - SDWebImage
     - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GrowingTextView: 8958f4fb7419de58dd622021b2d0696487e00e70
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
 
-PODFILE CHECKSUM: 995be84b9cd226aa672eb06484d03c83f572b2e7
+PODFILE CHECKSUM: 6c2f65ac223a05e40d2634320b8c35a5cb09d8ed
 
 COCOAPODS: 1.5.3

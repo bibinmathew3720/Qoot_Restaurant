@@ -443,6 +443,36 @@ class UserManager: CLBaseService {
         return checkOTPRequestModel
     }
     
+    //MARK: ChangePassword Api
+    
+    func callingChangePasswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForChangePassword(with: body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getchangetPasswordResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForChangePassword(with body:String)->CLNetworkModel{
+        let changePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PWD_URL, requestMethod_: "POST")
+        changePasswordRequestModel.requestBody = body
+        return changePasswordRequestModel
+    }
+    
     //MARK: ChangePassword Api For Forgot
     
     func callingChangePasswordApiForForgot(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -1138,7 +1168,7 @@ class CheckOTPResponseModel : NSObject{
     }
 }
 
-class ChangePasswordResponseModel : NSObject{
+class ChangePasswordResponseModel : NSObject{ //kitchen
     var statusMessage:String = ""
     var statusCode:Int = 0
     init(dict:[String:Any?]) {
@@ -1148,6 +1178,15 @@ class ChangePasswordResponseModel : NSObject{
         
         if let value = dict["Status"] as? Int{
             statusCode = value
+        }
+    }
+}
+
+class UploadProfileImageResponse : NSObject{ //kitchen
+    var customer_photo:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["customer_photo"] as? String{
+            customer_photo = value
         }
     }
 }
