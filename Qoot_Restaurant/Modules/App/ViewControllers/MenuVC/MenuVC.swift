@@ -220,6 +220,7 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let yesAction = UIAlertAction(title: "YES".localiz(), style: .default) { (action:UIAlertAction) in
             UserDefaults.standard.set(false, forKey: Constant.VariableNames.isLoogedIn)
             User.deleteUser()
+            self.reinitialiseRoot()
         }
         let noAction = UIAlertAction(title: "NO".localiz(), style: .default) { (action:UIAlertAction) in
             
