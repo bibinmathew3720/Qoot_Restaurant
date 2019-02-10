@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setNavigationBarProperties(){
         UINavigationBar.appearance().barTintColor = Constant.Colors.CommonMeroonColor
-        UINavigationBar.appearance().tintColor = Constant.Colors.CommonMeroonColor
+        UINavigationBar.appearance().tintColor = UIColor.white
         let attrs = [
             NSAttributedStringKey.foregroundColor: UIColor.white,
             NSAttributedStringKey.font: UIFont(name: Constant.Font.Bold, size: 20)!
