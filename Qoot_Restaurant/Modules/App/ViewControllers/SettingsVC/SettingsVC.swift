@@ -12,6 +12,18 @@ import Alamofire
 
 
 class SettingsVC: BaseViewController {
+    @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var kitchenNameLabel: UILabel!
+    @IBOutlet weak var kitcheNameTextField: UITextField!
+    @IBOutlet weak var ownerNameTextField: UITextField!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var cityNameButton: UIButton!
+    @IBOutlet weak var mroofNumberTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var instagramTextField: UITextField!
+    
+    
     @IBOutlet weak var changePassword: UILabel!
     @IBOutlet weak var oldPwdtF: UITextField!
     @IBOutlet weak var newPwdTF: UITextField!
@@ -29,14 +41,25 @@ class SettingsVC: BaseViewController {
     }
     
     func initialisation(){
-        if let photo = User.getUser()?.customerPhoto{
-            profileImageView.loadImageUsingCache(withUrl: photo)
+        if let user = User.getUser(){
+            if let photo = user.customerPhoto{
+                profileImageView.loadImageUsingCache(withUrl: photo)
+            }
+            self.kitcheNameTextField.text = user.kitchenName
+           // self.ownerNameTextField.text = user.customerName
+            self.cityNameButton.setTitle(user.kitchenCity, for: .normal)
+            self.cityNameButton.titleLabel?.textAlignment = .left
         }
         addingLeftBarButton()
     }
     
     func localization(){
         self.title = "MyProfile".localiz()
+        self.detailsLabel.text = "Details".localiz()
+        self.kitchenNameLabel.text = "KitchenName".localiz()
+        self.ownerNameTextField.placeholder = "OwnerName".localiz()
+        self.cityNameLabel.text = "City".localiz()
+        
         changePassword.text = "ChangePassword".localiz()
         oldPwdtF.placeholder = "OldPassword".localiz()
         newPwdTF.placeholder = "NewPassword".localiz()
@@ -57,6 +80,9 @@ class SettingsVC: BaseViewController {
     }
     
     //MARK: Button Actions
+    
+    @IBAction func cityNameButtonAction(_ sender: UIButton) {
+    }
     
     override func leftNavButtonAction() {
         self.dismiss(animated: true, completion: nil)

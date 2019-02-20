@@ -70,6 +70,10 @@
 
 //Settings
 
+"Details" = "Details";
+"KitchenName" = "Kitchen Name";
+"OwnerName" = "Owner Name";
+"City" = "city";
 "CHANGEPASSWORD" = "CHANGE PASSWORD";
 "ChangePassword" = "Change Password";
 "OldPassword" = "Old Password";

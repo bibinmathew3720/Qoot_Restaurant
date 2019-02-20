@@ -68,6 +68,10 @@
 
 //Settings
 
+"Details" = "التفاصيل";
+"KitchenName" = "اسم المطبخ";
+"OwnerName" = "اسم المالك";
+"City" = "مدينة";
 "CHANGEPASSWORD" = "تغيير كلمة السر";
 "ChangePassword" = "تغيير كلمة السر";
 "NewPassword" = "كلمة مرور جديدة";
