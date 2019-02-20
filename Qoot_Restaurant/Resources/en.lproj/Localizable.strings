@@ -74,6 +74,10 @@
 "KitchenName" = "Kitchen Name";
 "OwnerName" = "Owner Name";
 "City" = "city";
+"MaroofNumber" = "Maroof Number";
+"InstagramPage" = "Instagram Page";
+"ChooseKitchenLocation" = "Choose Kitchen Location";
+
 "CHANGEPASSWORD" = "CHANGE PASSWORD";
 "ChangePassword" = "Change Password";
 "OldPassword" = "Old Password";

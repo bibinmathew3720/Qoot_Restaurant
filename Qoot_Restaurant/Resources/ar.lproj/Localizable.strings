@@ -72,6 +72,10 @@
 "KitchenName" = "اسم المطبخ";
 "OwnerName" = "اسم المالك";
 "City" = "مدينة";
+"MaroofNumber" = "رقم معروف";
+"InstagramPage" = "صفحة الإنسقرام";
+"ChooseKitchenLocation" = "اختر مكان المطبخ";
+
 "CHANGEPASSWORD" = "تغيير كلمة السر";
 "ChangePassword" = "تغيير كلمة السر";
 "NewPassword" = "كلمة مرور جديدة";

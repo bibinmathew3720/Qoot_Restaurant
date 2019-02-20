@@ -892,6 +892,7 @@ class QootLogInResponseModel : NSObject{
     var kitchenName:String = ""
     var kitchenAddress:String = ""
     var kitchenLocation:String = ""
+    var kitchenInstagramPage:String = ""
     var statusMessage:String = ""
     
     init(dict:[String:Any?]) {
@@ -939,6 +940,9 @@ class QootLogInResponseModel : NSObject{
         }
         if let value = dict["mobile_number"] as? String{
             userMobile = value
+        }
+        if let value = dict["instagram_page"] as? String{
+            kitchenInstagramPage = value
         }
     }
 }

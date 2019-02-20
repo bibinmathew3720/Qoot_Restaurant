@@ -22,6 +22,7 @@ class SettingsVC: BaseViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var instagramTextField: UITextField!
+    @IBOutlet weak var chooseKitcheLocationLabel: UILabel!
     
     
     @IBOutlet weak var changePassword: UILabel!
@@ -46,9 +47,12 @@ class SettingsVC: BaseViewController {
                 profileImageView.loadImageUsingCache(withUrl: photo)
             }
             self.kitcheNameTextField.text = user.kitchenName
-           // self.ownerNameTextField.text = user.customerName
+            self.ownerNameTextField.text = user.customerName
             self.cityNameButton.setTitle(user.kitchenCity, for: .normal)
-            self.cityNameButton.titleLabel?.textAlignment = .left
+            self.mroofNumberTextField.text = "\(user.mroofNumber)"
+            self.phoneNumberTextField.text = user.mobNumber
+            self.emailTextField.text = user.email
+            self.instagramTextField.text = user.instagramPage
         }
         addingLeftBarButton()
     }
@@ -59,6 +63,11 @@ class SettingsVC: BaseViewController {
         self.kitchenNameLabel.text = "KitchenName".localiz()
         self.ownerNameTextField.placeholder = "OwnerName".localiz()
         self.cityNameLabel.text = "City".localiz()
+        self.mroofNumberTextField.placeholder = "MaroofNumber".localiz()
+        self.phoneNumberTextField.placeholder = "MobNoPlaceholder".localiz()
+        self.emailTextField.placeholder = "EmailPlaceholder".localiz()
+        self.instagramTextField.placeholder = "InstagramPage".localiz()
+        self.chooseKitcheLocationLabel.text = "".localiz()
         
         changePassword.text = "ChangePassword".localiz()
         oldPwdtF.placeholder = "OldPassword".localiz()

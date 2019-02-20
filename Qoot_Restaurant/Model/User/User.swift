@@ -34,6 +34,7 @@ class User: NSManagedObject {
         user.kitchenAddress = userData.kitchenAddress
         user.kitchenLocation = userData.kitchenLocation
         user.kitchenId = userData.kitchenId
+        user.instagramPage = userData.kitchenInstagramPage
         CoreDataHandler.sharedInstance.saveContext()
     }
     
