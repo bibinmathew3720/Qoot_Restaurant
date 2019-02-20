@@ -156,3 +156,11 @@
 //Order Calendar Page
 
 "OrderCalendar" = "تقويم الطلبات";
+
+//Wallet Page
+
+"MyWallet" = "محفظتي";
+"TurnOver" = "Turn Over";
+"ReceivedAmount" = "Received Amount";
+"QootBalance" = "رصيد حساب قوت";
+"PaymentHistory" = "تفاصيل الدفع";

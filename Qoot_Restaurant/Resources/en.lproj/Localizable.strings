@@ -159,4 +159,12 @@
 
 "OrderCalendar" = "Order Calendar";
 
+//Wallet Page
+
+"MyWallet" = "My Wallet";
+"TurnOver" = "Turn Over";
+"ReceivedAmount" = "Received Amount";
+"QootBalance" = "Qoot Balance";
+"PaymentHistory" = "Payment History";
+
 

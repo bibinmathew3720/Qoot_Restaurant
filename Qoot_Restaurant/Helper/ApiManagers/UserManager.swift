@@ -543,6 +543,40 @@ class UserManager: CLBaseService {
         return cityNamesResponseModel
     }
     
+    //MARK : Get Wallet Details Api
+    
+    func callingGetWalletDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetWalletDetails(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.walletDetailsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetWalletDetails(with body:String)->CLNetworkModel{
+        let walletRequestModel = CLNetworkModel.init(url: BASE_URL+WALLET_DETAILS_URL, requestMethod_: "POST")
+        walletRequestModel.requestBody = body
+        return walletRequestModel
+    }
+    
+    func walletDetailsResponseModel(dict:[String : Any?]) -> Any? {
+        let walletDetailsReponseModel = WalletDetailsResponseModel.init(dict:dict)
+        return walletDetailsReponseModel
+    }
+    
     //MARK : MealType Api
     
     func callingViewMealTypeApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
@@ -610,6 +644,8 @@ class UserManager: CLBaseService {
         let viewCuisinesResponseModel = ViewCuisinesResponseModel.init(arr:dict)
         return viewCuisinesResponseModel
     }
+    
+    
     
     //MARK : Kitchens Api
     
@@ -1217,6 +1253,26 @@ class CityName : NSObject{
         }
         if let value = dict["city_name"] as? String{
             cityName = value
+        }
+    }
+}
+
+class WalletDetailsResponseModel : NSObject{
+    var turnOver:Int = 0
+    var receivedAmount:Int = 0
+    var qootBalance:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["TurnOver"] as? Int{
+            turnOver = value
+        }
+        if let value = dict["RecievedAmount"] as? Int{
+            receivedAmount = value
+        }
+        if let value = dict["QootBalance"] as? Int{
+            qootBalance = value
+        }
+        if let value = dict["History"] as? NSArray{
+            print(value)
         }
     }
 }

@@ -29,6 +29,7 @@ let SENDOTP_URL = "Ios/Kitchen/SendOtp"
 let CHANGE_PWD_URL_FORGOT = "Ios/Kitchen/ChangePassword1"
 let CHANGE_PWD_URL = "Ios/Kitchen/UpdatePassword"
 let UploadProfileImage_Url = "Ios/Kitchen/UploadCustomerPhoto"
+let WALLET_DETAILS_URL = "Ios/Kitchen/KitchenWallet"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 

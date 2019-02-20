@@ -187,6 +187,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         else if indexPath.row == 2 {
             setOffersVC()
         }
+        else if indexPath.row == 3 {
+            setWalletVC()
+        }
         else if (indexPath.row == 4){
             setSettingsVC()
         }
@@ -202,6 +205,12 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
     
     func setOffersVC(){
       
+    }
+    
+    func setWalletVC(){
+        let walletVC:WalletVC = WalletVC(nibName: "WalletVC", bundle: nil)
+        let navController = UINavigationController.init(rootViewController: walletVC)
+        self.present(navController, animated: true, completion: nil)
     }
     
     func setOrderListVC(){

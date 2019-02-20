@@ -314,7 +314,6 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="updatePasswordButtonAction:" destination="-1" eventType="touchUpInside" id="nkg-ac-SaK"/>
                                         <action selector="updateProfileInfoButtonAction:" destination="-1" eventType="touchUpInside" id="47p-xi-1fi"/>
                                     </connections>
                                 </button>
