@@ -453,3 +453,95 @@ class Order : NSObject{
     }
 }
 
+class Dishes : NSObject{
+    var DishAmount:Float = 0.0
+    var DishCategory:Int = 0
+    var DishDescription:String = ""
+    var DishId:Int = 0
+    var DishImage:String = ""
+    var DishMainCategory:Int = 0
+    var DishName:String = ""
+    var DishQuantity:String = "'"
+    var DishServe:Int = 0
+    var DishTime:String = ""
+    var KitchenId:Int = 0
+    var MenuId:Int = 0
+    var SelectedQuantity:Int = 1
+    
+    
+    var OrderName:String = ""
+    var OrderQuantity:Int = 0
+    var OrderAmount:Float = 0.0
+    init(dict:[String:Any?]) {
+//        if let value = dict["KitchenId"] as? String{
+//            if let kitchenID = Int(value){
+//                catId = kitchenID
+//            }
+//        }
+        if let value = dict["DishAmount"] as? Float{
+            DishAmount = value
+        }
+        if let value = dict["DishCategory"] as? String{
+            if let dishCategory = Int(value){
+                DishCategory = dishCategory
+            }
+        }
+        if let value = dict["DishDescription"] as? String{
+            DishDescription = value
+        }
+        if let value = dict["DishId"] as? Int{
+            DishId = value
+        }
+        if let value = dict["DishId"] as? String{
+            print(value)
+            //DishId = value
+        }
+        if let value = dict["DishImage"] as? String{
+            DishImage = value
+        }
+        if let value = dict["DishMainCategory"] as? String{
+            if let dishMainCategory = Int(value){
+                DishMainCategory = dishMainCategory
+            }
+            if let value = dict["DishName"] as? String{
+                DishName = value
+            }
+            if let value = dict["DishQuantity"] as? String{
+                DishQuantity = value
+            }
+            if let value = dict["DishServe"] as? String{
+                if let dishServe = Int(value){
+                    DishServe = dishServe
+                }
+            }
+            if let value = dict["DishTime"] as? String{
+                DishTime = value
+            }
+            if let value = dict["KitchenId"] as? Int{
+                KitchenId = value
+            }
+            if let value = dict["MenuId"] as? Int{
+                MenuId = value
+            }
+            //For Order
+            
+            if let value = dict["order_name"] as? String{
+                OrderName = value
+            }
+            if let value = dict["order_quantity"] as? String{
+                if let orderQuantity = Int(value){
+                    OrderQuantity = orderQuantity
+                }
+            }
+            if let value = dict["order_amount"] as? Float{
+                OrderAmount = value
+            }
+            
+        }
+    }
+
+
+}
+
+
+
