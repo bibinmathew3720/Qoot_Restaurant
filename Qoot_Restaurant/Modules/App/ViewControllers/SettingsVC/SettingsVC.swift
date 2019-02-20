@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Alamofire
+import GoogleMaps
 
 
 class SettingsVC: BaseViewController {
@@ -23,7 +24,10 @@ class SettingsVC: BaseViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var instagramTextField: UITextField!
     @IBOutlet weak var chooseKitcheLocationLabel: UILabel!
-    
+    @IBOutlet weak var locationMapView: GMSMapView!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var updateProfileInfoButton: UIButton!
     
     @IBOutlet weak var changePassword: UILabel!
     @IBOutlet weak var oldPwdtF: UITextField!
@@ -33,8 +37,12 @@ class SettingsVC: BaseViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var updateProfImageButton: UIButton!
     @IBOutlet weak var updateProfileImageHeightConstraint: NSLayoutConstraint!
+    
     var selProfImage:UIImage?
     var updateProfImageButtonHeight:CGFloat = 33.0
+    var userLocLatitude = 0.000000
+    var userLocLongitude = 0.00000
+    var locationMarker:GMSMarker!
     
     override func initView() {
         initialisation()
@@ -67,8 +75,10 @@ class SettingsVC: BaseViewController {
         self.phoneNumberTextField.placeholder = "MobNoPlaceholder".localiz()
         self.emailTextField.placeholder = "EmailPlaceholder".localiz()
         self.instagramTextField.placeholder = "InstagramPage".localiz()
-        self.chooseKitcheLocationLabel.text = "".localiz()
-        
+        self.chooseKitcheLocationLabel.text = "ChooseKitchenLocation".localiz()
+        self.locationTextField.placeholder = "Location".localiz()
+        self.addressTextField.placeholder = "Address".localiz()
+        self.updateProfileInfoButton.setTitle("UpdateProfileInfo".localiz(), for: .normal)
         changePassword.text = "ChangePassword".localiz()
         oldPwdtF.placeholder = "OldPassword".localiz()
         newPwdTF.placeholder = "NewPassword".localiz()
@@ -101,6 +111,9 @@ class SettingsVC: BaseViewController {
         if let selImage = self.selProfImage{
             self.callingUploadApi(image: selImage)
         }
+    }
+    
+    @IBAction func updateProfileInfoButtonAction(_ sender: UIButton) {
     }
     
     @IBAction func updatePasswordButtonAction(_ sender: UIButton) {
@@ -297,5 +310,96 @@ extension SettingsVC: UITextFieldDelegate {
         }
         return true
     }
+}
+
+extension SettingsVC:GMSMapViewDelegate{
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        var destinationLocation = CLLocation()
+        destinationLocation = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
+        let destinationCoordinate:CLLocationCoordinate2D = destinationLocation.coordinate
+        updateLocationoordinates(coordinates: destinationCoordinate)
+        let geoCoder = GMSGeocoder()
+        geoCoder.reverseGeocodeCoordinate(destinationCoordinate) { (results, error) in
+            if let res = results {
+                var addressString = ""
+                if let addressDetails = res.firstResult() {
+                    if let throughFare = addressDetails.thoroughfare {
+                        addressString = addressString + throughFare
+                    }
+                    if let subLocality = addressDetails.subLocality {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + subLocality
+                        }
+                        else{
+                            addressString = addressString + subLocality
+                        }
+                    }
+                    if let locality = addressDetails.locality {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + locality
+                        }
+                        else{
+                            addressString = addressString + locality
+                        }
+                    }
+                    if let adArea = addressDetails.administrativeArea {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + adArea
+                        }
+                        else{
+                            addressString = addressString + adArea
+                        }
+                    }
+                    if let postalCode = addressDetails.postalCode {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + postalCode
+                        }
+                        else{
+                            addressString = addressString + postalCode
+                        }
+                    }
+                    if let country = addressDetails.country {
+                        if addressString.count > 0{
+                            addressString = addressString + ", " + country
+                        }
+                        else{
+                            addressString = addressString + country
+                        }
+                    }
+                }
+                self.locationTextField.text = addressString
+            }
+            print("Ad Area:\(results?.firstResult()?.administrativeArea)")
+            print("Locality:\(results?.firstResult()?.locality)")
+            print("Sub locality:\(results?.firstResult()?.subLocality)")
+            print("Country:\(results?.firstResult()?.country)")
+            print("Through Fare:\(results?.firstResult()?.thoroughfare)")
+            print("Postal Code:\(results?.firstResult()?.postalCode)")
+        }
+        
+    }
+    
+    func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
+        userLocLatitude = locationMapView.camera.target.latitude
+        userLocLongitude = locationMapView.camera.target.longitude
+        if locationMarker == nil
+        {
+            locationMarker = GMSMarker()
+            let markerImage = UIImage(named: "locationPin")!.withRenderingMode(.alwaysOriginal)
+            let markerView = UIImageView(image: markerImage)
+            locationMarker.iconView = markerView
+            locationMarker.position = coordinates
+            locationMarker.map = locationMapView
+            locationMarker.appearAnimation = GMSMarkerAnimation.pop
+        }
+        else
+        {
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(0.25)
+            locationMarker.position =  coordinates
+            CATransaction.commit()
+        }
+    }
+    
 }
 

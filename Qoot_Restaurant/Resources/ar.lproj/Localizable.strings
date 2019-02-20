@@ -75,6 +75,9 @@
 "MaroofNumber" = "رقم معروف";
 "InstagramPage" = "صفحة الإنسقرام";
 "ChooseKitchenLocation" = "اختر مكان المطبخ";
+"Location" = "الموقع";
+"Address" = "عنوان";
+"UpdateProfileInfo" = "حدّث معلومات الملف الشخصي";
 
 "CHANGEPASSWORD" = "تغيير كلمة السر";
 "ChangePassword" = "تغيير كلمة السر";
