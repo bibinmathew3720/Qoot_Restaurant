@@ -184,6 +184,9 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         if indexPath.row == 0{
             setOrderListVC()
         }
+        else if indexPath.row == 1 {
+            setMyDishesVC()
+        }
         else if indexPath.row == 2 {
             setOffersVC()
         }
@@ -203,6 +206,16 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         return CGFloat(rowHieght)
     }
     
+    func setOrderListVC(){
+        let allOrdersVC:AllOrdersVC = AllOrdersVC(nibName: "AllOrdersVC", bundle: nil)
+        let allOrdersNavCntlr = UINavigationController.init(rootViewController: allOrdersVC)
+        self.present(allOrdersNavCntlr, animated: true, completion: nil)
+    }
+    
+    func setMyDishesVC(){
+        
+    }
+    
     func setOffersVC(){
       
     }
@@ -211,10 +224,6 @@ extension MenuVC : UITableViewDelegate,UITableViewDataSource {
         let walletVC:WalletVC = WalletVC(nibName: "WalletVC", bundle: nil)
         let navController = UINavigationController.init(rootViewController: walletVC)
         self.present(navController, animated: true, completion: nil)
-    }
-    
-    func setOrderListVC(){
-       
     }
     
     func setSettingsVC(){
