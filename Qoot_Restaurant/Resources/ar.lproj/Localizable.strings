@@ -164,3 +164,7 @@
 "ReceivedAmount" = "Received Amount";
 "QootBalance" = "رصيد حساب قوت";
 "PaymentHistory" = "تفاصيل الدفع";
+
+//My Orders
+
+"MyOrders" = "طلباتي";

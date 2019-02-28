@@ -88,6 +88,8 @@
 		D0F262C7220B3EC300A86BAC /* ResetPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F262C1220B3EC300A86BAC /* ResetPasswordVC.xib */; };
 		D0F370A6221DC37600D2D0C5 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F370A4221DC37600D2D0C5 /* WalletVC.swift */; };
 		D0F370A7221DC37600D2D0C5 /* WalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F370A5221DC37600D2D0C5 /* WalletVC.xib */; };
+		D0FC95E922277FCD008F8C0F /* AllOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC95E722277FCD008F8C0F /* AllOrdersVC.swift */; };
+		D0FC95EA22277FCD008F8C0F /* AllOrdersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +183,8 @@
 		D0F262C1220B3EC300A86BAC /* ResetPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordVC.xib; sourceTree = "<group>"; };
 		D0F370A4221DC37600D2D0C5 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		D0F370A5221DC37600D2D0C5 /* WalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletVC.xib; sourceTree = "<group>"; };
+		D0FC95E722277FCD008F8C0F /* AllOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrdersVC.swift; sourceTree = "<group>"; };
+		D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllOrdersVC.xib; sourceTree = "<group>"; };
 		FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -430,6 +434,7 @@
 		D02192E2215FE1390092D506 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0FC95E622277F95008F8C0F /* AllOrdersVC */,
 				D0F3709E221DC32A00D2D0C5 /* WalletVC */,
 				D0027B9222107F2D0044325E /* SettingsVC */,
 				D00254B8216D8B5200BD619B /* SetSchedule */,
@@ -705,6 +710,15 @@
 			path = WalletVC;
 			sourceTree = "<group>";
 		};
+		D0FC95E622277F95008F8C0F /* AllOrdersVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0FC95E722277FCD008F8C0F /* AllOrdersVC.swift */,
+				D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */,
+			);
+			path = AllOrdersVC;
+			sourceTree = "<group>";
+		};
 		DF3F185BEC2DAD6182953F9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +804,7 @@
 				D021932E215FE4FD0092D506 /* LanguageVC.xib in Resources */,
 				D0F370A7221DC37600D2D0C5 /* WalletVC.xib in Resources */,
 				D030156A2161A36F00EFC88E /* HomeCVC.xib in Resources */,
+				D0FC95EA22277FCD008F8C0F /* AllOrdersVC.xib in Resources */,
 				D02192D6215FDF940092D506 /* Roboto-Regular.ttf in Resources */,
 				D00254D7216D8B5200BD619B /* CLWeekCollectionCell.xib in Resources */,
 				D00254D1216D8B5200BD619B /* CLCalanderTableViewCell.xib in Resources */,
@@ -942,6 +957,7 @@
 				D00254D0216D8B5200BD619B /* CLCalanderTableViewCell.swift in Sources */,
 				D0219325215FE1E60092D506 /* CCUtility.swift in Sources */,
 				D0F370A6221DC37600D2D0C5 /* WalletVC.swift in Sources */,
+				D0FC95E922277FCD008F8C0F /* AllOrdersVC.swift in Sources */,
 				D021932D215FE4FD0092D506 /* LanguageVC.swift in Sources */,
 				D01F8FB9216A63CD009CA56E /* NotificationVC.swift in Sources */,
 				D021931C215FE1E60092D506 /* UIViewExtensions.swift in Sources */,
