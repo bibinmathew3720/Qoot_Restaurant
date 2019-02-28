@@ -168,3 +168,6 @@
 //My Orders
 
 "MyOrders" = "طلباتي";
+"NewOrders" = "طلبات جديدة";
+"OngoingOrders" = "أوامر قائمة";
+"PastOrders" = "طلبات سابقة";

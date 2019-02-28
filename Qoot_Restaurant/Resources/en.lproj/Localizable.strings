@@ -170,5 +170,7 @@
 //My Orders
 
 "MyOrders" = "My Orders";
-
+"NewOrders" = "New Orders";
+"OngoingOrders" = "Ongoing Orders";
+"PastOrders" = "Past Orders";
 

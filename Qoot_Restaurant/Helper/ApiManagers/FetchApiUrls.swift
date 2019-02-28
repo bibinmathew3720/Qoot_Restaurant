@@ -30,6 +30,7 @@ let CHANGE_PWD_URL_FORGOT = "Ios/Kitchen/ChangePassword1"
 let CHANGE_PWD_URL = "Ios/Kitchen/UpdatePassword"
 let UploadProfileImage_Url = "Ios/Kitchen/UploadCustomerPhoto"
 let WALLET_DETAILS_URL = "Ios/Kitchen/KitchenWallet"
+let KitchenOrderHistory_URL = "Ios/Kitchen/ViewOrders"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 
@@ -37,4 +38,4 @@ let REGISTER_URL = "Ios/Customer/CustomerSignup"
 let GETCITYNAMES_URL = "Ios/Customer/ViewCityNames"
 let DishDetails_URL = "Ios/Customer/ViewDishDetails"
 
-let CustomerOrderHistory_URL = "Ios/Customer/ViewCustomerOrderHistory"
+

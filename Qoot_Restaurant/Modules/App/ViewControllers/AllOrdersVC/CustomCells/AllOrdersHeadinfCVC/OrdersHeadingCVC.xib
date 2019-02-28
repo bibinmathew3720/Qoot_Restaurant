@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="orderHeadingCell" id="gTV-IL-0wX" customClass="OrdersHeadingCVC" customModule="Qoot_Restaurant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="268" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="268" height="44"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdV-Pu-vby">
+                        <rect key="frame" x="233" y="7.5" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="PUB-Tv-ftQ"/>
+                            <constraint firstAttribute="width" constant="30" id="cz4-FP-6Tf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-Ha-exy">
+                        <rect key="frame" x="5" y="12.5" width="223" height="20"/>
+                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FT7-EJ-sxB">
+                        <rect key="frame" x="0.0" y="42" width="268" height="2"/>
+                        <color key="backgroundColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="geB-4S-Wm8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="FT7-EJ-sxB" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="FFx-0Q-KXd"/>
+                <constraint firstItem="fdV-Pu-vby" firstAttribute="leading" secondItem="7Jl-Ha-exy" secondAttribute="trailing" constant="5" id="FQu-f0-QSt"/>
+                <constraint firstItem="7Jl-Ha-exy" firstAttribute="centerY" secondItem="fdV-Pu-vby" secondAttribute="centerY" id="HVd-2O-bZA"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="FT7-EJ-sxB" secondAttribute="trailing" id="TKB-hs-Ifp"/>
+                <constraint firstItem="FT7-EJ-sxB" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="fNY-TE-K2b"/>
+                <constraint firstItem="fdV-Pu-vby" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="q19-Ws-mNi"/>
+                <constraint firstItem="7Jl-Ha-exy" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="5" id="q9i-pz-kUO"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="fdV-Pu-vby" secondAttribute="trailing" constant="5" id="xj0-cX-kBG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="268" height="44"/>
+            <connections>
+                <outlet property="bottomView" destination="FT7-EJ-sxB" id="ZVy-81-YKh"/>
+                <outlet property="countLabel" destination="fdV-Pu-vby" id="8vh-dR-Ry1"/>
+                <outlet property="headingLabel" destination="7Jl-Ha-exy" id="04n-Iv-ujZ"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="101"/>
+        </collectionViewCell>
+    </objects>
+</document>

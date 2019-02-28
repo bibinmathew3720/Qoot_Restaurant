@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllOrdersVC" customModule="Qoot_Restaurant" customModuleProvider="target">
             <connections>
+                <outlet property="orderHeadingCV" destination="Wpu-JG-kzi" id="zoe-wi-3f1"/>
+                <outlet property="orderListTV" destination="bS6-Aq-lPM" id="Kgc-JW-Bc0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,23 +28,39 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMw-Wz-GCQ">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="646"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wpu-JG-kzi">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wpu-JG-kzi">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="zk0-m6-iNr"/>
+                                        <constraint firstAttribute="height" constant="40" id="zk0-m6-iNr"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QX3-8J-yDf">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QX3-8J-yDf">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="E89-al-YGZ"/>
+                                        <outlet property="delegate" destination="-1" id="IpW-4y-WyU"/>
+                                    </connections>
                                 </collectionView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bS6-Aq-lPM">
+                                    <rect key="frame" x="3" y="43" width="368" height="600"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="67p-mb-lAs"/>
+                                        <outlet property="delegate" destination="-1" id="mOp-jR-drd"/>
+                                    </connections>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" id="00Z-r1-G8C"/>
+                                <constraint firstItem="bS6-Aq-lPM" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" constant="3" id="2DE-q5-mQh"/>
+                                <constraint firstAttribute="trailing" secondItem="bS6-Aq-lPM" secondAttribute="trailing" constant="3" id="LNb-e4-fys"/>
+                                <constraint firstAttribute="bottom" secondItem="bS6-Aq-lPM" secondAttribute="bottom" constant="3" id="Xim-7m-Rh0"/>
+                                <constraint firstItem="bS6-Aq-lPM" firstAttribute="top" secondItem="Wpu-JG-kzi" secondAttribute="bottom" constant="3" id="eGv-Gj-SQM"/>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="top" secondItem="BMw-Wz-GCQ" secondAttribute="top" id="fuz-Gu-hc0"/>
                                 <constraint firstAttribute="trailing" secondItem="Wpu-JG-kzi" secondAttribute="trailing" id="veb-16-bNv"/>
                             </constraints>
