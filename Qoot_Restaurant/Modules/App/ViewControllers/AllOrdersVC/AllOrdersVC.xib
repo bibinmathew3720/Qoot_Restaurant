@@ -9,9 +9,15 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllOrdersVC" customModule="Qoot_Restaurant" customModuleProvider="target">
             <connections>
+                <outlet property="nothingToShowLabel" destination="dyd-Vj-7rb" id="WdX-cK-0Iw"/>
                 <outlet property="orderHeadingCV" destination="Wpu-JG-kzi" id="zoe-wi-3f1"/>
                 <outlet property="orderListTV" destination="bS6-Aq-lPM" id="Kgc-JW-Bc0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -45,7 +51,7 @@
                                         <outlet property="delegate" destination="-1" id="IpW-4y-WyU"/>
                                     </connections>
                                 </collectionView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bS6-Aq-lPM">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bS6-Aq-lPM">
                                     <rect key="frame" x="3" y="43" width="368" height="600"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <connections>
@@ -53,13 +59,21 @@
                                         <outlet property="delegate" destination="-1" id="mOp-jR-drd"/>
                                     </connections>
                                 </tableView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-Vj-7rb">
+                                    <rect key="frame" x="168.5" y="313" width="37" height="20"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                    <color key="textColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" id="00Z-r1-G8C"/>
                                 <constraint firstItem="bS6-Aq-lPM" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" constant="3" id="2DE-q5-mQh"/>
+                                <constraint firstItem="dyd-Vj-7rb" firstAttribute="centerX" secondItem="BMw-Wz-GCQ" secondAttribute="centerX" id="FZL-hM-Oc1"/>
                                 <constraint firstAttribute="trailing" secondItem="bS6-Aq-lPM" secondAttribute="trailing" constant="3" id="LNb-e4-fys"/>
                                 <constraint firstAttribute="bottom" secondItem="bS6-Aq-lPM" secondAttribute="bottom" constant="3" id="Xim-7m-Rh0"/>
+                                <constraint firstItem="dyd-Vj-7rb" firstAttribute="centerY" secondItem="BMw-Wz-GCQ" secondAttribute="centerY" id="ZWD-P2-9se"/>
                                 <constraint firstItem="bS6-Aq-lPM" firstAttribute="top" secondItem="Wpu-JG-kzi" secondAttribute="bottom" constant="3" id="eGv-Gj-SQM"/>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="top" secondItem="BMw-Wz-GCQ" secondAttribute="top" id="fuz-Gu-hc0"/>
                                 <constraint firstAttribute="trailing" secondItem="Wpu-JG-kzi" secondAttribute="trailing" id="veb-16-bNv"/>

@@ -167,6 +167,7 @@
 
 //My Orders
 
+"NothingToShow" = "لا شيء للإظهار";
 "MyOrders" = "طلباتي";
 "NewOrders" = "طلبات جديدة";
 "OngoingOrders" = "أوامر قائمة";

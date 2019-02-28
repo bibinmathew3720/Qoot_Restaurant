@@ -7,9 +7,25 @@
 //
 
 import UIKit
+
+enum OrderType{
+    case ongoingOrder
+    case pastOrder
+    case newOrders
+}
+
 class AllOrdersVC: BaseViewController {
     @IBOutlet weak var orderHeadingCV: UICollectionView!
     @IBOutlet weak var orderListTV: UITableView!
+    @IBOutlet weak var nothingToShowLabel: UILabel!
+    
+    var orderHistoryResponse:QootOrderHistoryResponseModel?
+    var orderType = OrderType.newOrders
+    
+    var ongoingOrderArray = [Order]()
+    var pastOrderArray = [Order]()
+    var newOrdersArray = [Order]()
+    
     var ordersHeadingArray = ["NewOrders".localiz(),"OngoingOrders".localiz(),"PastOrders".localiz()]
     override func initView() {
         super.initView()
@@ -26,6 +42,7 @@ class AllOrdersVC: BaseViewController {
     
     func localization(){
         self.title = "MyOrders".localiz()
+        self.nothingToShowLabel.text = "NothingToShow".localiz()
     }
     
     func setUpCollectionView(){
@@ -33,10 +50,12 @@ class AllOrdersVC: BaseViewController {
     }
     
     func callingAllOrdersApi(){
+         MBProgressHUD.showAdded(to: self.view, animated: true)
         CartManager().callingGetOrderListApi(with: getAllOrdersRequestBody(), success: { (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootOrderHistoryResponseModel{
-                
+                self.orderHistoryResponse = model
+                self.populateOrderList()
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -58,6 +77,15 @@ class AllOrdersVC: BaseViewController {
         let statusString:String = "Status=All"
         dataString = dataString + statusString
         return dataString
+    }
+    
+    func populateOrderList(){
+        if let orderHistory = self.orderHistoryResponse{
+            self.ongoingOrderArray = orderHistory.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
+            self.pastOrderArray = orderHistory.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
+            orderHeadingCV.reloadData()
+            self.orderListTV.reloadData()
+        }
     }
     
     //MARK: Button Action
@@ -94,6 +122,34 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:OrdersHeadingCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "orderHeadingCell", for: indexPath) as! OrdersHeadingCVC
         cell.headingLabel.text = ordersHeadingArray[indexPath.row]
+        if (indexPath.row == 0){
+            if (self.orderType == .newOrders){
+                cell.bottomView.isHidden = false
+            }
+            else{
+                 cell.bottomView.isHidden = true
+            }
+            cell.countLabel.text = "\(newOrdersArray.count)"
+        }
+        else if (indexPath.row == 1){
+            if (self.orderType == .ongoingOrder){
+                cell.bottomView.isHidden = false
+            }
+            else{
+                cell.bottomView.isHidden = true
+            }
+            cell.countLabel.text = "\(ongoingOrderArray.count)"
+        }
+        else if indexPath.row == 2{
+            if (self.orderType == .pastOrder){
+                cell.bottomView.isHidden = false
+            }
+            else{
+                cell.bottomView.isHidden = true
+            }
+            cell.countLabel.text = "\(pastOrderArray.count)"
+        }
+        
         return cell
     }
     
@@ -105,10 +161,24 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     // MARK: Collection Cell Delegates
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if indexPath.row == 0 {
+            self.orderType = OrderType.newOrders
+        }
+        else if indexPath.row == 1{
+            self.orderType = OrderType.ongoingOrder
+        }
+        else if indexPath.row == 2{
+            self.orderType = OrderType.pastOrder
+        }
+        orderHeadingCV.reloadData()
+        orderListTV.reloadData()
     }
 }
 
@@ -119,7 +189,16 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if (self.orderType == .newOrders){
+            return newOrdersArray.count
+        }
+        else if self.orderType == .ongoingOrder{
+            return ongoingOrderArray.count
+        }
+        else if self.orderType == .pastOrder{
+            return pastOrderArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

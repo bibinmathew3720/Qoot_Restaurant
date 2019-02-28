@@ -169,6 +169,7 @@
 
 //My Orders
 
+"NothingToShow" = "Nothing To Show";
 "MyOrders" = "My Orders";
 "NewOrders" = "New Orders";
 "OngoingOrders" = "Ongoing Orders";

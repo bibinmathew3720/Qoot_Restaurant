@@ -13,9 +13,6 @@
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
         </array>
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -34,7 +31,7 @@
                             <constraint firstAttribute="height" constant="30" id="PUB-Tv-ftQ"/>
                             <constraint firstAttribute="width" constant="30" id="cz4-FP-6Tf"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -44,7 +41,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-Ha-exy">
-                        <rect key="frame" x="5" y="12.5" width="223" height="20"/>
+                        <rect key="frame" x="5" y="13" width="223" height="20"/>
                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,6 +55,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="FT7-EJ-sxB" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="FFx-0Q-KXd"/>
                 <constraint firstItem="fdV-Pu-vby" firstAttribute="leading" secondItem="7Jl-Ha-exy" secondAttribute="trailing" constant="5" id="FQu-f0-QSt"/>
