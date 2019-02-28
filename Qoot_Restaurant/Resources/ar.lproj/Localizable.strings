@@ -169,6 +169,9 @@
 
 "NothingToShow" = "لا شيء للإظهار";
 "MyOrders" = "طلباتي";
+"QTY" = "QTY";
 "NewOrders" = "طلبات جديدة";
 "OngoingOrders" = "أوامر قائمة";
 "PastOrders" = "طلبات سابقة";
+"ViewDetails" = "عرض التفاصيل";
+"OrderNumber" = "رقم الطلب";

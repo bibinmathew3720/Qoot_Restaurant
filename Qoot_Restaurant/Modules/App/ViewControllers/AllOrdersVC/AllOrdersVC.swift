@@ -37,7 +37,7 @@ class AllOrdersVC: BaseViewController {
     
     func initialisation(){
         addingLeftBarButton()
-         orderListTV.register(UINib.init(nibName: "ManuTVC", bundle: nil), forCellReuseIdentifier: "menuTVC")
+         orderListTV.register(UINib.init(nibName: "OrderTVC", bundle: nil), forCellReuseIdentifier: "orderCell")
     }
     
     func localization(){
@@ -185,10 +185,6 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
 extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.orderType == .newOrders){
             return newOrdersArray.count
         }
@@ -201,9 +197,47 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
         return 0
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuTVC", for: indexPath) as!ManuTVC
-        cell.tag = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as!OrderTVC
+        if (self.orderType == .newOrders){
+            cell.setOrderDetails(orderDetail: newOrdersArray[indexPath.section])
+        }
+        else if(self.orderType == .ongoingOrder){
+            cell.setOrderDetails(orderDetail: ongoingOrderArray[indexPath.section])
+        }
+        else if(self.orderType == .pastOrder){
+            cell.setOrderDetails(orderDetail: pastOrderArray[indexPath.section])
+        }
+        cell.tag = indexPath.section
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        var tableViewheight = 0
+        let itemTableViewCellHeight = 20
+        if (self.orderType == .newOrders){
+            tableViewheight = itemTableViewCellHeight * newOrdersArray[indexPath.section].dishes.count
+        }
+        else if(self.orderType == .ongoingOrder){
+            tableViewheight = itemTableViewCellHeight * ongoingOrderArray[indexPath.section].dishes.count
+        }
+        else if(self.orderType == .pastOrder){
+            tableViewheight = itemTableViewCellHeight * pastOrderArray[indexPath.section].dishes.count
+        }
+        let finalHeight = CGFloat(120 + tableViewheight)
+        return finalHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
     }
 }

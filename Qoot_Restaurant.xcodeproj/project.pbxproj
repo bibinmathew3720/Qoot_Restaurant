@@ -92,6 +92,10 @@
 		D0FC95EA22277FCD008F8C0F /* AllOrdersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */; };
 		D0FC95EF22279041008F8C0F /* OrdersHeadingCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC95ED22279041008F8C0F /* OrdersHeadingCVC.swift */; };
 		D0FC95F022279041008F8C0F /* OrdersHeadingCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95EE22279041008F8C0F /* OrdersHeadingCVC.xib */; };
+		D0FC95F92228521F008F8C0F /* OrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC95F72228521F008F8C0F /* OrderTVC.swift */; };
+		D0FC95FA2228521F008F8C0F /* OrderTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95F82228521F008F8C0F /* OrderTVC.xib */; };
+		D0FC95FE222858B0008F8C0F /* ItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC95FC222858B0008F8C0F /* ItemDetailTableCell.swift */; };
+		D0FC95FF222858B0008F8C0F /* ItemDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +193,10 @@
 		D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllOrdersVC.xib; sourceTree = "<group>"; };
 		D0FC95ED22279041008F8C0F /* OrdersHeadingCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersHeadingCVC.swift; sourceTree = "<group>"; };
 		D0FC95EE22279041008F8C0F /* OrdersHeadingCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersHeadingCVC.xib; sourceTree = "<group>"; };
+		D0FC95F72228521F008F8C0F /* OrderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTVC.swift; sourceTree = "<group>"; };
+		D0FC95F82228521F008F8C0F /* OrderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTVC.xib; sourceTree = "<group>"; };
+		D0FC95FC222858B0008F8C0F /* ItemDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailTableCell.swift; sourceTree = "<group>"; };
+		D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDetailTableCell.xib; sourceTree = "<group>"; };
 		FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -727,6 +735,8 @@
 		D0FC95EB2227901E008F8C0F /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				D0FC95FB222858B0008F8C0F /* ItemDetailCell */,
+				D0FC95F62228521F008F8C0F /* OrderTVC */,
 				D0FC95EC2227901E008F8C0F /* AllOrdersHeadinfCVC */,
 			);
 			path = CustomCells;
@@ -739,6 +749,24 @@
 				D0FC95EE22279041008F8C0F /* OrdersHeadingCVC.xib */,
 			);
 			path = AllOrdersHeadinfCVC;
+			sourceTree = "<group>";
+		};
+		D0FC95F62228521F008F8C0F /* OrderTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0FC95F72228521F008F8C0F /* OrderTVC.swift */,
+				D0FC95F82228521F008F8C0F /* OrderTVC.xib */,
+			);
+			path = OrderTVC;
+			sourceTree = "<group>";
+		};
+		D0FC95FB222858B0008F8C0F /* ItemDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				D0FC95FC222858B0008F8C0F /* ItemDetailTableCell.swift */,
+				D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */,
+			);
+			path = ItemDetailCell;
 			sourceTree = "<group>";
 		};
 		DF3F185BEC2DAD6182953F9E /* Frameworks */ = {
@@ -817,6 +845,7 @@
 				D02192EC215FE1390092D506 /* WalkThroughCVC.xib in Resources */,
 				D00254CD216D8B5200BD619B /* CLScheduleViewController.xib in Resources */,
 				D0F262C7220B3EC300A86BAC /* ResetPasswordVC.xib in Resources */,
+				D0FC95FA2228521F008F8C0F /* OrderTVC.xib in Resources */,
 				D03015652160566900EFC88E /* HomeVC.xib in Resources */,
 				D02192DA215FE0430092D506 /* Localizable.strings in Resources */,
 				D02192EF215FE1390092D506 /* WalkThroughVC.xib in Resources */,
@@ -833,6 +862,7 @@
 				D00254D1216D8B5200BD619B /* CLCalanderTableViewCell.xib in Resources */,
 				D0184FB62163059000C0138D /* AddNewDishVC.xib in Resources */,
 				D00254D4216D8B5200BD619B /* CLTimeSlotCollectionCell.xib in Resources */,
+				D0FC95FF222858B0008F8C0F /* ItemDetailTableCell.xib in Resources */,
 				D0F262C5220B3EC300A86BAC /* ForgotPasswordVC.xib in Resources */,
 				D021933D215FE8D00092D506 /* MenuVC.xib in Resources */,
 				D0184FBB21631E6800C0138D /* ChooseCategoryVC.xib in Resources */,
@@ -967,9 +997,11 @@
 				D0219328215FE1E60092D506 /* Constants.swift in Sources */,
 				D0184FBF21631FFA00C0138D /* CategoryTVC.swift in Sources */,
 				D02192D1215FDCD20092D506 /* RegisterVC.swift in Sources */,
+				D0FC95F92228521F008F8C0F /* OrderTVC.swift in Sources */,
 				D0219329215FE1E60092D506 /* CoreDataHandler.swift in Sources */,
 				D0219323215FE1E60092D506 /* CartManager.swift in Sources */,
 				D0219317215FE1E60092D506 /* CLNetworkModel.swift in Sources */,
+				D0FC95FE222858B0008F8C0F /* ItemDetailTableCell.swift in Sources */,
 				D02192ED215FE1390092D506 /* WalkThroughCVC.swift in Sources */,
 				D0FC95EF22279041008F8C0F /* OrdersHeadingCVC.swift in Sources */,
 				D03015692161A36F00EFC88E /* HomeCVC.swift in Sources */,
