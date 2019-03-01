@@ -81,6 +81,7 @@ class AllOrdersVC: BaseViewController {
     
     func populateOrderList(){
         if let orderHistory = self.orderHistoryResponse{
+            self.newOrdersArray = orderHistory.orderArray.filter({($0.Status == 0)})
             self.ongoingOrderArray = orderHistory.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
             self.pastOrderArray = orderHistory.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
             orderHeadingCV.reloadData()
@@ -238,6 +239,6 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 8
     }
 }

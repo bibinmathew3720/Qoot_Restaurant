@@ -15,6 +15,7 @@ class OrderTVC: UITableViewCell {
     @IBOutlet weak var dishesTableView: UITableView!
     @IBOutlet weak var viewDetailsButton: UIButton!
     @IBOutlet weak var pstOrderView: UIView!
+    @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
     
     var dishes:[Dishes]?
     override func awakeFromNib() {
@@ -24,6 +25,8 @@ class OrderTVC: UITableViewCell {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = Constant.Colors.CommonGreyColor.cgColor
         dishesTableView.register(UINib(nibName: "ItemDetailTableCell", bundle: nil), forCellReuseIdentifier: "itemCell")
+        dishesTableView.dataSource = self
+        dishesTableView.delegate = self
         // Initialization code
     }
     
@@ -44,33 +47,30 @@ class OrderTVC: UITableViewCell {
     
     func setOrderDetails(orderDetail:Order){
         self.orderNumberLabel.text = "OrderNumber".localiz() + ":\(orderDetail.orderId)"
+        self.totalPriceLabel.text  = "SAR".localiz() + ": \(orderDetail.totalAmount)"
         self.dishes = orderDetail.dishes
         dishesTableView.reloadData()
-//        switch orderDetail.Status {
+        switch orderDetail.Status {
 //        case 0:
 //            rejectedTitle.text = "OrderPlaced".localiz()
 //            settingOrderPlacedLayer()
-//        case 1:
-//            rejectedTitle.text = "RejectedByTheKitchen".localiz()
-//            settingRejectedByKitchenLayer()
+        case 1:
+            statusLabel.text = "RejectedByTheKitchen".localiz()
 //        case 2:
 //            rejectedTitle.text = "Preparing".localiz()
 //            settingPreparingLayer()
-//        case 3:
-//            rejectedTitle.text = "CancelledByTheUser".localiz()
-//            settingCancelledByTheUserLayer()
+        case 3:
+            statusLabel.text = "CancelledByTheUser".localiz()
 //        case 4:
 //            rejectedTitle.text = "OnTheWay".localiz()
 //            settingOnTheWayLayer()
-//        case 5:
-//            rejectedTitle.text = "Delivered".localiz()
-//            settingDeliveredLayer()
-//        case 6:
-//            rejectedTitle.text = "RejectedByTheKitchen".localiz()
-//            settingRejectedByKitchenLayer()
-//        default:
-//            rejectedTitle.text = "".localiz()
-//        }
+        case 5:
+            statusLabel.text = "Delivered".localiz()
+        case 6:
+            statusLabel.text = "AutoRejected".localiz()
+        default:
+            statusLabel.text = "".localiz()
+        }
     }
     
 }
@@ -90,6 +90,7 @@ extension OrderTVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
         if let dishs = self.dishes{
             cell.setDishes(dish: dishs[indexPath.row])
+            self.dishesTableViewHeiConstraint.constant = CGFloat(20 * dishs.count)
         }
         return cell
     }

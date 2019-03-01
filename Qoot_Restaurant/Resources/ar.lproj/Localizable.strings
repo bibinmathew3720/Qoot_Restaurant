@@ -175,3 +175,7 @@
 "PastOrders" = "طلبات سابقة";
 "ViewDetails" = "عرض التفاصيل";
 "OrderNumber" = "رقم الطلب";
+"AutoRejected" = "رفض تلقائيا";
+"Delivered" = "تم التوصيل";
+"CancelledByTheUser" = "ملغى من قبل المستخدم";
+"RejectedByTheKitchen" = "مرفوض من قبل المطبخ";

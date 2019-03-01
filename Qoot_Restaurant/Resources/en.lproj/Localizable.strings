@@ -177,4 +177,8 @@
 "PastOrders" = "Past Orders";
 "ViewDetails" = "View Details";
 "OrderNumber" = "Order Number";
+"AutoRejected" = "Auto Rejected";
+"Delivered" = "Delivered";
+"CancelledByTheUser" = "Cancelled by the User";
+"RejectedByTheKitchen" = "Rejected by the Kitchen";
 
