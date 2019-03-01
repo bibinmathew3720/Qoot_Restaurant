@@ -82,10 +82,13 @@ class AllOrdersVC: BaseViewController {
     func populateOrderList(){
         if let orderHistory = self.orderHistoryResponse{
             self.newOrdersArray = orderHistory.orderArray.filter({($0.Status == 0)})
-            self.ongoingOrderArray = orderHistory.orderArray.filter({($0.Status == 0 || $0.Status == 2 || $0.Status == 4)})
+            self.ongoingOrderArray = orderHistory.orderArray.filter({($0.Status == 2 || $0.Status == 4)})
             self.pastOrderArray = orderHistory.orderArray.filter({($0.Status == 1 || $0.Status == 3 || $0.Status == 5 || $0.Status == 6)})
             orderHeadingCV.reloadData()
             self.orderListTV.reloadData()
+            if(self.newOrdersArray.count == 0){
+                self.nothingToShowLabel.isHidden = false
+            }
         }
     }
     
@@ -171,12 +174,30 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.orderType = OrderType.newOrders
+            if(self.newOrdersArray.count == 0){
+                self.nothingToShowLabel.isHidden = false
+            }
+            else{
+                self.nothingToShowLabel.isHidden = true
+            }
         }
         else if indexPath.row == 1{
             self.orderType = OrderType.ongoingOrder
+            if(self.ongoingOrderArray.count == 0){
+                self.nothingToShowLabel.isHidden = false
+            }
+            else{
+                self.nothingToShowLabel.isHidden = true
+            }
         }
         else if indexPath.row == 2{
             self.orderType = OrderType.pastOrder
+            if(self.pastOrderArray.count == 0){
+                self.nothingToShowLabel.isHidden = false
+            }
+            else{
+                self.nothingToShowLabel.isHidden = true
+            }
         }
         orderHeadingCV.reloadData()
         orderListTV.reloadData()
