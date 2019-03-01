@@ -49,6 +49,7 @@ class OrderTVC: UITableViewCell {
         self.orderNumberLabel.text = "OrderNumber".localiz() + ":\(orderDetail.orderId)"
         self.totalPriceLabel.text  = "SAR".localiz() + ": \(orderDetail.totalAmount)"
         self.dishes = orderDetail.dishes
+        dishesTableViewHeiConstraint.constant = CGFloat(20 * orderDetail.dishes.count)
         dishesTableView.reloadData()
         switch orderDetail.Status {
 //        case 0:
@@ -90,7 +91,6 @@ extension OrderTVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
         if let dishs = self.dishes{
             cell.setDishes(dish: dishs[indexPath.row])
-            self.dishesTableViewHeiConstraint.constant = CGFloat(20 * dishs.count)
         }
         return cell
     }
