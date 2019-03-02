@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdV-Pu-vby">
-                        <rect key="frame" x="233" y="7.5" width="30" height="30"/>
+                        <rect key="frame" x="236" y="7.5" width="30" height="30"/>
                         <color key="backgroundColor" red="0.58039215690000001" green="0.75686274509999996" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="PUB-Tv-ftQ"/>
@@ -41,7 +41,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-Ha-exy">
-                        <rect key="frame" x="5" y="13" width="223" height="20"/>
+                        <rect key="frame" x="0.0" y="13" width="236" height="20"/>
                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,13 +58,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="FT7-EJ-sxB" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="FFx-0Q-KXd"/>
-                <constraint firstItem="fdV-Pu-vby" firstAttribute="leading" secondItem="7Jl-Ha-exy" secondAttribute="trailing" constant="5" id="FQu-f0-QSt"/>
+                <constraint firstItem="fdV-Pu-vby" firstAttribute="leading" secondItem="7Jl-Ha-exy" secondAttribute="trailing" id="FQu-f0-QSt"/>
                 <constraint firstItem="7Jl-Ha-exy" firstAttribute="centerY" secondItem="fdV-Pu-vby" secondAttribute="centerY" id="HVd-2O-bZA"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="FT7-EJ-sxB" secondAttribute="trailing" id="TKB-hs-Ifp"/>
                 <constraint firstItem="FT7-EJ-sxB" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="fNY-TE-K2b"/>
                 <constraint firstItem="fdV-Pu-vby" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="q19-Ws-mNi"/>
-                <constraint firstItem="7Jl-Ha-exy" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="5" id="q9i-pz-kUO"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="fdV-Pu-vby" secondAttribute="trailing" constant="5" id="xj0-cX-kBG"/>
+                <constraint firstItem="7Jl-Ha-exy" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="q9i-pz-kUO"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="fdV-Pu-vby" secondAttribute="trailing" constant="2" id="xj0-cX-kBG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="268" height="44"/>

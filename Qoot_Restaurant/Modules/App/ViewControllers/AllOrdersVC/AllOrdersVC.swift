@@ -158,7 +158,7 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize(width: 200, height: collectionView.frame.size.height)
+        return CGSize(width: 150, height: collectionView.frame.size.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -172,6 +172,7 @@ extension AllOrdersVC:UICollectionViewDataSource,UICollectionViewDelegate,UIColl
     // MARK: Collection Cell Delegates
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.orderHeadingCV.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         if indexPath.row == 0 {
             self.orderType = OrderType.newOrders
             if(self.newOrdersArray.count == 0){
