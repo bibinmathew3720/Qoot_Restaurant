@@ -183,5 +183,9 @@
 "RejectedByTheKitchen" = "Rejected by the Kitchen";
 "Message" = "Message";
 "NoMessageFromCustomer" = "No Message from Customer";
+"OrderDate" = "Order Date";
+"DeliveryDate" = "Delivery Date";
+"SubTotal" = "Sub Total";
+"DeliveryFee" = "Delivery Fee";
 
 

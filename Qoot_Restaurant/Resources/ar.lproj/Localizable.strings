@@ -181,3 +181,7 @@
 "RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
 "Message" = "رسالة";
 "NoMessageFromCustomer" = "لا توجد رسالة من العميل";
+"OrderDate" = "تاريخ الطلب";
+"DeliveryDate" = "تاريخ التوصيل";
+"SubTotal" = "المجموع الكلي";
+"DeliveryFee" = "رسوم التوصيل";

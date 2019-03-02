@@ -12,6 +12,9 @@ class OrderDetailPageVC: BaseViewController {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateLabelForNeworders: UILabel!
+    @IBOutlet weak var deleveryDateheadingLabel: UILabel!
+    @IBOutlet weak var deliveryDateLabel: UILabel!
     @IBOutlet weak var messageHeadingLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var dishesTableView: UITableView!
@@ -19,6 +22,7 @@ class OrderDetailPageVC: BaseViewController {
     @IBOutlet weak var deliveryLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
     
     var orderType:OrderType?
     var orderDetails:Order?
@@ -31,7 +35,9 @@ class OrderDetailPageVC: BaseViewController {
     
     func initialisation(){
         addingLeftBarButton()
-        //orderListTV.register(UINib.init(nibName: "OrderTVC", bundle: nil), forCellReuseIdentifier: "orderCell")
+        cardView.layer.borderColor = Constant.Colors.CommonBlackColor.cgColor
+        cardView.layer.borderWidth = 0.5
+        dishesTableView.register(UINib(nibName: "ItemDetailTableCell", bundle: nil), forCellReuseIdentifier: "itemCell")
     }
     
     func localization(){
@@ -54,13 +60,17 @@ class OrderDetailPageVC: BaseViewController {
             self.priceLabel.text  = "SAR".localiz() + ": \(ordDetails.totalAmount)"
             if let ordType = orderType{
                 if ordType == .newOrders{
-                    
+                    dateLabel.text = "OrderDate".localiz()+":"
+                    dateLabelForNeworders.text = ordDetails.orderDate
+                    deleveryDateheadingLabel.text = "DeliveryDate".localiz()+":"
+                    deliveryDateLabel.text = ordDetails.deliveryDate
                 }
                 else if ordType == .ongoingOrder{
                     
                 }
                 else if ordType == .pastOrder{
                     self.dateLabel.text = ordDetails.deliveryDate
+                    self.subTotalLabel.text = "".localiz()
                 }
             }
             self.messageHeadingLabel.text = "Message".localiz()
@@ -70,9 +80,13 @@ class OrderDetailPageVC: BaseViewController {
             else{
                 self.messageLabel.text = "NoMessageFromCustomer".localiz()
             }
-            //self.dishes = orderDetail.dishes
-           // dishesTableViewHeiConstraint.constant = CGFloat(20 * orderDetail.dishes.count)
-            dishesTableView.reloadData()
+            dishesTableViewHeiConstraint.constant = CGFloat(20 * ordDetails.dishes.count)
+            if let user = User.getUser(){
+                self.deliveryLabel.text = "DeliveryFee".localiz() + " : " + "\(user.deliveryFee)"
+                let subTotal = ordDetails.totalAmount - user.deliveryFee
+                self.subTotalLabel.text = "SubTotal".localiz() + " : " + "\(subTotal)"
+            }
+           
             switch ordDetails.Status {
                 //        case 0:
                 //            rejectedTitle.text = "OrderPlaced".localiz()
@@ -108,4 +122,31 @@ class OrderDetailPageVC: BaseViewController {
     }
     */
 
+}
+
+extension OrderDetailPageVC : UITableViewDelegate,UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let ordDetails = orderDetails{
+            return ordDetails.dishes.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
+        if let ordDetails = orderDetails{
+            cell.setDishes(dish: ordDetails.dishes[indexPath.row])
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 20
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
