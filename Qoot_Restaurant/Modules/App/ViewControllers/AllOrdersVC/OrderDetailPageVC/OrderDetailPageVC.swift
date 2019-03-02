@@ -38,6 +38,7 @@ class OrderDetailPageVC: BaseViewController {
         cardView.layer.borderColor = Constant.Colors.CommonBlackColor.cgColor
         cardView.layer.borderWidth = 0.5
         dishesTableView.register(UINib(nibName: "ItemDetailTableCell", bundle: nil), forCellReuseIdentifier: "itemCell")
+         dishesTableView.register(UINib(nibName: "ItemDetailHeadingTVC", bundle: nil), forCellReuseIdentifier: "itemDetailHeadingCell")
     }
     
     func localization(){
@@ -80,7 +81,7 @@ class OrderDetailPageVC: BaseViewController {
             else{
                 self.messageLabel.text = "NoMessageFromCustomer".localiz()
             }
-            dishesTableViewHeiConstraint.constant = CGFloat(20 * ordDetails.dishes.count)
+            dishesTableViewHeiConstraint.constant = CGFloat((20 * ordDetails.dishes.count ) + 40)
             if let user = User.getUser(){
                 self.deliveryLabel.text = "DeliveryFee".localiz() + " : " + "\(user.deliveryFee)"
                 let subTotal = ordDetails.totalAmount - user.deliveryFee
@@ -130,20 +131,29 @@ extension OrderDetailPageVC : UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ordDetails = orderDetails{
-            return ordDetails.dishes.count
+            return ordDetails.dishes.count + 1
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
-        if let ordDetails = orderDetails{
-            cell.setDishes(dish: ordDetails.dishes[indexPath.row])
+        if (indexPath.row == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailHeadingCell", for: indexPath) as! ItemDetailHeadingTVC
+            return cell
         }
-        return cell
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemDetailTableCell
+            if let ordDetails = orderDetails{
+                cell.setDishes(dish: ordDetails.dishes[indexPath.row - 1])
+            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.row == 0){
+            return 40
+        }
         return 20
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

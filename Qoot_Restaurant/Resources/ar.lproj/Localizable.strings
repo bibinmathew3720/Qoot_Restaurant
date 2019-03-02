@@ -185,3 +185,6 @@
 "DeliveryDate" = "تاريخ التوصيل";
 "SubTotal" = "المجموع الكلي";
 "DeliveryFee" = "رسوم التوصيل";
+"Items" = "الاصناف";
+"Quantity" = "كمية";
+"Price" = "السعر";

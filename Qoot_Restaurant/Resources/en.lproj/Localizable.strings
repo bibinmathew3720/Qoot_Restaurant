@@ -187,5 +187,8 @@
 "DeliveryDate" = "Delivery Date";
 "SubTotal" = "Sub Total";
 "DeliveryFee" = "Delivery Fee";
+"Items" = "Items";
+"Quantity" = "Quantity";
+"Price" = "Price";
 
 
