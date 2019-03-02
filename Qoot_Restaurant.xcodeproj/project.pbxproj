@@ -96,6 +96,8 @@
 		D0FC95FA2228521F008F8C0F /* OrderTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95F82228521F008F8C0F /* OrderTVC.xib */; };
 		D0FC95FE222858B0008F8C0F /* ItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC95FC222858B0008F8C0F /* ItemDetailTableCell.swift */; };
 		D0FC95FF222858B0008F8C0F /* ItemDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */; };
+		D0FC960E222A0042008F8C0F /* OrderDetailPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC960C222A0042008F8C0F /* OrderDetailPageVC.swift */; };
+		D0FC960F222A0042008F8C0F /* OrderDetailPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FC960D222A0042008F8C0F /* OrderDetailPageVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +199,8 @@
 		D0FC95F82228521F008F8C0F /* OrderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTVC.xib; sourceTree = "<group>"; };
 		D0FC95FC222858B0008F8C0F /* ItemDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailTableCell.swift; sourceTree = "<group>"; };
 		D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDetailTableCell.xib; sourceTree = "<group>"; };
+		D0FC960C222A0042008F8C0F /* OrderDetailPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailPageVC.swift; sourceTree = "<group>"; };
+		D0FC960D222A0042008F8C0F /* OrderDetailPageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailPageVC.xib; sourceTree = "<group>"; };
 		FF65D1040125C484C7CB61A3 /* Pods-Qoot_Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qoot_Restaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qoot_Restaurant/Pods-Qoot_Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -725,6 +729,7 @@
 		D0FC95E622277F95008F8C0F /* AllOrdersVC */ = {
 			isa = PBXGroup;
 			children = (
+				D0FC960B222A0016008F8C0F /* OrderDetailPageVC */,
 				D0FC95EB2227901E008F8C0F /* CustomCells */,
 				D0FC95E722277FCD008F8C0F /* AllOrdersVC.swift */,
 				D0FC95E822277FCD008F8C0F /* AllOrdersVC.xib */,
@@ -767,6 +772,15 @@
 				D0FC95FD222858B0008F8C0F /* ItemDetailTableCell.xib */,
 			);
 			path = ItemDetailCell;
+			sourceTree = "<group>";
+		};
+		D0FC960B222A0016008F8C0F /* OrderDetailPageVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0FC960C222A0042008F8C0F /* OrderDetailPageVC.swift */,
+				D0FC960D222A0042008F8C0F /* OrderDetailPageVC.xib */,
+			);
+			path = OrderDetailPageVC;
 			sourceTree = "<group>";
 		};
 		DF3F185BEC2DAD6182953F9E /* Frameworks */ = {
@@ -848,6 +862,7 @@
 				D0FC95FA2228521F008F8C0F /* OrderTVC.xib in Resources */,
 				D03015652160566900EFC88E /* HomeVC.xib in Resources */,
 				D02192DA215FE0430092D506 /* Localizable.strings in Resources */,
+				D0FC960F222A0042008F8C0F /* OrderDetailPageVC.xib in Resources */,
 				D02192EF215FE1390092D506 /* WalkThroughVC.xib in Resources */,
 				D0258FC7215C8DC60081CB0E /* Assets.xcassets in Resources */,
 				D02192D7215FDF940092D506 /* Roboto-Bold.ttf in Resources */,
@@ -1024,6 +1039,7 @@
 				D021931D215FE1E60092D506 /* UIImageViewExtensions.swift in Sources */,
 				D0219322215FE1E60092D506 /* UserManager.swift in Sources */,
 				D0219316215FE1E60092D506 /* CLNetworkManager.swift in Sources */,
+				D0FC960E222A0042008F8C0F /* OrderDetailPageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

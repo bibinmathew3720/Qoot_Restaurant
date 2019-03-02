@@ -179,3 +179,5 @@
 "Delivered" = "تم التوصيل";
 "CancelledByTheUser" = "ملغى من قبل المستخدم";
 "RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
+"Message" = "رسالة";
+"NoMessageFromCustomer" = "لا توجد رسالة من العميل";

@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol OrderTVCDelegate{
+    func viewDetailButtonActionDelegateWithTag(tag:Int)
+}
 class OrderTVC: UITableViewCell {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -16,7 +18,7 @@ class OrderTVC: UITableViewCell {
     @IBOutlet weak var viewDetailsButton: UIButton!
     @IBOutlet weak var pstOrderView: UIView!
     @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
-    
+    var delegate:OrderTVCDelegate?
     var dishes:[Dishes]?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +45,9 @@ class OrderTVC: UITableViewCell {
     //MARK: Button Actions
     
     @IBAction func viewDetailButtonAction(_ sender: UIButton) {
+        if let del = delegate{
+            del.viewDetailButtonActionDelegateWithTag(tag: self.tag)
+        }
     }
     
     func setOrderDetails(orderDetail:Order){

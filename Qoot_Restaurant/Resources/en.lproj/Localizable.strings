@@ -181,4 +181,7 @@
 "Delivered" = "Delivered";
 "CancelledByTheUser" = "Cancelled by the User";
 "RejectedByTheKitchen" = "Rejected by the Kitchen";
+"Message" = "Message";
+"NoMessageFromCustomer" = "No Message from Customer";
+
 

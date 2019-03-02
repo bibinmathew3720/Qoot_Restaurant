@@ -237,6 +237,7 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
             cell.setOrderDetails(orderDetail: pastOrderArray[indexPath.section])
         }
         cell.tag = indexPath.section
+        cell.delegate = self
         return cell
     }
     
@@ -262,5 +263,22 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 8
+    }
+}
+
+extension AllOrdersVC:OrderTVCDelegate{
+    func viewDetailButtonActionDelegateWithTag(tag: Int) {
+        let orderDetailPageVC = OrderDetailPageVC.init(nibName: "OrderDetailPageVC", bundle: nil)
+        orderDetailPageVC.orderType = self.orderType
+        if (self.orderType == .newOrders){
+            orderDetailPageVC.orderDetails = newOrdersArray[tag]
+        }
+        else if(self.orderType == .ongoingOrder){
+            orderDetailPageVC.orderDetails = ongoingOrderArray[tag]
+        }
+        else if(self.orderType == .pastOrder){
+           orderDetailPageVC.orderDetails = pastOrderArray[tag]
+        }
+        self.navigationController?.pushViewController(orderDetailPageVC, animated: true)
     }
 }
