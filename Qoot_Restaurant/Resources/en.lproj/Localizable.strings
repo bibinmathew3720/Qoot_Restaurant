@@ -171,6 +171,7 @@
 
 "NothingToShow" = "Nothing To Show";
 "MyOrders" = "My Orders";
+"FetchingOrders" = "Fetching Orders";
 "QTY" = "QTY";
 "NewOrders" = "New Orders";
 "OngoingOrders" = "Ongoing Orders";

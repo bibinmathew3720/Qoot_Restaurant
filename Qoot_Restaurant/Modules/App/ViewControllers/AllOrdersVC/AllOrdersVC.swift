@@ -50,7 +50,8 @@ class AllOrdersVC: BaseViewController {
     }
     
     func callingAllOrdersApi(){
-         MBProgressHUD.showAdded(to: self.view, animated: true)
+        let progressHud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHud.label.text = "FetchingOrders".localiz()
         CartManager().callingGetOrderListApi(with: getAllOrdersRequestBody(), success: { (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? QootOrderHistoryResponseModel{

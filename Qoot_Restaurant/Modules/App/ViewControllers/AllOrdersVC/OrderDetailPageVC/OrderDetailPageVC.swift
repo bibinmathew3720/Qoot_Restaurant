@@ -22,6 +22,15 @@ class OrderDetailPageVC: BaseViewController {
     @IBOutlet weak var deliveryLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    
+    @IBOutlet weak var ongoingOrderView: UIView!
+    @IBOutlet weak var orderStatusHeadingLabel: UILabel!
+    @IBOutlet weak var orderStatusTF: UITextField!
+    @IBOutlet weak var rejectButton: UIButton!
+    @IBOutlet weak var acceptButtton: UIButton!
+    @IBOutlet weak var newOrderView: UIView!
+    @IBOutlet weak var pastOrdersView: UIView!
+    
     @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
     
     var orderType:OrderType?
@@ -45,14 +54,21 @@ class OrderDetailPageVC: BaseViewController {
         if let ordType = orderType{
             if ordType == .newOrders{
                 self.title = "NewOrders".localiz()
+                self.newOrderView.isHidden = false
             }
             else if ordType == .ongoingOrder{
                 self.title = "OngoingOrders".localiz()
+                self.ongoingOrderView.isHidden = false
             }
             else if ordType == .pastOrder{
                 self.title = "PastOrders".localiz()
+                self.pastOrdersView.isHidden = false
             }
         }
+        self.rejectButton.setTitle("RejectOrder".localiz(), for: .normal)
+        self.acceptButtton.setTitle("AcceptOrder".localiz(), for: .normal)
+        self.orderStatusHeadingLabel.text = "OrderStatus".localiz()
+        
     }
     
     func populateData(){
@@ -74,7 +90,6 @@ class OrderDetailPageVC: BaseViewController {
                 }
                 else if ordType == .pastOrder{
                     self.dateLabel.text = ordDetails.deliveryDate
-                    self.subTotalLabel.text = "".localiz()
                 }
             }
             self.messageHeadingLabel.text = "Message".localiz()
@@ -97,9 +112,9 @@ class OrderDetailPageVC: BaseViewController {
             //            settingOrderPlacedLayer()
             case 1:
                 statusLabel.text = "RejectedByTheKitchen".localiz()
-                //        case 2:
-                //            rejectedTitle.text = "Preparing".localiz()
-            //            settingPreparingLayer()
+            case 2:
+                orderStatusTF.text = "Preparing".localiz()
+                statusLabel.text = "Preparing".localiz()
             case 3:
                 statusLabel.text = "CancelledByTheUser".localiz()
                 //        case 4:
@@ -115,7 +130,14 @@ class OrderDetailPageVC: BaseViewController {
         }
     }
     
-
+    //MARK: Button Actions
+    
+    @IBAction func rejectButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func acceptButtonAction(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 
