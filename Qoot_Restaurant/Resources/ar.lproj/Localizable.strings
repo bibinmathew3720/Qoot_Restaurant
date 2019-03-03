@@ -170,6 +170,7 @@
 "NothingToShow" = "لا شيء للإظهار";
 "MyOrders" = "طلباتي";
 "FetchingOrders" = "جلب الطلبات";
+"Loading" = "تحميل...";
 "QTY" = "QTY";
 "NewOrders" = "طلبات جديدة";
 "OngoingOrders" = "أوامر قائمة";

@@ -44,6 +44,41 @@ class CartManager: CLBaseService {
         return orderHistoryResponseModel
     }
     
+    
+    //MARK: Change Order Status Api
+    
+    func changeOrderStatusApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForOrderStatus(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getOrderStatusResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForOrderStatus(with body:String)->CLNetworkModel{
+        let changeOrderRequestModel = CLNetworkModel.init(url: BASE_URL+ChangeOrderStatus_URL, requestMethod_: "POST")
+        changeOrderRequestModel.requestBody = body
+        return changeOrderRequestModel
+    }
+    
+    func getOrderStatusResponseModel(dict:[String : Any?]) -> Any? {
+        let orderHistoryResponseModel = ChangeOrderStatusResponseModel.init(dict: dict)
+        return orderHistoryResponseModel
+    }
+    
 }
 
 class QootOrderHistoryResponseModel : NSObject{
@@ -183,6 +218,15 @@ class Dishes : NSObject{
                 MenuId = value
             }
             
+        }
+    }
+}
+
+class ChangeOrderStatusResponseModel: NSObject{
+    var status:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["Status"] as? String{
+            status = value
         }
     }
 }

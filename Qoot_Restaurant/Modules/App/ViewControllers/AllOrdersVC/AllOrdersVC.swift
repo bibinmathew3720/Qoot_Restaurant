@@ -14,6 +14,11 @@ enum OrderType{
     case newOrders
 }
 
+enum OrderStatus{
+    case accept
+    case reject
+}
+
 class AllOrdersVC: BaseViewController {
     @IBOutlet weak var orderHeadingCV: UICollectionView!
     @IBOutlet weak var orderListTV: UITableView!
@@ -278,11 +283,13 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
 
 extension AllOrdersVC:OrderTVCDelegate{
     func acceptOrderButtonActionDelegateWithTag(tag: Int) {
-        
+        let order = self.newOrdersArray[tag]
+        callingChangeOrderStatusApi(orderStatus: .accept, order: order)
     }
     
     func rejectOrderButtonActionDelegateWithTag(tag: Int) {
-        
+        let order = self.newOrdersArray[tag]
+        callingChangeOrderStatusApi(orderStatus: .reject, order: order)
     }
     
     func viewDetailButtonActionDelegateWithTag(tag: Int) {
@@ -298,5 +305,45 @@ extension AllOrdersVC:OrderTVCDelegate{
            orderDetailPageVC.orderDetails = pastOrderArray[tag]
         }
         self.navigationController?.pushViewController(orderDetailPageVC, animated: true)
+    }
+    
+    func callingChangeOrderStatusApi(orderStatus:OrderStatus,order:Order){
+        let progressHud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHud.label.text = "Loading".localiz()
+        CartManager().changeOrderStatusApi(with: getChangeStatusRequestBody(orderStatus: orderStatus,order: order), success: { (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ChangeOrderStatusResponseModel{
+                if (model.status == "true"){
+                    self.callingAllOrdersApi()
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+        }
+    }
+    
+    func getChangeStatusRequestBody(orderStatus:OrderStatus,order:Order)->String{
+        var dataString:String = ""
+        let orderIdString:String = "OrderId=\(order.orderId)"
+        dataString = dataString + orderIdString + "&"
+        var ordStatus = 0
+        if(orderStatus == .accept){
+            ordStatus = 2
+        }
+        else if(orderStatus == .reject){
+            ordStatus = 3
+        }
+        let orderStatus:String = "Status=\(ordStatus)"
+        dataString = dataString + orderStatus + "&"
+        
+        let commentString:String = "Comment="
+        dataString = dataString + commentString
+        return dataString
     }
 }

@@ -31,6 +31,7 @@ let CHANGE_PWD_URL = "Ios/Kitchen/UpdatePassword"
 let UploadProfileImage_Url = "Ios/Kitchen/UploadCustomerPhoto"
 let WALLET_DETAILS_URL = "Ios/Kitchen/KitchenWallet"
 let KitchenOrderHistory_URL = "Ios/Kitchen/ViewOrders"
+let ChangeOrderStatus_URL = "Ios/Kitchen/ChangeOrderStatus"
 
 let REGISTER_URL = "Ios/Customer/CustomerSignup"
 
