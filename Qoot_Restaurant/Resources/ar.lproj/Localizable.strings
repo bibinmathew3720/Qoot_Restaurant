@@ -177,6 +177,7 @@
 "OrderNumber" = "رقم الطلب";
 "AutoRejected" = "رفض تلقائيا";
 "Delivered" = "تم التوصيل";
+"Preparing" = "قيد التحضير";
 "CancelledByTheUser" = "ملغى من قبل المستخدم";
 "RejectedByTheKitchen" = "مرفوض من قبل المطبخ";
 "Message" = "رسالة";
@@ -190,3 +191,4 @@
 "Price" = "السعر";
 "RejectOrder" = "Reject Order";
 "AcceptOrder" = "Accept Order";
+"OrderStatus" = "حالة الطلب";

@@ -231,14 +231,19 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
             cell.setOrderDetails(orderDetail: newOrdersArray[indexPath.section])
             cell.newOrderView.isHidden = false
             cell.pstOrderView.isHidden = true
+            cell.ongoingOrderView.isHidden = true
         }
         else if(self.orderType == .ongoingOrder){
             cell.setOrderDetails(orderDetail: ongoingOrderArray[indexPath.section])
+            cell.newOrderView.isHidden = true
+            cell.pstOrderView.isHidden = true
+            cell.ongoingOrderView.isHidden = false
         }
         else if(self.orderType == .pastOrder){
             cell.setOrderDetails(orderDetail: pastOrderArray[indexPath.section])
             cell.newOrderView.isHidden = true
             cell.pstOrderView.isHidden = false
+            cell.ongoingOrderView.isHidden = true
         }
         cell.tag = indexPath.section
         cell.delegate = self

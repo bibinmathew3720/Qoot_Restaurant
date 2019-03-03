@@ -15,14 +15,18 @@ protocol OrderTVCDelegate{
 class OrderTVC: UITableViewCell {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var orderStatusHeadingLabel: UILabel!
+    @IBOutlet weak var orderStatusTF: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var dishesTableView: UITableView!
     @IBOutlet weak var viewDetailsButton: UIButton!
     @IBOutlet weak var viewDetailForNewOrder: UIButton!
     @IBOutlet weak var rejectOrderButton: UIButton!
     @IBOutlet weak var acceptOrderButton: UIButton!
+    @IBOutlet weak var viewDetailButtonForOngoingOrders: UIButton!
     @IBOutlet weak var pstOrderView: UIView!
     @IBOutlet weak var newOrderView: UIView!
+    @IBOutlet weak var ongoingOrderView: UIView!
     @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
     var delegate:OrderTVCDelegate?
     var dishes:[Dishes]?
@@ -40,6 +44,7 @@ class OrderTVC: UITableViewCell {
     
     func localization(){
         viewDetailsButton.setTitle("ViewDetails".localiz(), for: .normal)
+        viewDetailButtonForOngoingOrders.setTitle("ViewDetails".localiz(), for: .normal)
         viewDetailForNewOrder.setTitle("ViewDetails".localiz(), for: .normal)
         rejectOrderButton.setTitle("RejectOrder".localiz(), for: .normal)
         acceptOrderButton.setTitle("AcceptOrder".localiz(), for: .normal)
@@ -74,6 +79,7 @@ class OrderTVC: UITableViewCell {
     func setOrderDetails(orderDetail:Order){
         self.orderNumberLabel.text = "OrderNumber".localiz() + ":\(orderDetail.orderId)"
         self.totalPriceLabel.text  = "SAR".localiz() + ": \(orderDetail.totalAmount)"
+        self.orderStatusHeadingLabel.text = "OrderStatus".localiz()
         self.dishes = orderDetail.dishes
         dishesTableViewHeiConstraint.constant = CGFloat(20 * orderDetail.dishes.count)
         dishesTableView.reloadData()
@@ -83,9 +89,9 @@ class OrderTVC: UITableViewCell {
 //            settingOrderPlacedLayer()
         case 1:
             statusLabel.text = "RejectedByTheKitchen".localiz()
-//        case 2:
-//            rejectedTitle.text = "Preparing".localiz()
-//            settingPreparingLayer()
+        case 2:
+            orderStatusTF.text = "Preparing".localiz()
+            statusLabel.text = "Preparing".localiz()
         case 3:
             statusLabel.text = "CancelledByTheUser".localiz()
 //        case 4:

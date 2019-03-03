@@ -67,7 +67,10 @@ class OrderDetailPageVC: BaseViewController {
                     deliveryDateLabel.text = ordDetails.deliveryDate
                 }
                 else if ordType == .ongoingOrder{
-                    
+                    dateLabel.text = "OrderDate".localiz()+":"
+                    dateLabelForNeworders.text = ordDetails.orderDate
+                    deleveryDateheadingLabel.text = "DeliveryDate".localiz()+":"
+                    deliveryDateLabel.text = ordDetails.deliveryDate
                 }
                 else if ordType == .pastOrder{
                     self.dateLabel.text = ordDetails.deliveryDate

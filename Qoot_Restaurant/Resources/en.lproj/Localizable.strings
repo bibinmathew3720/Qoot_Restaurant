@@ -179,6 +179,7 @@
 "OrderNumber" = "Order Number";
 "AutoRejected" = "Auto Rejected";
 "Delivered" = "Delivered";
+"Preparing" = "Preparing";
 "CancelledByTheUser" = "Cancelled by the User";
 "RejectedByTheKitchen" = "Rejected by the Kitchen";
 "Message" = "Message";
@@ -192,5 +193,6 @@
 "Price" = "Price";
 "RejectOrder" = "Reject Order";
 "AcceptOrder" = "Accept Order";
+"OrderStatus" = "Order Status";
 
 
