@@ -196,5 +196,8 @@
 "RejectOrder" = "Reject Order";
 "AcceptOrder" = "Accept Order";
 "OrderStatus" = "Order Status";
+"Comment" = "Comment";
+"EnterTheRejectionReasonHere" = "Enter the rejection reason here.";
+"IfAny" = "If any";
 
 

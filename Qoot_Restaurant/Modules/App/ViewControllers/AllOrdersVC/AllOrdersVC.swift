@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GrowingTextView
 
 enum OrderType{
     case ongoingOrder
@@ -23,6 +24,13 @@ class AllOrdersVC: BaseViewController {
     @IBOutlet weak var orderHeadingCV: UICollectionView!
     @IBOutlet weak var orderListTV: UITableView!
     @IBOutlet weak var nothingToShowLabel: UILabel!
+    
+    //Comment View
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var commentHeadingLabel: UILabel!
+    @IBOutlet weak var rejectButton: UIButton!
+    @IBOutlet weak var commentTextView: GrowingTextView!
+    var selectedIndex = 0
     
     var orderHistoryResponse:QootOrderHistoryResponseModel?
     var orderType = OrderType.newOrders
@@ -48,6 +56,10 @@ class AllOrdersVC: BaseViewController {
     func localization(){
         self.title = "MyOrders".localiz()
         self.nothingToShowLabel.text = "NothingToShow".localiz()
+        
+        commentHeadingLabel.text = "Comment".localiz()
+        commentTextView.placeholder = "EnterTheRejectionReasonHere".localiz() + " (" + "IfAny".localiz() + ")"
+        rejectButton.setTitle("RejectOrder".localiz(), for: .normal)
     }
     
     func setUpCollectionView(){
@@ -104,7 +116,11 @@ class AllOrdersVC: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func rejectButtonAction(_ sender: UIButton) {
+        let order = self.newOrdersArray[selectedIndex]
+        callingChangeOrderStatusApi(orderStatus: .reject, order: order)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -288,8 +304,8 @@ extension AllOrdersVC:OrderTVCDelegate{
     }
     
     func rejectOrderButtonActionDelegateWithTag(tag: Int) {
-        let order = self.newOrdersArray[tag]
-        callingChangeOrderStatusApi(orderStatus: .reject, order: order)
+        self.selectedIndex = tag
+        self.commentView.isHidden = false
     }
     
     func viewDetailButtonActionDelegateWithTag(tag: Int) {
@@ -315,6 +331,9 @@ extension AllOrdersVC:OrderTVCDelegate{
             if let model = model as? ChangeOrderStatusResponseModel{
                 if (model.status == "true"){
                     self.callingAllOrdersApi()
+                    if (orderStatus == .reject){
+                        self.commentView.isHidden = true
+                    }
                 }
             }
         }) { (ErrorType) in
@@ -333,16 +352,19 @@ extension AllOrdersVC:OrderTVCDelegate{
         let orderIdString:String = "OrderId=\(order.orderId)"
         dataString = dataString + orderIdString + "&"
         var ordStatus = 0
+        var commentString:String = "Comment="
         if(orderStatus == .accept){
             ordStatus = 2
         }
         else if(orderStatus == .reject){
             ordStatus = 3
+            if let comm = self.commentTextView.text{
+                commentString = commentString + comm
+            }
         }
         let orderStatus:String = "Status=\(ordStatus)"
         dataString = dataString + orderStatus + "&"
         
-        let commentString:String = "Comment="
         dataString = dataString + commentString
         return dataString
     }

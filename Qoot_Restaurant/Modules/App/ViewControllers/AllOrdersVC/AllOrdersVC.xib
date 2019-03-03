@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
@@ -17,9 +20,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllOrdersVC" customModule="Qoot_Restaurant" customModuleProvider="target">
             <connections>
+                <outlet property="commentHeadingLabel" destination="LV3-YW-HVr" id="Sdw-Zu-dSQ"/>
+                <outlet property="commentTextView" destination="FSD-im-PAR" id="KO5-ZL-hi9"/>
+                <outlet property="commentView" destination="bVe-PL-JC9" id="CJ4-HL-Sy9"/>
                 <outlet property="nothingToShowLabel" destination="dyd-Vj-7rb" id="WdX-cK-0Iw"/>
                 <outlet property="orderHeadingCV" destination="Wpu-JG-kzi" id="zoe-wi-3f1"/>
                 <outlet property="orderListTV" destination="bS6-Aq-lPM" id="Kgc-JW-Bc0"/>
+                <outlet property="rejectButton" destination="Ayj-Nr-yK2" id="ZcK-Me-Wuf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -65,16 +72,90 @@
                                     <color key="textColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-PL-JC9">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="646"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="413-Vk-M89">
+                                            <rect key="frame" x="20" y="249.5" width="334" height="147"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV3-YW-HVr">
+                                                    <rect key="frame" x="150.5" y="5" width="34.5" height="18.5"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FSD-im-PAR" customClass="GrowingTextView" customModule="GrowingTextView">
+                                                    <rect key="frame" x="5" y="28.5" width="324" height="78"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="78" id="qgt-tX-qAS"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnl-8t-uj2">
+                                                    <rect key="frame" x="5" y="106.5" width="324" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.72156862745098038" green="0.70588235294117641" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="Qwv-C6-1EA"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayj-Nr-yK2">
+                                                    <rect key="frame" x="139" y="112" width="56" height="30"/>
+                                                    <color key="backgroundColor" red="0.99607843139999996" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="rejectButtonAction:" destination="-1" eventType="touchUpInside" id="TsY-Nc-DHQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Ayj-Nr-yK2" firstAttribute="top" secondItem="Lnl-8t-uj2" secondAttribute="bottom" constant="10" id="Al4-OA-fuR"/>
+                                                <constraint firstItem="Lnl-8t-uj2" firstAttribute="trailing" secondItem="FSD-im-PAR" secondAttribute="trailing" id="BD4-Nx-FAD"/>
+                                                <constraint firstItem="FSD-im-PAR" firstAttribute="leading" secondItem="413-Vk-M89" secondAttribute="leading" constant="5" id="Blm-ZT-BhA"/>
+                                                <constraint firstItem="Lnl-8t-uj2" firstAttribute="top" secondItem="FSD-im-PAR" secondAttribute="bottom" id="G4I-Uc-hl0"/>
+                                                <constraint firstItem="LV3-YW-HVr" firstAttribute="top" secondItem="413-Vk-M89" secondAttribute="top" constant="20" id="SFS-l8-uvV"/>
+                                                <constraint firstItem="Lnl-8t-uj2" firstAttribute="leading" secondItem="FSD-im-PAR" secondAttribute="leading" id="Um7-qa-Hmj"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ayj-Nr-yK2" secondAttribute="bottom" constant="10" id="WH6-6x-LDD"/>
+                                                <constraint firstItem="LV3-YW-HVr" firstAttribute="centerX" secondItem="413-Vk-M89" secondAttribute="centerX" id="buy-ug-aWK"/>
+                                                <constraint firstAttribute="trailing" secondItem="FSD-im-PAR" secondAttribute="trailing" constant="5" id="ikf-nx-8kS"/>
+                                                <constraint firstItem="Ayj-Nr-yK2" firstAttribute="centerX" secondItem="413-Vk-M89" secondAttribute="centerX" id="j9b-71-ng4"/>
+                                                <constraint firstItem="FSD-im-PAR" firstAttribute="top" secondItem="LV3-YW-HVr" secondAttribute="bottom" constant="5" id="xL6-uV-x1w"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.39598253038194442" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="413-Vk-M89" firstAttribute="leading" secondItem="bVe-PL-JC9" secondAttribute="leading" constant="10" id="Ra8-I3-4g2"/>
+                                        <constraint firstAttribute="trailing" secondItem="413-Vk-M89" secondAttribute="trailing" constant="10" id="gsR-p6-AiS"/>
+                                        <constraint firstItem="413-Vk-M89" firstAttribute="centerY" secondItem="bVe-PL-JC9" secondAttribute="centerY" constant="-40" id="uyi-Md-slE"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" id="00Z-r1-G8C"/>
                                 <constraint firstItem="bS6-Aq-lPM" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" constant="3" id="2DE-q5-mQh"/>
+                                <constraint firstItem="bVe-PL-JC9" firstAttribute="top" secondItem="BMw-Wz-GCQ" secondAttribute="top" id="DLd-MB-yTz"/>
                                 <constraint firstItem="dyd-Vj-7rb" firstAttribute="centerX" secondItem="BMw-Wz-GCQ" secondAttribute="centerX" id="FZL-hM-Oc1"/>
+                                <constraint firstItem="bVe-PL-JC9" firstAttribute="leading" secondItem="BMw-Wz-GCQ" secondAttribute="leading" id="HII-4A-6W1"/>
                                 <constraint firstAttribute="trailing" secondItem="bS6-Aq-lPM" secondAttribute="trailing" constant="3" id="LNb-e4-fys"/>
+                                <constraint firstAttribute="bottom" secondItem="bVe-PL-JC9" secondAttribute="bottom" id="RLE-VD-pcM"/>
                                 <constraint firstAttribute="bottom" secondItem="bS6-Aq-lPM" secondAttribute="bottom" constant="3" id="Xim-7m-Rh0"/>
                                 <constraint firstItem="dyd-Vj-7rb" firstAttribute="centerY" secondItem="BMw-Wz-GCQ" secondAttribute="centerY" id="ZWD-P2-9se"/>
                                 <constraint firstItem="bS6-Aq-lPM" firstAttribute="top" secondItem="Wpu-JG-kzi" secondAttribute="bottom" constant="3" id="eGv-Gj-SQM"/>
+                                <constraint firstAttribute="trailing" secondItem="bVe-PL-JC9" secondAttribute="trailing" id="f4f-78-11w"/>
                                 <constraint firstItem="Wpu-JG-kzi" firstAttribute="top" secondItem="BMw-Wz-GCQ" secondAttribute="top" id="fuz-Gu-hc0"/>
                                 <constraint firstAttribute="trailing" secondItem="Wpu-JG-kzi" secondAttribute="trailing" id="veb-16-bNv"/>
                             </constraints>
@@ -98,6 +179,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="us0-9H-2al" secondAttribute="trailing" id="yP2-U4-m5g"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="51.5" y="113.5"/>
         </view>
     </objects>
 </document>

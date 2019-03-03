@@ -194,3 +194,6 @@
 "RejectOrder" = "Reject Order";
 "AcceptOrder" = "Accept Order";
 "OrderStatus" = "حالة الطلب";
+"Comment" = "تعليقك";
+"EnterTheRejectionReasonHere" = "Enter the rejection reason here.";
+"IfAny" = "إن وجدت";
