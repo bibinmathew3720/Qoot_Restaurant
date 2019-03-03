@@ -188,3 +188,5 @@
 "Items" = "الاصناف";
 "Quantity" = "كمية";
 "Price" = "السعر";
+"RejectOrder" = "Reject Order";
+"AcceptOrder" = "Accept Order";

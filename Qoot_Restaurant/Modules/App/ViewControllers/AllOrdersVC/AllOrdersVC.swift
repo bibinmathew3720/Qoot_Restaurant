@@ -229,12 +229,16 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as!OrderTVC
         if (self.orderType == .newOrders){
             cell.setOrderDetails(orderDetail: newOrdersArray[indexPath.section])
+            cell.newOrderView.isHidden = false
+            cell.pstOrderView.isHidden = true
         }
         else if(self.orderType == .ongoingOrder){
             cell.setOrderDetails(orderDetail: ongoingOrderArray[indexPath.section])
         }
         else if(self.orderType == .pastOrder){
             cell.setOrderDetails(orderDetail: pastOrderArray[indexPath.section])
+            cell.newOrderView.isHidden = true
+            cell.pstOrderView.isHidden = false
         }
         cell.tag = indexPath.section
         cell.delegate = self
@@ -267,6 +271,14 @@ extension AllOrdersVC : UITableViewDelegate,UITableViewDataSource {
 }
 
 extension AllOrdersVC:OrderTVCDelegate{
+    func acceptOrderButtonActionDelegateWithTag(tag: Int) {
+        
+    }
+    
+    func rejectOrderButtonActionDelegateWithTag(tag: Int) {
+        
+    }
+    
     func viewDetailButtonActionDelegateWithTag(tag: Int) {
         let orderDetailPageVC = OrderDetailPageVC.init(nibName: "OrderDetailPageVC", bundle: nil)
         orderDetailPageVC.orderType = self.orderType

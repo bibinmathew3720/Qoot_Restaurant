@@ -92,23 +92,92 @@
                             <constraint firstAttribute="height" constant="50" id="R9u-Gt-COS"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TcP-4Y-JkR">
+                        <rect key="frame" x="0.0" y="219.5" width="460" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToN-QY-1Mn">
+                                <rect key="frame" x="10" y="9" width="140" height="32"/>
+                                <color key="backgroundColor" red="0.63529411764705879" green="0.10196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="viewDetailButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KRi-CI-Om4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqK-Wo-aGv">
+                                <rect key="frame" x="160" y="9" width="140" height="32"/>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rejectOrderButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EyQ-NC-Wrx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9W-6b-5cT">
+                                <rect key="frame" x="310" y="9" width="140" height="32"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.75686274509803919" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="acceptOrderButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9a4-0N-0hU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gqK-Wo-aGv" firstAttribute="width" secondItem="T9W-6b-5cT" secondAttribute="width" id="3Xc-xj-eUX"/>
+                            <constraint firstItem="ToN-QY-1Mn" firstAttribute="leading" secondItem="TcP-4Y-JkR" secondAttribute="leading" constant="10" id="86c-ua-pnO"/>
+                            <constraint firstItem="gqK-Wo-aGv" firstAttribute="leading" secondItem="ToN-QY-1Mn" secondAttribute="trailing" constant="10" id="MmN-tE-c8L"/>
+                            <constraint firstItem="ToN-QY-1Mn" firstAttribute="width" secondItem="gqK-Wo-aGv" secondAttribute="width" id="NPu-6d-1Zb"/>
+                            <constraint firstItem="T9W-6b-5cT" firstAttribute="leading" secondItem="gqK-Wo-aGv" secondAttribute="trailing" constant="10" id="P9Q-9Z-SxA"/>
+                            <constraint firstItem="T9W-6b-5cT" firstAttribute="centerY" secondItem="gqK-Wo-aGv" secondAttribute="centerY" id="ZbD-2P-ciK"/>
+                            <constraint firstItem="gqK-Wo-aGv" firstAttribute="centerY" secondItem="ToN-QY-1Mn" secondAttribute="centerY" id="bqw-wM-YBc"/>
+                            <constraint firstAttribute="trailing" secondItem="T9W-6b-5cT" secondAttribute="trailing" constant="10" id="d4o-bv-0MW"/>
+                            <constraint firstItem="ToN-QY-1Mn" firstAttribute="centerY" secondItem="TcP-4Y-JkR" secondAttribute="centerY" id="rno-b1-J4Q"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bF7-WB-mKJ" firstAttribute="trailing" secondItem="fbh-aV-ySe" secondAttribute="trailing" id="2wc-XB-DXm"/>
                     <constraint firstItem="fbh-aV-ySe" firstAttribute="top" secondItem="OtG-EA-dC5" secondAttribute="bottom" constant="5" id="6XJ-k1-FsT"/>
                     <constraint firstItem="brG-vI-98P" firstAttribute="top" secondItem="wCT-wr-Whk" secondAttribute="bottom" constant="5" id="6cJ-89-IWy"/>
+                    <constraint firstItem="TcP-4Y-JkR" firstAttribute="top" secondItem="27G-56-noD" secondAttribute="top" id="9o0-F7-OVn"/>
                     <constraint firstItem="brG-vI-98P" firstAttribute="leading" secondItem="wCT-wr-Whk" secondAttribute="leading" id="B9O-TY-c7k"/>
                     <constraint firstItem="IWs-Yj-iwY" firstAttribute="centerY" secondItem="wCT-wr-Whk" secondAttribute="centerY" id="DsF-Fj-qjq"/>
                     <constraint firstAttribute="trailing" secondItem="27G-56-noD" secondAttribute="trailing" id="FkJ-gz-v1F"/>
                     <constraint firstItem="wCT-wr-Whk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="GKY-bY-bp9"/>
                     <constraint firstAttribute="trailing" secondItem="IWs-Yj-iwY" secondAttribute="trailing" constant="5" id="JF6-vY-pwc"/>
+                    <constraint firstItem="TcP-4Y-JkR" firstAttribute="trailing" secondItem="27G-56-noD" secondAttribute="trailing" id="KMs-FK-Ige"/>
                     <constraint firstItem="OtG-EA-dC5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="NgO-E8-wSi"/>
                     <constraint firstItem="fbh-aV-ySe" firstAttribute="leading" secondItem="OtG-EA-dC5" secondAttribute="leading" id="NoB-iJ-hDJ"/>
+                    <constraint firstItem="TcP-4Y-JkR" firstAttribute="bottom" secondItem="27G-56-noD" secondAttribute="bottom" id="NqZ-ph-hSp"/>
                     <constraint firstItem="IWs-Yj-iwY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wCT-wr-Whk" secondAttribute="trailing" constant="5" id="XZW-ic-cfO"/>
                     <constraint firstItem="OtG-EA-dC5" firstAttribute="top" secondItem="brG-vI-98P" secondAttribute="bottom" constant="5" id="Xff-cY-O3Z"/>
                     <constraint firstItem="27G-56-noD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Xj2-UI-KBr"/>
                     <constraint firstAttribute="trailing" secondItem="OtG-EA-dC5" secondAttribute="trailing" constant="3" id="XpA-Sr-WdV"/>
                     <constraint firstItem="fbh-aV-ySe" firstAttribute="trailing" secondItem="OtG-EA-dC5" secondAttribute="trailing" id="ekN-Pe-CGq"/>
+                    <constraint firstItem="TcP-4Y-JkR" firstAttribute="leading" secondItem="27G-56-noD" secondAttribute="leading" id="gWr-nr-A7k"/>
                     <constraint firstItem="27G-56-noD" firstAttribute="top" secondItem="fbh-aV-ySe" secondAttribute="bottom" id="nB6-Zl-KHt"/>
                     <constraint firstItem="wCT-wr-Whk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="on1-xj-nzE"/>
                     <constraint firstAttribute="bottom" secondItem="27G-56-noD" secondAttribute="bottom" id="rdV-uf-wUm"/>
@@ -116,13 +185,17 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="acceptOrderButton" destination="T9W-6b-5cT" id="k9n-ax-AwY"/>
                 <outlet property="dishesTableView" destination="fbh-aV-ySe" id="1eO-6b-kE2"/>
                 <outlet property="dishesTableViewHeiConstraint" destination="3NC-XJ-yqR" id="GtQ-bc-0pX"/>
+                <outlet property="newOrderView" destination="TcP-4Y-JkR" id="Gmd-eP-shl"/>
                 <outlet property="orderNumberLabel" destination="wCT-wr-Whk" id="LSg-JR-LdV"/>
                 <outlet property="pstOrderView" destination="27G-56-noD" id="u79-8L-g8t"/>
+                <outlet property="rejectOrderButton" destination="gqK-Wo-aGv" id="tdc-xg-PVd"/>
                 <outlet property="statusLabel" destination="brG-vI-98P" id="uhV-Ai-EmT"/>
                 <outlet property="totalPriceLabel" destination="IWs-Yj-iwY" id="CMY-yr-jsQ"/>
-                <outlet property="viewDetailsButton" destination="bF7-WB-mKJ" id="K6c-TB-c2L"/>
+                <outlet property="viewDetailForNewOrder" destination="ToN-QY-1Mn" id="d5z-Qc-mVJ"/>
+                <outlet property="viewDetailsButton" destination="bF7-WB-mKJ" id="cDF-pj-gSf"/>
             </connections>
             <point key="canvasLocation" x="122" y="152"/>
         </tableViewCell>

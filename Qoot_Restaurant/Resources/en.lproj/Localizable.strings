@@ -190,5 +190,7 @@
 "Items" = "Items";
 "Quantity" = "Quantity";
 "Price" = "Price";
+"RejectOrder" = "Reject Order";
+"AcceptOrder" = "Accept Order";
 
 

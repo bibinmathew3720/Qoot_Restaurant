@@ -9,6 +9,8 @@
 import UIKit
 protocol OrderTVCDelegate{
     func viewDetailButtonActionDelegateWithTag(tag:Int)
+    func acceptOrderButtonActionDelegateWithTag(tag:Int)
+    func rejectOrderButtonActionDelegateWithTag(tag:Int)
 }
 class OrderTVC: UITableViewCell {
     @IBOutlet weak var orderNumberLabel: UILabel!
@@ -16,7 +18,11 @@ class OrderTVC: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var dishesTableView: UITableView!
     @IBOutlet weak var viewDetailsButton: UIButton!
+    @IBOutlet weak var viewDetailForNewOrder: UIButton!
+    @IBOutlet weak var rejectOrderButton: UIButton!
+    @IBOutlet weak var acceptOrderButton: UIButton!
     @IBOutlet weak var pstOrderView: UIView!
+    @IBOutlet weak var newOrderView: UIView!
     @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
     var delegate:OrderTVCDelegate?
     var dishes:[Dishes]?
@@ -34,6 +40,9 @@ class OrderTVC: UITableViewCell {
     
     func localization(){
         viewDetailsButton.setTitle("ViewDetails".localiz(), for: .normal)
+        viewDetailForNewOrder.setTitle("ViewDetails".localiz(), for: .normal)
+        rejectOrderButton.setTitle("RejectOrder".localiz(), for: .normal)
+        acceptOrderButton.setTitle("AcceptOrder".localiz(), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,6 +56,18 @@ class OrderTVC: UITableViewCell {
     @IBAction func viewDetailButtonAction(_ sender: UIButton) {
         if let del = delegate{
             del.viewDetailButtonActionDelegateWithTag(tag: self.tag)
+        }
+    }
+    
+    @IBAction func rejectOrderButtonAction(_ sender: UIButton) {
+        if let del = delegate{
+            del.rejectOrderButtonActionDelegateWithTag(tag: self.tag)
+        }
+    }
+    
+    @IBAction func acceptOrderButtonAction(_ sender: UIButton) {
+        if let del = delegate{
+            del.acceptOrderButtonActionDelegateWithTag(tag: self.tag)
         }
     }
     
