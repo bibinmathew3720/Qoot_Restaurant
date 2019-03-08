@@ -111,6 +111,9 @@ class AllOrdersVC: BaseViewController {
     }
     
     //MARK: Button Action
+    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        self.commentView.isHidden = true
+    }
     
     override func leftNavButtonAction() {
         self.dismiss(animated: true, completion: nil)

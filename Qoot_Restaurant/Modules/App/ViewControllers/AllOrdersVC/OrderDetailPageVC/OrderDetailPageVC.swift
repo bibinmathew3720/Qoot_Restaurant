@@ -19,8 +19,6 @@ class OrderDetailPageVC: BaseViewController {
     @IBOutlet weak var commentTV: GrowingTextView!
     @IBOutlet weak var rejectButtonOfComment: UIButton!
     
-    
-    
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -147,6 +145,10 @@ class OrderDetailPageVC: BaseViewController {
     }
     
     //MARK: Button Actions
+    
+    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        self.commmentView.isHidden = true;
+    }
     
     @IBAction func rejectButtonAction(_ sender: UIButton) {
         self.commmentView.isHidden = false
