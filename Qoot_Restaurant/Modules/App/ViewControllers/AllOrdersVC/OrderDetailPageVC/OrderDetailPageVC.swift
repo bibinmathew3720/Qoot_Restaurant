@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import GrowingTextView
+
+protocol OrderDetailDelegate {
+    func orderCompletedDelegate()
+}
 
 class OrderDetailPageVC: BaseViewController {
+    @IBOutlet weak var commmentView: UIView!
+    @IBOutlet weak var commentHeadingLabel: UILabel!
+    @IBOutlet weak var commentTV: GrowingTextView!
+    @IBOutlet weak var rejectButtonOfComment: UIButton!
+    
+    
+    
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -32,6 +44,7 @@ class OrderDetailPageVC: BaseViewController {
     @IBOutlet weak var pastOrdersView: UIView!
     
     @IBOutlet weak var dishesTableViewHeiConstraint: NSLayoutConstraint!
+    var delegate:OrderDetailDelegate?
     
     var orderType:OrderType?
     var orderDetails:Order?
@@ -69,6 +82,9 @@ class OrderDetailPageVC: BaseViewController {
         self.acceptButtton.setTitle("AcceptOrder".localiz(), for: .normal)
         self.orderStatusHeadingLabel.text = "OrderStatus".localiz()
         
+        commentHeadingLabel.text = "Comment".localiz()
+        commentTV.placeholder = "EnterTheRejectionReasonHere".localiz() + " (" + "IfAny".localiz() + ")"
+        rejectButtonOfComment.setTitle("RejectOrder".localiz(), for: .normal)
     }
     
     func populateData(){
@@ -133,11 +149,20 @@ class OrderDetailPageVC: BaseViewController {
     //MARK: Button Actions
     
     @IBAction func rejectButtonAction(_ sender: UIButton) {
+        self.commmentView.isHidden = false
     }
     
     @IBAction func acceptButtonAction(_ sender: UIButton) {
+        if let order = orderDetails{
+            callingChangeOrderStatusApi(orderStatus: .accept, order: order)
+        }
     }
     
+    @IBAction func rejectButtonActionForComment(_ sender: UIButton) {
+        if let order = orderDetails{
+            callingChangeOrderStatusApi(orderStatus: .reject, order: order)
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -147,6 +172,55 @@ class OrderDetailPageVC: BaseViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func callingChangeOrderStatusApi(orderStatus:OrderStatus,order:Order){
+        let progressHud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHud.label.text = "Loading".localiz()
+        CartManager().changeOrderStatusApi(with: getChangeStatusRequestBody(orderStatus: orderStatus,order: order), success: { (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ChangeOrderStatusResponseModel{
+                if (model.status == "true"){
+                    if let dele = self.delegate{
+                        dele.orderCompletedDelegate()
+                    }
+                    if (orderStatus == .reject){
+                        self.commmentView.isHidden = true
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+        }
+    }
+    
+    func getChangeStatusRequestBody(orderStatus:OrderStatus,order:Order)->String{
+        var dataString:String = ""
+        let orderIdString:String = "OrderId=\(order.orderId)"
+        dataString = dataString + orderIdString + "&"
+        var ordStatus = 0
+        var commentString:String = "Comment="
+        if(orderStatus == .accept){
+            ordStatus = 2
+        }
+        else if(orderStatus == .reject){
+            ordStatus = 3
+            if let comm = self.commentTV.text{
+                commentString = commentString + comm
+            }
+        }
+        let orderStatus:String = "Status=\(ordStatus)"
+        dataString = dataString + orderStatus + "&"
+        
+        dataString = dataString + commentString
+        return dataString
+    }
 
 }
 

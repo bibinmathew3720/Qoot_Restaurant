@@ -310,6 +310,7 @@ extension AllOrdersVC:OrderTVCDelegate{
     
     func viewDetailButtonActionDelegateWithTag(tag: Int) {
         let orderDetailPageVC = OrderDetailPageVC.init(nibName: "OrderDetailPageVC", bundle: nil)
+        orderDetailPageVC.delegate = self
         orderDetailPageVC.orderType = self.orderType
         if (self.orderType == .newOrders){
             orderDetailPageVC.orderDetails = newOrdersArray[tag]
@@ -367,5 +368,11 @@ extension AllOrdersVC:OrderTVCDelegate{
         
         dataString = dataString + commentString
         return dataString
+    }
+}
+
+extension AllOrdersVC:OrderDetailDelegate {
+    func orderCompletedDelegate() {
+        callingAllOrdersApi()
     }
 }
