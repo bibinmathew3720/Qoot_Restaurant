@@ -43,6 +43,19 @@ class BaseViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func addFilterIcon()->UIBarButtonItem{
+        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
+        filterButton.setImage(UIImage.init(named: Constant.ImageNames.filterIcon), for: UIControlState.normal)
+        var filterBarButton = UIBarButtonItem()
+        filterBarButton = UIBarButtonItem.init(customView: filterButton)
+        return filterBarButton
+    }
+    
+    @objc func filterButtonAction(){
+        
+    }
+    
     func addCartIconOnly()->UIBarButtonItem{
         let cartButtonView = UIButton(frame: CGRect.init(x: 0, y: 0, width: 30, height: 30))
         cartButtonView.setImage(UIImage.init(named: Constant.ImageNames.alarmIcon), for: .normal)
@@ -62,8 +75,8 @@ class BaseViewController: UIViewController {
         return rightBarButton
     }
     
-    func addHomeIconAndCartIcon(){
-        let button1 = addCartIconOnly()
+    func addHomeIconAndFilterIcon(){
+        let button1 = addFilterIcon()
         let button2 = addingHomeBarButton()
         self.navigationItem.rightBarButtonItems  = [button1,button2]
     }

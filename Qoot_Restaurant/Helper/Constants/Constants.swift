@@ -50,6 +50,7 @@ struct Constant{
         static let backArrow = "leftArrow"
         static let alarmIcon = "alarmClock"
         static let homeIcon = "homeIcon"
+        static let filterIcon = "filterIcon"
     }
     
     struct SegueIdentifiers {

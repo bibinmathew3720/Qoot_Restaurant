@@ -50,7 +50,8 @@ class AllOrdersVC: BaseViewController {
     
     func initialisation(){
         addingLeftBarButton()
-         orderListTV.register(UINib.init(nibName: "OrderTVC", bundle: nil), forCellReuseIdentifier: "orderCell")
+        addHomeIconAndFilterIcon()
+        orderListTV.register(UINib.init(nibName: "OrderTVC", bundle: nil), forCellReuseIdentifier: "orderCell")
     }
     
     func localization(){
@@ -122,6 +123,9 @@ class AllOrdersVC: BaseViewController {
     @IBAction func rejectButtonAction(_ sender: UIButton) {
         let order = self.newOrdersArray[selectedIndex]
         callingChangeOrderStatusApi(orderStatus: .reject, order: order)
+    }
+    override func homeButtonAction() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*
